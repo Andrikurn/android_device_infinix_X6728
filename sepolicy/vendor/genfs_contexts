@@ -1,0 +1,56 @@
+# SPDX-License-Identifier: GPL-2.0-only
+# Device-specific genfs contexts for Infinix X6728 (MT6768)
+# Sourced from stock firmware vendor_genfs_contexts
+
+# Transsion battery sysfs
+genfscon sysfs /devices/platform/tran_battery/fg_coulomb            u:object_r:sysfs_fg_coulomb_file:s0
+genfscon sysfs /devices/platform/tran_battery/BATTERY_QMAX          u:object_r:sysfs_fg_qmx_file:s0
+genfscon sysfs /devices/platform/tran_battery/tran_bat_temp         u:object_r:sysfs_tran_bat_temp_file:s0
+genfscon sysfs /devices/platform/tran_battery_aging/AGING_FG        u:object_r:sysfs_aging_fg_file:s0
+genfscon sysfs /devices/platform/tran_battery/tran_call_state       u:object_r:sysfs_tran_bat_temp_file:s0
+genfscon sysfs /devices/platform/tran_battery_aging/PLUG_TIMES      u:object_r:sysfs_plug_times:s0
+genfscon sysfs /devices/platform/tran_battery/tran_set_current      u:object_r:sysfs_tran_set_current_file:s0
+genfscon sysfs /devices/platform/tran_battery/pcb_thermal_debug     u:object_r:sysfs_pcb_thermal_debug_file:s0
+genfscon sysfs /devices/platform/tran_battery_aging/AGING_RESET     u:object_r:sysfs_aging_reset:s0
+genfscon sysfs /devices/platform/tran_battery_aging/ESTIMATE_RATE   u:object_r:sysfs_aging_estimate_file:s0
+genfscon sysfs /devices/platform/tran_battery_aging/AGING_CALCULATE u:object_r:sysfs_aging_calculate_file:s0
+
+# Transsion charger sysfs
+genfscon sysfs /devices/platform/charger/tran_cam                   u:object_r:sysfs_tc_charger_file:s0
+genfscon sysfs /devices/platform/charger/tran_bat_temp              u:object_r:sysfs_tc_charger_file:s0
+genfscon sysfs /devices/platform/charger/shipmode_enable            u:object_r:sysfs_tran_chg_file:s0
+genfscon sysfs /devices/platform/charger/tran_set_current           u:object_r:sysfs_tc_charger_file:s0
+genfscon sysfs /devices/platform/charger/tran_aichg_bigdata         u:object_r:sysfs_aichg_file:s0
+genfscon sysfs /devices/platform/charger/tran_battery_cycle          u:object_r:sysfs_bat_cycle:s0
+genfscon sysfs /devices/platform/charger/tran_start_dec_soc         u:object_r:sysfs_aichg_file:s0
+genfscon sysfs /devices/platform/charger/tran_aichg_disable_charger u:object_r:sysfs_aichg_file:s0
+genfscon sysfs /devices/platform/charger/tran_custom_disable_charger u:object_r:sysfs_aichg_file:s0
+
+# Transsion display sysfs
+genfscon sysfs /sys/kernel/tran_display/lcm_name                    u:object_r:sysfs_lcm_name_file:s0
+genfscon sysfs /sys/kernel/tran_display/lcm_sub_name                u:object_r:sysfs_lcm_name_file:s0
+genfscon sysfs /sys/kernel/tran_display/lcm_pcd_check               u:object_r:sysfs_lcm_hbm_file:s0
+genfscon sysfs /sys/kernel/tran_display/lcm_hbm_state               u:object_r:sysfs_lcm_hbm_file:s0
+genfscon sysfs /sys/kernel/tran_display/lcm_dimming_state           u:object_r:sysfs_lcm_hbm_file:s0
+genfscon sysfs /sys/kernel/tran_display/lcm_low_backlight           u:object_r:sysfs_backlight_file:s0
+genfscon sysfs /sys/kernel/tran_display/lcm_doze_backlight          u:object_r:sysfs_backlight_file:s0
+genfscon sysfs /sys/kernel/tran_display/lcm_pcd_check_by_read_lcm  u:object_r:sysfs_lcm_hbm_file:s0
+
+# Transsion LED sysfs
+genfscon sysfs /led/led/tran_led_cmd                                u:object_r:sysfs_tran_led_file:s0
+genfscon sysfs /led/led/tran_led_check                              u:object_r:sysfs_tran_led_file:s0
+genfscon sysfs /class/leds/aw2026_led/brightness                    u:object_r:sysfs_tran_led_file:s0
+
+# Transsion fingerprint sysfs
+genfscon sysfs /kernel/tran_fp                                      u:object_r:sysfs_fp_name_path:s0
+
+# Transsion sensor sysfs
+genfscon sysfs /class/sensordrv/tran_imgsensor/tran_imgsensor_info  u:object_r:tran_imgsensor_info_file:s0
+
+# Transsion charge transfer sysfs
+genfscon sysfs /module/tran_charge_transfer/parameters/g_raw_ui_soc u:object_r:sysfs_tran_charge_transfer_file:s0
+
+# Transsion midtest sysfs
+genfscon sysfs /devices/platform/11cc2000.i2c/i2c-12/12-0055/tran_class/tran_fg_master/batt_status  u:object_r:sysfs_midtest_file:s0
+genfscon sysfs /devices/platform/soc/1101b000.i2c/i2c-12/12-0055/battery_class/tran_fg_slave/batt_status  u:object_r:sysfs_midtest_file:s0
+genfscon sysfs /devices/platform/soc/11007000.i2c/i2c-13/13-0055/battery_class/tran_fg_master/batt_status  u:object_r:sysfs_midtest_file:s0

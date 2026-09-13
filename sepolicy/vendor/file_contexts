@@ -1,0 +1,80 @@
+# SPDX-License-Identifier: GPL-2.0-only
+# Device-specific file contexts for Infinix X6728 (MT6768)
+# Sourced from stock firmware vendor_file_contexts
+
+# Transsion camera server
+/(system\/vendor|vendor)/bin/hw/trancamserver                              u:object_r:trancamserver_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor.transsion.hardware.trancam.trancamserver@1.0-service  u:object_r:trancamserver_exec:s0
+
+# Transsion HAL services
+/(system\/vendor|vendor)/bin/hw/vendor\.hardware\.trantp-service           u:object_r:tran_tp_binder_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor\.hardware\.trancharge-service       u:object_r:tran_charge_binder_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor\.transsion\.tranHwInfo(.*)-service  u:object_r:tran_hwinfo_binder_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor\.transsion\.performance\.sched\.aidl-service  u:object_r:trans_sched_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor.transsion.hardware.security.paytrigger@1.0-service    u:object_r:paytrigger_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor.transsion.hardware.security.rpmbservice@2.0-service    u:object_r:rpmbservice_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor.transsion.hardware.security.deviceauthen@2.0-service    u:object_r:deviceauthen_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor.transsion.hardware.security.trancriticalparavfy-service    u:object_r:trancriticalparavfy_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor.aidlstorage@1.0-service            u:object_r:aidltranstorage_exec:s0
+/(system\/vendor|vendor)/bin/hw/vendor\.transsion\.hardware\.tranfacaidl-service    u:object_r:hal_tranfac_default_exec:s0
+
+# Fingerprint HAL (various implementations)
+/(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.fingerprint-service  u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint-service  u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service  u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.2-service\.example  u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.example  u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerrpint@1\.1-service  u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-mediatek  u:object_r:hal_fingerprint_default_exec:s0
+
+# Transsion utilities
+/(vendor|system/vendor)/bin/verify_para                                     u:object_r:tran_vfy_exec:s0
+/(vendor|system/vendor)/bin/verify_rpmb                                     u:object_r:tran_vfy_exec:s0
+/(system\/vendor|vendor)/bin/hw/tranlog                                      u:object_r:tranlog_exec:s0
+/(system\/vendor|vendor)/bin/hw/tranlogconfig                                u:object_r:tranlogconfig_exec:s0
+/(vendor|system/vendor)/bin/hw/tranradionet                                  u:object_r:tranradionet_exec:s0
+/vendor/bin/tranfac_native                                                   u:object_r:tranfac_native_exec:s0
+/vendor/bin/tran_healthinfo_upload                                           u:object_r:tran_healthinfo_upload_exec:s0
+/system/bin/tran_pdb                                                         u:object_r:tran_pdb_exec:s0
+/vendor/bin/init\.tran_mcf\.sh                                               u:object_r:init_tran_mcf_sh_exec:s0
+
+# Transsion data directories
+/data/tran_dfr(/.*)?                                                        u:object_r:dfr_data_file:s0
+/data/tran_mem_debug(/.*)?                                                  u:object_r:tran_mem_debug_file:s0
+/data/vendor/laser(/.*)?                                                    u:object_r:transsion_laser_data_file:s0
+/data/vendor/camera(/.*)?                                                   u:object_r:transsion_camera_data_file:s0
+/data/vendor/multicam(/.*)?                                                 u:object_r:transsion_camera_data_file:s0
+/data/vendor/tranlog(/.*)?                                                  u:object_r:tranlog_data_file:s0
+/data/vendor/meghumaneffect(/.*)?                                           u:object_r:transsion_camera_data_meghumaneffect_file:s0
+/data/vendor/meg_working_dir(/.*)?                                          u:object_r:transsion_camera_meghdr_file:s0
+/data/vendor/pix_working_dir(/.*)?                                          u:object_r:transsion_camera_pixhdr_file:s0
+/mnt/vendor/tranfs/tran_metadata_encryption_bak(/.*)?                       u:object_r:tran_backup_key_file:s0
+/tranfs/tran_metadata_encryption_bak(/.*)?                                  u:object_r:tran_backup_key_file:s0
+
+# Transsion devices
+/dev/tran_fp                                                                 u:object_r:gf_device:s0
+/dev/goodix_fp                                                               u:object_r:fingerprint_device:s0
+/dev/tranlog_ctl                                                             u:object_r:tranlog_device:s0
+/dev/tranlog_reg                                                             u:object_r:tranlog_device:s0
+/dev/tranlog_user                                                            u:object_r:tranlog_device_user:s0
+/dev/tranlog_config                                                          u:object_r:tranlog_device:s0
+/dev/tranlog_kernel                                                          u:object_r:tranlog_device:s0
+/dev/tranlog_cloudctl                                                        u:object_r:tranlog_device:s0
+
+# Transsion sysfs
+/sys/kernel/tran_fp(/.*)?                                                    u:object_r:sysfs_fp_name_path:s0
+/sys/kernel/tranv/nvlist                                                      u:object_r:tranlog_sys_file:s0
+/sys/kernel/tran_display/lcm_name                                            u:object_r:sysfs_lcm_name_file:s0
+/sys/kernel/tran_display/lcm_sub_name                                        u:object_r:sysfs_lcm_name_file:s0
+/sys/kernel/tran_display/lcm_pcd_check                                       u:object_r:sysfs_lcm_hbm_file:s0
+/sys/kernel/tran_display/lcm_hbm_state                                       u:object_r:sysfs_lcm_hbm_file:s0
+/sys/kernel/tran_display/lcm_dimming_state                                   u:object_r:sysfs_lcm_hbm_file:s0
+/sys/kernel/tran_display/lcm_low_backlight                                   u:object_r:sysfs_backlight_file:s0
+/sys/kernel/tran_display/lcm_doze_backlight                                  u:object_r:sysfs_backlight_file:s0
+/sys/kernel/tran_display/lcm_pcd_check_by_read_lcm                          u:object_r:sysfs_lcm_hbm_file:s0
+/sys/led/led/tran_led_cmd                                                    u:object_r:sysfs_tran_led_file:s0
+/sys/led/led/tran_led_check                                                  u:object_r:sysfs_tran_led_file:s0
+/sys/class/leds/aw2026_led/brightness                                        u:object_r:sysfs_tran_led_file:s0
+/sys/class/sensordrv/tran_imgsensor/tran_imgsensor_info                      u:object_r:tran_imgsensor_info_file:s0
+/sys/devices/virtual/tran_imgsensor/tran_imgsensor/tran_imgsensor_info        u:object_r:tran_imgsensor_info_isp7_cam_file:s0
+/sys/module/tran_charge_transfer/parameters/g_raw_ui_soc                     u:object_r:sysfs_tran_charge_transfer_file:s0

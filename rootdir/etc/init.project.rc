@@ -1,0 +1,99 @@
+import /vendor/etc/init/hw/init.mtkgki.rc
+
+# MTK project .rc configure
+
+on early-init
+    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules trace_mmstat.ko
+
+on init
+    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
+    mkdir /storage/usbotg 0700 root root
+
+on post-fs-data
+
+#Camera
+    chmod 0660 /dev/MAINAF
+    chown system camera /dev/MAINAF
+
+    chmod 0660 /dev/MAINAF2
+    chown system camera /dev/MAINAF2
+
+    chmod 0660 /dev/SUBAF
+    chown system camera /dev/SUBAF
+
+    chmod 0660 /dev/GAF001AF
+    chown system camera /dev/GAF001AF
+
+    chmod 0660 /dev/DW9714AF
+    chown system camera /dev/DW9714AF
+
+    chmod 0660 /dev/LC898212AF
+    chown system camera /dev/LC898212AF
+
+    chmod 0660 /dev/BU64745GWZAF
+    chown system camera /dev/BU64745GWZAF
+
+#SMB
+    chown system system /proc/smb/ScreenComm
+    chmod 0660 /proc/smb/ScreenComm
+
+    chmod 0660 /dev/spm
+    chown system system /dev/spm
+
+# add irtx for 6728 start
+    chmod 0666 /dev/lirc0
+    chown system system /dev/lirc0
+    chmod 0666 /dev/irtx
+    chown system system /dev/irtx
+# add irtx for x6728 end
+
+on init
+    # Refer to http://source.android.com/devices/tech/storage/index.html
+    # It said, "Starting in Android 4.4, multiple external storage devices are surfaced to developers through
+    #           Context.getExternalFilesDirs(), Context.getExternalCacheDirs(), and Context.getObbDirs().
+    #           External storage devices surfaced through these APIs must be a semi-permanent part of the device (such as an SD card slot in a battery compartment).
+    #           Developers expect data stored in these locations to be available over long periods of time."
+    # Therefore, if the target doesn't support sd hot-plugging (Ex: the SD card slot in a battery compartment), we need to export SECONDARY_STORAGE in 'boot' section
+    #
+    # export SECONDARY_STORAGE /storage/sdcard1
+# dex2oat_threads add by ling.qin 20250324 start
+    setprop persist.vendor.powerhal.dex2oat_threads 0
+# dex2oat_threads add by ling.qin 20250324 end
+
+service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
+    class late_start
+    disabled
+
+# start mmstat
+on property:sys.boot_completed=1
+    mkdir /sys/kernel/tracing/instances/mmstat 711
+    write /sys/kernel/tracing/instances/mmstat/tracing_on 0
+    write /sys/kernel/tracing/instances/mmstat/buffer_size_kb 16
+    write /sys/kernel/tracing/instances/mmstat/events/mmstat/enable 1
+    write /sys/kernel/tracing/instances/mmstat/tracing_on 1
+    #SPD: modify cpu shares by fangyuan.yu at 20250311 start
+    write /dev/cpuctl/top-app/cpu.shares 5120
+    write /dev/cpuctl/foreground/cpu.shares 4096
+    write /dev/cpuset/foreground-l/cpus 0-6
+    write /dev/cpuset/background-l/cpus 0-1
+    write /dev/cpuctl/foreground-l/cpu.shares 2048
+    write /dev/cpuctl/background-l/cpu.shares 512
+    #SPD: modify cpu shares by fangyuan.yu at 20250311 end
+    #SPD: add for control dex2oat cpu by ling.qin 20250324 start
+    write /dev/cpuset/dex2oat/cpus 0-5
+    write /dev/cpuctl/dex2oat/cpu.shares 512
+    setprop persist.vendor.powerhal.dex2oat_threads 6
+    #SPD: add for control dex2oat cpu by ling.qin 20250324 end
+    write /proc/sys/vm/watermark_scale_factor 100
+    write /proc/sys/vm/min_free_kbytes 7646
+    write /proc/sys/vm/dirty_background_ratio 5
+    write /proc/sys/vm/dirty_ratio 10
+    write /sys/kernel/mm/lru_gen/enabled n
+    write /sys/block/${dev.mnt.dev.data}/queue/read_ahead_kb 128
+
+#USD: add for Memfusion2_2 by dongyun.liu 20240926 start
+on property:sys.boot_completed=1 && property:persist.vendor.swapfile_enable=true && property:ro.vendor.memfusion2_2.support=true
+    swapon_all /vendor/etc/memfusion2/fstab.enableswap_wb
+#USD: add for Memfusion2_2 by dongyun.liu 20240926 end
+
+    write /proc/sys/vm/swappiness 150

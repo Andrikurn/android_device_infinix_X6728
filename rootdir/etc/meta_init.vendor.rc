@@ -1,0 +1,57 @@
+# Copyright (C) 2012 The Android Open Source Project
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+
+import /vendor/etc/init/android.hardware.keymaster@4.1-service.mtee.rc
+import /vendor/etc/init/android.hardware.security.keymint-service.trustonic.rc
+import /vendor/etc/init/android.hardware.security.keymint@2.0-service.trustonic.rc
+import /vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic.rc
+import /vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic_norkp.rc
+import /vendor/etc/init/android.hardware.security.keymint-service.beanpod.rc
+import /vendor/etc/init/android.hardware.security.keymint@3.0-service.tee.rc
+
+#USD: add for attestation key check by shishan.zheng 20250423 start
+import /vendor/etc/init/trustonic_kmsetkey_ca.rc
+#USD: add for attestation key check by shishan.zheng 20250423 end
+
+#USD:add for rkp drm csr by wang.qin start
+import /vendor/etc/init/android.hardware.drm-service.clearkey.rc
+import /vendor/etc/init/android.hardware.drm-service-lazy.clearkey.rc
+#USD:add for rkp drm csr by wang.qin end
+
+import /vendor/etc/init/hw/meta_init.rc
+#USD: add [rpmb] by jiayi.xiong 20250410 start
+import /vendor/etc/init/vendor.transsion.hardware.security.rpmbservice@2.0-service.rc
+import /vendor/etc/init/mtk_storageproxyd.rc
+#USD: add [rpmb] by jiayi.xiong 20250410 end
+import /vendor/etc/init/android.hardware.boot-service.mtk.rc
+
+on late-fs
+    class_start early_hal
+
+#USD : add KL6H6935-1867 by wangqin.kou 20250121 start
+#TRANSSION_START
+on property:persist.vendor.tran.wipedata=1
+    tran_factory_reset
+service shutdown_usbdis /bin/sh -c "sleep 1800 && reboot -p"
+    disabled
+    seclabel u:r:shell:s0
+
+on property:ro.bootmode=meta && property:vendor.usb.tran.state=disconnected
+    write /proc/bootprof "META: start shutdown..."
+    start shutdown_usbdis
+
+on property:ro.bootmode=meta && property:vendor.usb.tran.state=connected
+    write /proc/bootprof "META: stop shutdown..."
+    stop shutdown_usbdis
+
+#SATP: change tranfac file perms by fujia.chu 20250313 start
+on post-fs-data
+    chmod 0660 /mnt/vendor/persist/tranfac_sensor.properties
+    chmod 0660 /mnt/vendor/persist/tranfacmode.db
+    chmod 0660 /mnt/vendor/persist/oximeter.txt
+#SATP: change tranfac file perms by fujia.chu 20250313 end
+#TRANSSION_END
+#USD : add KL6H6935-1867 by wangqin.kou 20250121 end

@@ -1,0 +1,88 @@
+# SPDX-License-Identifier: GPL-2.0-only
+# Device-specific property contexts for Infinix X6728 (MT6768)
+# Sourced from stock firmware vendor_property_contexts
+
+# Transsion camera properties
+ro.vendor.transsion.camera_watermark                     u:object_r:vendor_transsion_camera_watermark_support_prop:s0
+ro.vendor.camera_tran_fake_stereo_support                 u:object_r:vendor_mtk_camera_prop:s0
+vendor.debug.tran_thirdapk_debug                         u:object_r:vendor_mtk_camera_prop:s0
+ro.vendor.camera_tran_switch_band                        u:object_r:vendor_mtk_camera_prop:s0
+ro.vendor.camera_tran_reduce_power                       u:object_r:vendor_mtk_camera_prop:s0
+ro.vendor.camera_tran_front_switch_band                  u:object_r:vendor_mtk_camera_prop:s0
+vendor.debug.trancam.vipscheduler                        u:object_r:vendor_mtk_camera_prop:s0
+vendor.debug.trancam.jpegnum                             u:object_r:vendor_mtk_camera_prop:s0
+vendor.debug.trancam.lowmem.jpegnum                      u:object_r:vendor_mtk_camera_prop:s0
+vendor.debug.trancam.max.jpeg                            u:object_r:vendor_mtk_camera_prop:s0
+ro.vendor.camera_tran_hal_server_support                 u:object_r:vendor_mtk_camera_prop:s0
+
+# Transsion MCF (Multi-Connection Framework)
+vendor.tran_mcf                                         u:object_r:vendor_tran_mcf_prop:s0
+
+# Transsion network
+vendor.tran_net                                         u:object_r:vendor_tran_net_prop:s0
+vendor.svc.tran_net                                     u:object_r:vendor_tran_net_prop:s0
+
+# Transsion OTA properties
+persist.vendor.tran_source_prj                          u:object_r:vendor_tran_ota_prop:s0
+persist.vendor.tran_target_prj                          u:object_r:vendor_tran_ota_prop:s0
+persist.vendor.tran_sign_prj                            u:object_r:vendor_tran_ota_prop:s0
+persist.vendor.tran_boottime                            u:object_r:vendor_tran_ota_prop:s0
+persist.vendor.tran_mergetime                           u:object_r:vendor_tran_ota_prop:s0
+
+# Transsion fingerprint properties
+persist.vendor.goodix.dump_data                         u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.sys.fp.dump_data                         u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.sys.fp.fod.location.X_Y                  u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.sys.fp.fod.size.width_height             u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.gf.debug.dump_talog_data                 u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.gf.debug.dump_data                       u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.sys.fp.goodix.spmt.flag                  u:object_r:vendor_fingerprint_prop:s0
+vendor.fp.QRCode                                        u:object_r:vendor_fingerprint_prop:s0
+vendor.fp.currentUid                                    u:object_r:vendor_fingerprint_prop:s0
+vendor.fp.transsion.lcmname                             u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.fp.sensorUid                             u:object_r:vendor_fingerprint_prop:s0
+vendor.fp.goodix.Y.offset                               u:object_r:vendor_fingerprint_prop:s0
+vendor.fp.goodix.X.offset                               u:object_r:vendor_fingerprint_prop:s0
+vendor.tran.fp.center.Y.offset                          u:object_r:vendor_fingerprint_prop:s0
+vendor.tran.fp.center.X.offset                          u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.transsion.auto_test                      u:object_r:vendor_transsion_fingerprint_prop:s0
+
+# Transsion misc properties
+ro.vendor.tran_single_vism_support                      u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.tran_mistouch_support                         u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.transsion.factory.ai_key                      u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.tran_vib3_support                             u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.tran_vib_gamespace                            u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.tran_pubg_support                             u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.transsion.factory.hall                        u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.tran_0012ir                                   u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.transsion.backlight_hal.optimization          u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.transsion.backlight_12bit                     u:object_r:vendor_mtk_default_prop:s0
+ro.vendor.tran_dual_mic_support                         u:object_r:vendor_mtk_default_prop:s0
+
+# Transsion tranlog properties
+init.svc.vendor.tranlogconfig                           u:object_r:vendor_trancare_prop:s0
+ro.vendor.tranlog.aidl                                  u:object_r:vendor_trancare_prop:s0
+persist.vendor.upload_tranlog                           u:object_r:vendor_memfusion_tranlog_prop:s0
+persist.vendor.tran.wipedata                            u:object_r:vendor_tran_meta_tst_prop:s0
+
+# Transsion RPMB properties
+ro.vendor.tran.rpmb.key.status                          u:object_r:vendor_tran_rpmbkey_status_prop:s0
+
+# Transsion battery properties
+persist.vendor.tran.battery.uid                         u:object_r:vendor_tran_battery_prop:s0
+
+# Transsion NFC properties
+persist.vendor.tran_nfc_chip_manufacturer               u:object_r:vendor_tran_nfc_chip_prop:s0
+ro.vendor.tran.nfc.wireless_charge_support              u:object_r:vendor_tran_nfc_wireless_charge_prop:s0
+
+# Transsion audio properties
+ro.vendor.audio.                                       u:object_r:vendor_tran_audio_prop:s0
+ro.vendor.tran_audio_game_mode.support                  u:object_r:vendor_game_audio_prop:s0
+ro.vendor.tran_audio_esportspro.support                 u:object_r:vendor_game_audio_prop:s0
+ro.vendor.tran_esport_pro_audio.support                 u:object_r:vendor_game_audio_prop:s0
+persist.vendor.vpnr.vpnrEnrollStatus                    u:object_r:vendor_tran_vpnr_audio_prop:s0
+ro.vendor.tran_audio_wireless_microphone.support        u:object_r:vendor_wireless_microphone_audio_prop:s0
+
+# Transsion LMKD properties
+persist.vendor.tran.lmkd_native.                        u:object_r:vendor_tran_lmkd_prop:s0
