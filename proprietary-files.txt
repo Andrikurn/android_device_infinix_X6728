@@ -1415,6 +1415,7 @@ vendor/lib64/liblvacfs_wrapper.so
 vendor/lib64/libmbrainSDKv.so
 vendor/lib64/libmfllcore.so
 vendor/lib64/libminiui.so
+vendor/lib64/libminizip.so
 vendor/lib64/libmipc.so
 vendor/lib64/libmmprofile.so
 vendor/lib64/libmnetlink_v104.so
