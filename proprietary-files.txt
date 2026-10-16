@@ -321,12 +321,12 @@ vendor/data/camera/model/scene.mnn
 vendor/data/camera/model/segment.tflite
 vendor/data/camera/model/segmentPre.tflite
 # vendor/data/camera/pixsmart/hdr/bin
-vendor/data/camera/pixsmart/hdr/bin/AW_HDR_License.data
-vendor/data/camera/pixsmart/hdr/bin/AW_NightShot_License.data
-vendor/data/camera/pixsmart/hdr/bin/pixsmart_hdr.bin
-vendor/data/camera/pixsmart/hdr/bin/pixsmart_mf_params1.bin
-vendor/data/camera/pixsmart/hdr/bin/pixsmart_mf_params2.bin
-vendor/data/camera/pixsmart/hdr/bin/pixsmart_ns.bin
+vendor/data/camera/pixsmart/hdr/bin/AW_HDR_License.data;MAKE_COPY_RULE_ONLY
+vendor/data/camera/pixsmart/hdr/bin/AW_NightShot_License.data;MAKE_COPY_RULE_ONLY
+vendor/data/camera/pixsmart/hdr/bin/pixsmart_hdr.bin;MAKE_COPY_RULE_ONLY
+vendor/data/camera/pixsmart/hdr/bin/pixsmart_mf_params1.bin;MAKE_COPY_RULE_ONLY
+vendor/data/camera/pixsmart/hdr/bin/pixsmart_mf_params2.bin;MAKE_COPY_RULE_ONLY
+vendor/data/camera/pixsmart/hdr/bin/pixsmart_ns.bin;MAKE_COPY_RULE_ONLY
 # vendor/data/camera/pixsmart/hdr/xml/black
 vendor/data/camera/pixsmart/hdr/xml/black/hdr_config_gc08a8_17201960.xml
 vendor/data/camera/pixsmart/hdr/xml/black/hdr_config_gc08a8_17201986.xml
@@ -1970,10 +1970,10 @@ vendor/lib64/vpp_hdrmeta_handler_plugin.so
 # vendor
 vendor/libnfc-nxp_RF.conf
 # vendor/odm/etc/vintf
-vendor/odm/etc/vintf/manifest_dsds.xml
-vendor/odm/etc/vintf/manifest_qsqs.xml
-vendor/odm/etc/vintf/manifest_ss.xml
-vendor/odm/etc/vintf/manifest_tsts.xml
+vendor/odm/etc/vintf/manifest_dsds.xml;MAKE_COPY_RULE_ONLY
+vendor/odm/etc/vintf/manifest_qsqs.xml;MAKE_COPY_RULE_ONLY
+vendor/odm/etc/vintf/manifest_ss.xml;MAKE_COPY_RULE_ONLY
+vendor/odm/etc/vintf/manifest_tsts.xml;MAKE_COPY_RULE_ONLY
 # vendor/res/images
 vendor/res/images/lcd_test_00.png
 vendor/res/images/lcd_test_01.png
