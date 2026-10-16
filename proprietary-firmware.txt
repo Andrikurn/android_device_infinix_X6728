@@ -1,13 +1,10 @@
 ## All proprietary files from this list, unless pinned and noted otherwise, are
-## from LH7n-H894JKLM-U-GL-250416V781
+## from X6728-OP-260715V2649
 
-dpm.img;AB
 gz.img;AB
-lk.img;AB|b377df8ba4dfbed61da8dee3005de53fa08cb4db
-logo.bin:logo.img;AB|347933fe48d2359ffb7a77ab1ff306716c2e6ebb
-mcupm.img;AB
-md1img.img;AB
-pi_img.img;AB
+lk.img;AB
+logo.bin:logo.img;AB
+modem.img;AB
 scp.img;AB
 spmfw.img;AB
 sspm.img;AB
