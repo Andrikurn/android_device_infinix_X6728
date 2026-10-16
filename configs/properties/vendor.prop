@@ -287,7 +287,7 @@ ro.vendor.mtk.sensor.support=yes
 
 # SoC
 ro.soc.manufacturer=Mediatek
-ro.soc.model=MT6768
+ro.soc.model=MT6769
 
 # SurfaceFlinger
 debug.sf.auto_latch_unsignaled=0
