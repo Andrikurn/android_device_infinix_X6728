@@ -149,7 +149,6 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5.vendor:64 \
     android.hardware.camera.provider@2.6.vendor:64 \
     android.hardware.camera.common-V1-ndk.vendor:64 \
-    android.hardware.camera.common-V2-ndk.vendor:64 \
     android.hardware.camera.device-V3-ndk.vendor:64 \
     android.hardware.camera.metadata-V3-ndk.vendor:64 \
     android.hardware.camera.provider-V3-ndk.vendor:64

@@ -71,6 +71,12 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libcam.utils.sensorprovider.so',
     ): blob_fixup()
         .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
+    # MTK links the development version of camera.common, which a release
+    # branch build refuses to use. It references no symbol from it, and the
+    # platform already puts the frozen v1 in the module graph through
+    # camera.device v3.
+    'vendor/lib64/libmtkcam_hal_aidl_common.so': blob_fixup()
+        .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
     (
         'vendor/lib64/libnvram.so',
         'vendor/lib64/libsysenv.so',
