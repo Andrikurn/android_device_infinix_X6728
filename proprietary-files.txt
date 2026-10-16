@@ -69,8 +69,6 @@ vendor/bin/epdg_wod
 vendor/bin/factory
 vendor/bin/fuelgauged
 vendor/bin/fuelgauged_nvram
-vendor/bin/getevent;SYMLINK=vendor/bin/toolbox
-vendor/bin/getprop;SYMLINK=vendor/bin/toolbox
 vendor/bin/gsm0710muxd
 vendor/bin/hostapd_cli
 # vendor/bin/hw
@@ -134,7 +132,6 @@ vendor/bin/md_monitor_ctrl
 vendor/bin/memfusion
 vendor/bin/meta_tst
 vendor/bin/mnld
-vendor/bin/modprobe;SYMLINK=vendor/bin/toolbox
 vendor/bin/mrdump_tool
 vendor/bin/mt6660_calibration
 vendor/bin/mtk_agpsd
@@ -152,18 +149,15 @@ vendor/bin/recordevent
 vendor/bin/replayevent
 vendor/bin/rt5512_calibration
 vendor/bin/rttv_v2
-vendor/bin/setprop;SYMLINK=vendor/bin/toolbox
 vendor/bin/sh
-vendor/bin/start;SYMLINK=vendor/bin/toolbox
 vendor/bin/starter
-vendor/bin/stop;SYMLINK=vendor/bin/toolbox
 vendor/bin/storage_feature_cloudctl
 vendor/bin/stp_dump3
 vendor/bin/stroke
 vendor/bin/thermal
 vendor/bin/thermal_manager
 vendor/bin/thermalloadalgod
-vendor/bin/toolbox
+vendor/bin/toolbox;SYMLINK=vendor/bin/getevent,vendor/bin/getprop,vendor/bin/modprobe,vendor/bin/setprop,vendor/bin/start,vendor/bin/stop
 vendor/bin/toybox_vendor
 vendor/bin/tran_healthinfo_upload
 vendor/bin/tranfac_native
@@ -556,10 +550,8 @@ vendor/etc/audio_param/preset_voip.bin
 # vendor/etc
 vendor/etc/audio_policy.conf
 vendor/etc/bluetooth_offload_audio_policy_configuration.xml
-vendor/etc/boringssl_self_test.no_zygote.rc;SYMLINK=vendor/etc/boringssl_self_test.zygote64_32.rc
-vendor/etc/boringssl_self_test.zygote32.rc;SYMLINK=vendor/etc/boringssl_self_test.zygote64_32.rc
 vendor/etc/boringssl_self_test.zygote64.rc
-vendor/etc/boringssl_self_test.zygote64_32.rc
+vendor/etc/boringssl_self_test.zygote64_32.rc;SYMLINK=vendor/etc/boringssl_self_test.no_zygote.rc,vendor/etc/boringssl_self_test.zygote32.rc
 vendor/etc/command.csv
 # vendor/etc/displayconfig
 vendor/etc/displayconfig/display_id_4627039422300187648.xml
@@ -1480,7 +1472,6 @@ vendor/lib64/libdecrypt.so
 vendor/lib64/libdenoise.so
 vendor/lib64/libdeviceauthen.so
 vendor/lib64/libdmabufheap.so
-vendor/lib64/libdpframework.so;SYMLINK=vendor/lib64/mt6768/libdpframework.so
 vendor/lib64/libdts-eagle-shared.so
 vendor/lib64/libdtsdsec.so
 vendor/lib64/libdynamiclog.so
@@ -1553,9 +1544,6 @@ vendor/lib64/libmfllcore.so
 vendor/lib64/libminiui.so
 vendor/lib64/libminizip.so
 vendor/lib64/libmipc.so
-vendor/lib64/libmmagent.so;SYMLINK=vendor/lib64/mt6768/libmmagent.so
-vendor/lib64/libmml.so;SYMLINK=vendor/lib64/mt6768/libmml.so
-vendor/lib64/libmmlpqImpl.so;SYMLINK=vendor/lib64/mt6768/libmmlpqImpl.so
 vendor/lib64/libmmprofile.so
 vendor/lib64/libmnetlink_v104.so
 vendor/lib64/libmnl.so
@@ -1568,7 +1556,6 @@ vendor/lib64/libmtcloader.so
 vendor/lib64/libmtk-fusion-ril-prop-vsim.so
 vendor/lib64/libmtk-ril.so
 vendor/lib64/libmtk_bsg.so
-vendor/lib64/libmtk_drvb.so;SYMLINK=vendor/lib64/mt6768/libmtk_drvb.so
 vendor/lib64/libmtkcam.atmseventmgr.so
 vendor/lib64/libmtkcam.debugwrapper.so
 vendor/lib64/libmtkcam.eventcallback.so
@@ -1680,10 +1667,8 @@ vendor/lib64/libpower_timer.so
 vendor/lib64/libpowerhal.so
 vendor/lib64/libpowerhalwrap_vendor.so
 vendor/lib64/libpq_cust_base.so
-vendor/lib64/libpq_sec.so;SYMLINK=vendor/lib64/mt6768/libpq_sec.so
 vendor/lib64/libpqframework.so
 vendor/lib64/libpqhdrmetaparser.so
-vendor/lib64/libpqparamparser.so;SYMLINK=vendor/lib64/mt6768/libpqparamparser.so
 vendor/lib64/libpqsharememory.so
 vendor/lib64/libpqtuning.so
 vendor/lib64/libpqxmlparser.so
@@ -1796,13 +1781,13 @@ vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
 # vendor/lib64
 vendor/lib64/meta_wifi_data.so
 # vendor/lib64/mt6768
-vendor/lib64/mt6768/libdpframework.so
-vendor/lib64/mt6768/libmmagent.so
-vendor/lib64/mt6768/libmml.so
-vendor/lib64/mt6768/libmmlpqImpl.so
-vendor/lib64/mt6768/libmtk_drvb.so
-vendor/lib64/mt6768/libpq_sec.so
-vendor/lib64/mt6768/libpqparamparser.so
+vendor/lib64/mt6768/libdpframework.so;SYMLINK=vendor/lib64/libdpframework.so
+vendor/lib64/mt6768/libmmagent.so;SYMLINK=vendor/lib64/libmmagent.so
+vendor/lib64/mt6768/libmml.so;SYMLINK=vendor/lib64/libmml.so
+vendor/lib64/mt6768/libmmlpqImpl.so;SYMLINK=vendor/lib64/libmmlpqImpl.so
+vendor/lib64/mt6768/libmtk_drvb.so;SYMLINK=vendor/lib64/libmtk_drvb.so
+vendor/lib64/mt6768/libpq_sec.so;SYMLINK=vendor/lib64/libpq_sec.so
+vendor/lib64/mt6768/libpqparamparser.so;SYMLINK=vendor/lib64/libpqparamparser.so
 # vendor/lib64
 vendor/lib64/mtk_lbs_service-impl.so
 # vendor/lib64/mtkcam
