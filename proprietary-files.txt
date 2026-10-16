@@ -1705,6 +1705,8 @@ vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk.so
 vendor/lib64/vendor.mediatek.framework.mtksf_ext-V2-ndk.so
 vendor/lib64/vendor.mediatek.framework.mtksf_ext-V3-ndk.so
 vendor/lib64/vendor.mediatek.hardware.aee-V1-ndk.so
+vendor/lib64/vendor.mediatek.hardware.aee@1.0.so
+vendor/lib64/vendor.mediatek.hardware.aee@1.1.so
 vendor/lib64/vendor.mediatek.hardware.apmonitor-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apmonitor@2.0.so
 vendor/lib64/vendor.mediatek.hardware.atci-V1-ndk.so
@@ -1736,6 +1738,7 @@ vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.mmlpq-V3-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mms-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtklight-V1-ndk.so
+vendor/lib64/vendor.mediatek.hardware.mtkpower-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower_applist-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.assist-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.atci-V1-ndk.so
@@ -1851,6 +1854,7 @@ system_ext/lib64/libneuronusdk_adapter.mtk.so
 system_ext/lib64/libnir_neon_driver_ndk.mtk.so
 system_ext/lib64/libtflite_mtk.mtk.so
 system_ext/lib64/libtflite_mtk.so
+system_ext/lib64/vendor.mediatek.hardware.apuware.apusys-V5-ndk.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.apusys@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.apusys@2.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.apusys@2.1.so
@@ -1858,5 +1862,6 @@ system_ext/lib64/vendor.mediatek.hardware.apuware.hmp@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.utils-V1-ndk.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.utils@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.utils@2.0.so
+system_ext/lib64/vendor.mediatek.hardware.apuware.xrp-V1-ndk.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.xrp@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.xrp@2.0.so
