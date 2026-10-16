@@ -151,8 +151,9 @@ PRODUCT_VENDOR_PROPERTIES += \
     dalvik.vm.heapmaxfree=48m
 
 # Display
+# The composer (AIDL composer3, named android.hardware.graphics.composer@3.3-service)
+# and the allocator are MediaTek prebuilts, so only memtrack is built here.
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@3.3-service \
     android.hardware.memtrack-service.mediatek
 
 PRODUCT_PACKAGES += \
