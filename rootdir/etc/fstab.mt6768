@@ -18,6 +18,8 @@ product /product erofs ro wait,slotselect,avb,logical,first_stage_mount,readahea
 
 vendor_dlkm /vendor_dlkm erofs ro wait,slotselect,avb,logical,first_stage_mount,readahead_size_kb=128
 
+system_dlkm /system_dlkm erofs ro wait,slotselect,avb,logical,first_stage_mount,readahead_size_kb=128
+
 
 /dev/block/by-name/metadata /metadata f2fs noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
 

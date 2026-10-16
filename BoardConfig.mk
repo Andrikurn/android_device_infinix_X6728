@@ -131,6 +131,15 @@ TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
+# System (GKI) modules. The kernel is built 6.6 GKI and leaves bluetooth, CAN,
+# USB net and friends as modules; on stock they live in their own partition.
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/system_dlkm/modules.load))
+BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/system_dlkm/*.ko)
+BOARD_USES_SYSTEM_DLKMIMAGE := true
+BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_MTK_DYNAMIC_PARTITIONS_PARTITION_LIST += system_dlkm
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
+
 # OTA assert
 TARGET_OTA_ASSERT_DEVICE := X6728
 
