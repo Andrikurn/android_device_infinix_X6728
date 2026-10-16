@@ -5,6 +5,6 @@
 //
 
 runtime_resource_overlay {
-    name: "SettingsResOverlayRozen",
+    name: "SettingsResOverlayX6728",
     vendor: true,
 }

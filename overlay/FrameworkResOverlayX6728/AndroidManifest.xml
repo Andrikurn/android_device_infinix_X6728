@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.systemui.rozen">
+    package="android.overlay.x6728">
 
     <overlay
         android:isStatic="true"
         android:priority="350"
-        android:targetPackage="com.android.systemui" />
+        android:targetPackage="android" />
 </manifest>
