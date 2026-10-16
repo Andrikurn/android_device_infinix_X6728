@@ -1095,6 +1095,7 @@ vendor/lib64/android.hardware.biometrics.extension.fingerprint-V1-ndk.so
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
 vendor/lib64/android.hardware.light@2.0.so
 vendor/lib64/android.hardware.power-service-mediatek.so
+vendor/lib64/android.system.suspend@1.0.so
 vendor/lib64/arm.graphics-V5-ndk.so
 vendor/lib64/arm.mali.platform-V2-ndk.so
 vendor/lib64/chre_atoms_log.so
