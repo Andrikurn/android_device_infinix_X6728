@@ -559,7 +559,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel/pixelstats \
     hardware/google/pixel/power-libperfmgr \
     hardware/millennium \
-    hardware/millennium/libtranlog
+    hardware/millennium/libtranlog \
+    vendor/mediatek/ims
 
 # Thermal
 PRODUCT_PACKAGES += \

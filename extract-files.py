@@ -27,6 +27,7 @@ namespace_imports = [
     'hardware/mediatek/libion_mtk',
     'hardware/millennium',
     'hardware/millennium/libtranlog',
+    'vendor/mediatek/ims',
 ]
 
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
