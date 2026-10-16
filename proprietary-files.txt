@@ -1101,8 +1101,6 @@ vendor/lib64/android.hardware.camera.provider@2.4.so
 vendor/lib64/android.hardware.camera.provider@2.5.so
 vendor/lib64/android.hardware.light@2.0.so
 vendor/lib64/android.hardware.power-service-mediatek.so
-vendor/lib64/android.system.suspend@1.0.so
-vendor/lib64/android.system.wifi.keystore@1.0.so
 vendor/lib64/arm.graphics-V5-ndk.so
 vendor/lib64/arm.mali.platform-V2-ndk.so
 vendor/lib64/chre_atoms_log.so
@@ -1595,7 +1593,6 @@ vendor/lib64/libtflite_native_gainference.so
 vendor/lib64/libtflite_native_seginference.so
 vendor/lib64/libthermalalgo.so
 vendor/lib64/libthha.so
-vendor/lib64/libtinyalsav2.so
 vendor/lib64/libtneclient.so
 vendor/lib64/libtnev.so
 vendor/lib64/libtouch_rejection.so
@@ -1610,7 +1607,6 @@ vendor/lib64/libtranslator_utils.so
 vendor/lib64/libtranssion_bodybeauty.so
 vendor/lib64/libtranssion_forkexecwrap.so
 vendor/lib64/libtrm.so
-vendor/lib64/libtrusty.so
 vendor/lib64/libtvrfy.so
 vendor/lib64/libudf.so
 vendor/lib64/liburee_meta_drmkeyinstall.so
