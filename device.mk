@@ -431,6 +431,7 @@ PRODUCT_PACKAGES += \
     vendor.mediatek.hardware.mtkpower@1.2-service.stub:64 \
     vendor.mediatek.hardware.mtkpower@1.0.vendor:64 \
     vendor.mediatek.hardware.mtkpower@1.1.vendor:64 \
+    vendor.mediatek.hardware.mtkpower@1.2.vendor:64 \
     vendor.mediatek.hardware.mtkpower-V1-ndk.vendor:64 \
     vendor.mediatek.hardware.mtkpower-V2-ndk.vendor:64
 
