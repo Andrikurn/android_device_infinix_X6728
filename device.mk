@@ -127,6 +127,8 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth-V1-ndk.vendor:64 \
+    android.hardware.bluetooth.audio@2.0.vendor:64 \
+    android.hardware.bluetooth.audio@2.1.vendor:64 \
     android.hardware.bluetooth-service.mediatek
 
 # Boot animation
@@ -143,6 +145,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.common@1.0.vendor:64 \
     android.hardware.camera.device@3.6.vendor:64 \
+    android.hardware.camera.provider@2.4.vendor:64 \
+    android.hardware.camera.provider@2.5.vendor:64 \
     android.hardware.camera.provider@2.6.vendor:64 \
     android.hardware.camera.common-V1-ndk.vendor:64 \
     android.hardware.camera.common-V2-ndk.vendor:64 \
@@ -320,6 +324,10 @@ PRODUCT_PACKAGES += \
     android.hardware.media.c2-V1-ndk.vendor:64 \
     android.hardware.media.c2-mtk-service \
     libcodec2_vndk.vendor:64 \
+    libcodec2_aidl.vendor:64 \
+    libcodec2_hidl@1.0.vendor:64 \
+    libcodec2_hidl@1.1.vendor:64 \
+    libcodec2_hidl@1.2.vendor:64 \
     libeffects:64 \
     libeffectsconfig.vendor:64 \
     libavservices_minijail_vendor:64 \
@@ -458,6 +466,7 @@ include $(LOCAL_PATH)/vendor_logtag.mk
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full.vendor:64 \
     libprotobuf-cpp-lite.vendor:64 \
+    libprotobuf-cpp-lite-21.12-vendorcompat:64 \
     libprotobuf-cpp-full-3.9.1-vendorcompat:64 \
     libprotobuf-cpp-lite-3.9.1-vendorcompat:64
 
