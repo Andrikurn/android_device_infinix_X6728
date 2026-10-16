@@ -58,7 +58,6 @@ vendor/bin/chg_sence
 vendor/bin/chipinfo
 vendor/bin/dconfig
 vendor/bin/dexecutor
-vendor/bin/dmabuf_dump
 vendor/bin/dmc_core
 vendor/bin/doeapp-memtester
 vendor/bin/doeapp-sat
@@ -1093,9 +1092,7 @@ vendor/lib/libvtclib.so
 vendor/lib64/AVCSecureVdecCA.so
 vendor/lib64/TranCaptureFilter.so
 vendor/lib64/VP9SecureVdecCA.so
-vendor/lib64/android.hardware.audio.common-util.so
 vendor/lib64/android.hardware.audio.common@5.0.so
-vendor/lib64/android.hardware.audio.common@6.0-util.so
 vendor/lib64/android.hardware.audio.common@6.0.so
 vendor/lib64/android.hardware.audio.core-impl-mediatek.so
 vendor/lib64/android.hardware.audio.effect@6.0.so
@@ -1405,7 +1402,6 @@ vendor/lib64/libccci_util.so
 vendor/lib64/libcharon-ss.so
 vendor/lib64/libchromanr.so
 vendor/lib64/libclang_rt.ubsan_standalone-aarch64-android.so
-vendor/lib64/libcodec2.so
 vendor/lib64/libcodec2_aidl.so
 vendor/lib64/libcodec2_fsr.so
 vendor/lib64/libcodec2_hal_common.so
@@ -1502,7 +1498,6 @@ vendor/lib64/liblvacfs_wrapper.so
 vendor/lib64/liblzma.so
 vendor/lib64/libmbrainSDKv.so
 vendor/lib64/libmedia_helper.so
-vendor/lib64/libmediautils_vendor.so
 vendor/lib64/libmeminfo.so
 vendor/lib64/libmfllcore.so
 vendor/lib64/libminiui.so
@@ -1668,7 +1663,6 @@ vendor/lib64/libssl-mdapp.so
 vendor/lib64/libssl.so
 vendor/lib64/libst_mobile.so
 vendor/lib64/libstagefright_aidl_bufferpool2.so
-vendor/lib64/libstagefright_bufferpool@2.0.1.so
 vendor/lib64/libstagefright_bufferqueue_helper.so
 vendor/lib64/libstagefright_foundation.so
 vendor/lib64/libstblur_capture_api.so
@@ -1683,7 +1677,6 @@ vendor/lib64/libtflite_native_gainference.so
 vendor/lib64/libtflite_native_seginference.so
 vendor/lib64/libthermalalgo.so
 vendor/lib64/libthha.so
-vendor/lib64/libtinyalsa.so
 vendor/lib64/libtinyalsav2.so
 vendor/lib64/libtinyxml2.so
 vendor/lib64/libtneclient.so
@@ -1715,7 +1708,6 @@ vendor/lib64/libvcodecdrv_v3a.so
 vendor/lib64/libverno.so
 vendor/lib64/libvia-ril.so
 vendor/lib64/libviamipc-ril.so
-vendor/lib64/libvibratorutils.so
 vendor/lib64/libvolte_core_shr.so
 vendor/lib64/libvolte_xdmc_shr.so
 vendor/lib64/libvp8dec_sa.ca7.so
@@ -1851,7 +1843,6 @@ vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.mmlpq-V3-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mms-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtklight-V1-ndk.so
-vendor/lib64/vendor.mediatek.hardware.mtkpower-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower@1.2.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower_applist-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.assist-V2-ndk.so

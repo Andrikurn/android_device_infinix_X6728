@@ -100,6 +100,9 @@ PRODUCT_PACKAGES += \
     libeffectproxy:64 \
     libnbaio_mono:64 \
     libtinycompress:64 \
+    libtinyalsa.vendor:64 \
+    android.hardware.audio.common-util.vendor:64 \
+    android.hardware.audio.common@6.0-util.vendor:64 \
     libdynproc:64 \
     libhapticgenerator:64 \
     libldnhncr:64 \
@@ -323,6 +326,9 @@ PRODUCT_PACKAGES += \
     libstagefright_softomx_plugin.vendor:64 \
     libsfplugin_ccodec_utils.vendor:64 \
     libcodec2_soft_common.vendor:64 \
+    libcodec2.vendor:64 \
+    libstagefright_bufferpool@2.0.1.vendor:64 \
+    libmediautils_vendor.vendor:64 \
     libflatbuffers-cpp.vendor:64
 
 PRODUCT_PACKAGES += \
@@ -332,6 +338,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/media,$(TARGET_COPY_OUT_VENDOR)/etc)
+
+# Memory
+# Stock ships libmeminfo's dmabuf debug tool; the platform provides it.
+PRODUCT_PACKAGES += \
+    dmabuf_dump.vendor:64
 
 # Neural networks
 PRODUCT_PACKAGES += \
@@ -420,7 +431,8 @@ PRODUCT_PACKAGES += \
     vendor.mediatek.hardware.mtkpower@1.2-service.stub:64 \
     vendor.mediatek.hardware.mtkpower@1.0.vendor:64 \
     vendor.mediatek.hardware.mtkpower@1.1.vendor:64 \
-    vendor.mediatek.hardware.mtkpower-V1-ndk.vendor:64
+    vendor.mediatek.hardware.mtkpower-V1-ndk.vendor:64 \
+    vendor.mediatek.hardware.mtkpower-V2-ndk.vendor:64
 
 PRODUCT_PACKAGES += \
     android.hardware.power@1.3.vendor:64
@@ -541,7 +553,8 @@ PRODUCT_COPY_FILES += \
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-V2-ndk.vendor:64 \
-    android.hardware.vibrator-service.mediatek
+    android.hardware.vibrator-service.mediatek \
+    libvibratorutils.vendor:64
 
 # VNDK
 PRODUCT_PACKAGES += \
