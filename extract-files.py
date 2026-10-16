@@ -107,6 +107,18 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libpowerhal.so',
     ): blob_fixup()
         .replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so'),
+    # The vendor audio blobs were built against the platform's aidl conversion
+    # library from an older branch, which the current platform replaces with a
+    # version reexporting audio.common.types v5. Their soundtrigger3 v2 import
+    # chain pins types v3, so the two versions meet in one module graph and the
+    # build refuses it. Ship the stock library under a private name instead, as
+    # the official MTK trees on this branch do.
+    (
+        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
+        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
+        'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so',
+    ): blob_fixup()
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     (
         'vendor/lib64/libnvram.so',
         'vendor/lib64/libsysenv.so',

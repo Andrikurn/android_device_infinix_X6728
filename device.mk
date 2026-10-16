@@ -72,15 +72,44 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.core-V2-ndk.vendor:64 \
     android.hardware.audio.core.sounddose-V2-ndk.vendor:64 \
     android.hardware.audio.common-V3-ndk.vendor:64 \
+    android.hardware.audio.common-V5-ndk.vendor:64 \
     android.hardware.audio.effect-V2-ndk.vendor:64 \
+    android.hardware.audio.effect-V4-ndk.vendor:64 \
     android.hardware.soundtrigger3-V1-ndk.vendor:64 \
     android.hardware.soundtrigger3-V2-ndk.vendor:64 \
     android.hardware.bluetooth.audio-V6-ndk.vendor:64 \
     android.media.audio.common.types-V2-ndk.vendor:64 \
     android.media.audio.common.types-V3-ndk.vendor:64 \
+    android.media.audio.common.types-V5-ndk.vendor:64 \
     android.media.soundtrigger.types-V1-ndk.vendor:64 \
     android.media.soundtrigger.types-V2-ndk.vendor:64 \
     vendor.mediatek.hardware.audio-V1-ndk.vendor:64
+
+# The AOSP effect implementations are built from source, like the reference
+# MTK trees on this branch do. The stock blobs would shadow the platform
+# modules and drag in the AIDL versions they were built against.
+PRODUCT_PACKAGES += \
+    libaecsw \
+    libagc1sw \
+    libagc2sw \
+    libbassboostsw \
+    libbundleaidl \
+    libdownmixaidl \
+    libdynamicsprocessingaidl \
+    libenvreverbsw \
+    libequalizersw \
+    libextensioneffect \
+    libhapticgeneratoraidl \
+    libloudnessenhanceraidl \
+    libnssw \
+    libpreprocessingaidl \
+    libpresetreverbsw \
+    libreverbaidl \
+    libvirtualizersw \
+    libvisualizeraidl \
+    libvolumesw \
+    libaudioaidlcommon.vendor:64 \
+    libaudio_aidl_conversion_common_ndk.vendor:64
 
 PRODUCT_PACKAGES += \
     audio.r_submix.default:64 \
@@ -107,6 +136,7 @@ PRODUCT_PACKAGES += \
     libhapticgenerator:64 \
     libldnhncr:64 \
     libreverbwrapper:64 \
+    libvisualizer:64 \
     libprocessgroup.vendor:64
 
 PRODUCT_COPY_FILES += \
