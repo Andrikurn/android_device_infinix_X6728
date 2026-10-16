@@ -77,6 +77,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect-V4-ndk.vendor:64 \
     android.hardware.soundtrigger3-V1-ndk.vendor:64 \
     android.hardware.soundtrigger3-V2-ndk.vendor:64 \
+    android.hardware.bluetooth.audio-V4-ndk.vendor:64 \
     android.hardware.bluetooth.audio-V6-ndk.vendor:64 \
     android.media.audio.common.types-V2-ndk.vendor:64 \
     android.media.audio.common.types-V3-ndk.vendor:64 \
@@ -123,6 +124,7 @@ PRODUCT_PACKAGES += \
     libaudiofoundation.vendor:64 \
     libbundlewrapper:64 \
     libbluetooth_audio_session:64 \
+    libbluetooth_audio_session_aidl.vendor:64 \
     libaudiopreprocessing:64 \
     libalsautils:64 \
     libdownmix:64 \
