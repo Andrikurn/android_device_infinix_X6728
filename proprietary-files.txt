@@ -72,7 +72,7 @@ vendor/bin/hostapd_cli
 # vendor/bin/hw
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
 vendor/bin/hw/android.hardware.biometrics.fingerprint-service
-vendor/bin/hw/android.hardware.contexthub-service.tinysys
+vendor/bin/hw/android.hardware.contexthub-service.tinysys;MODULE_SUFFIX=_mtk
 vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
 vendor/bin/hw/android.hardware.gnss-service.mediatek
 vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek
