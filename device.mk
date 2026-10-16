@@ -53,6 +53,14 @@ PRODUCT_PACKAGES += \
     create_pl_dev \
     create_pl_dev.recovery
 
+# AIDL
+# The prebuilt HALs link AIDL support libraries that the platform provides.
+PRODUCT_PACKAGES += \
+    android.frameworks.stats-V1-ndk.vendor:64 \
+    android.frameworks.stats-V2-ndk.vendor:64 \
+    android.hardware.common-V2-ndk.vendor:64 \
+    android.hardware.common.fmq-V1-ndk.vendor:64
+
 # Audio
 $(call soong_config_set,android_hardware_audio,run_64bit,true)
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
@@ -62,11 +70,16 @@ $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_
 # prebuilts, so here we only provide the AIDL interfaces.
 PRODUCT_PACKAGES += \
     android.hardware.audio.core-V2-ndk.vendor:64 \
+    android.hardware.audio.core.sounddose-V2-ndk.vendor:64 \
     android.hardware.audio.common-V3-ndk.vendor:64 \
     android.hardware.audio.effect-V2-ndk.vendor:64 \
     android.hardware.soundtrigger3-V1-ndk.vendor:64 \
     android.hardware.soundtrigger3-V2-ndk.vendor:64 \
     android.hardware.bluetooth.audio-V4-ndk.vendor:64 \
+    android.media.audio.common.types-V2-ndk.vendor:64 \
+    android.media.audio.common.types-V3-ndk.vendor:64 \
+    android.media.soundtrigger.types-V1-ndk.vendor:64 \
+    android.media.soundtrigger.types-V2-ndk.vendor:64 \
     vendor.mediatek.hardware.audio-V1-ndk.vendor:64
 
 PRODUCT_PACKAGES += \
@@ -110,6 +123,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth-V1-ndk.vendor:64 \
     android.hardware.bluetooth-service.mediatek
 
 # Boot animation
@@ -118,6 +132,7 @@ TARGET_SCREEN_WIDTH := 720
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
+    android.hardware.boot-V1-ndk.vendor:64 \
     android.hardware.boot-service.mediatek \
     android.hardware.boot-service.mediatek_recovery
 
@@ -126,6 +141,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.common@1.0.vendor:64 \
     android.hardware.camera.device@3.6.vendor:64 \
     android.hardware.camera.provider@2.6.vendor:64 \
+    android.hardware.camera.common-V1-ndk.vendor:64 \
     android.hardware.camera.common-V2-ndk.vendor:64 \
     android.hardware.camera.device-V3-ndk.vendor:64 \
     android.hardware.camera.metadata-V3-ndk.vendor:64 \
@@ -163,6 +179,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.common-V5-ndk.vendor:64 \
     android.hardware.graphics.composer3-V3-ndk.vendor:64 \
     android.hardware.graphics.mapper@4.0.vendor:64 \
+    android.hardware.memtrack-V1-ndk.vendor:64 \
     android.frameworks.sensorservice@1.0.vendor:64 \
     libhwc2on1adapter:64 \
     libhwc2onfbadapter:64 \
@@ -176,7 +193,8 @@ PRODUCT_PACKAGES += \
     com.android.hardware.drm.clearkey
 
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.4.vendor
+    android.hardware.drm@1.4.vendor \
+    android.hardware.drm-V1-ndk.vendor:64
 
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -191,7 +209,9 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1.vendor:64
+    android.hardware.biometrics.common-V3-ndk.vendor:64 \
+    android.hardware.biometrics.fingerprint@2.1.vendor:64 \
+    android.hardware.biometrics.fingerprint-V3-ndk.vendor:64
 
 # Gatekeeper
 # X6728 provides gatekeeper through the Trustonic service (prebuilt).
@@ -212,6 +232,8 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
+    android.hardware.health-V1-ndk.vendor:64 \
+    android.hardware.health-V3-ndk.vendor:64 \
     android.hardware.health-service.mediatek \
     android.hardware.health-service.mediatek-recovery \
     charger_res_images_vendor
@@ -256,12 +278,17 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
+    android.hardware.light-V1-ndk.vendor:64 \
+    android.hardware.light-V2-ndk.vendor:64 \
     android.hardware.lights-service.millennium
 
 # Enable DM file pre-opting to reduce first boot time
 PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
 
 # Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster-V4-ndk.vendor:64
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.xml
 
@@ -274,6 +301,10 @@ PRODUCT_PACKAGES += \
     android.hardware.security.rkp-V3-ndk.vendor \
     libcppbor_external.vendor:64
 
+# Keystore
+PRODUCT_PACKAGES += \
+    android.system.keystore2-V1-ndk.vendor:64
+
 # Linker
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     $(LOCAL_PATH)/configs/linker.config.json
@@ -282,6 +313,8 @@ PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
 $(call soong_config_set_bool,android_hardware_mediatek_codec2,link_v33_libstagefright_foundation,true)
 PRODUCT_PACKAGES += \
     android.hardware.cas@1.2-service-lazy \
+    android.hardware.media.bufferpool2-V2-ndk.vendor:64 \
+    android.hardware.media.c2-V1-ndk.vendor:64 \
     android.hardware.media.c2-mtk-service \
     libcodec2_vndk.vendor:64 \
     libeffects:64 \
@@ -308,9 +341,11 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc-V1-ndk.vendor:64 \
     android.hardware.nfc-service.nxp \
     com.android.nfc_extras \
-    Tag
+    Tag \
+    vendor.nxp.nxpnfc_aidl-V1-ndk.vendor:64
 
 # Overlays
 $(call inherit-product, hardware/mediatek/overlay/mssi.mk)
@@ -379,10 +414,13 @@ PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr
 
 PRODUCT_PACKAGES += \
+    android.hardware.power-V4-ndk.vendor:64 \
     android.hardware.power-V5-ndk.vendor:64 \
+    android.system.suspend-V1-ndk.vendor:64 \
     vendor.mediatek.hardware.mtkpower@1.2-service.stub:64 \
     vendor.mediatek.hardware.mtkpower@1.0.vendor:64 \
-    vendor.mediatek.hardware.mtkpower@1.1.vendor:64
+    vendor.mediatek.hardware.mtkpower@1.1.vendor:64 \
+    vendor.mediatek.hardware.mtkpower-V1-ndk.vendor:64
 
 PRODUCT_PACKAGES += \
     android.hardware.power@1.3.vendor:64
@@ -462,6 +500,7 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.hardware.contexthub-V3-ndk.vendor:64 \
     libsensorndkbridge:64 \
     android.hardware.sensors@1.0.vendor:64 \
     android.hardware.sensors@2.1.vendor:64 \
@@ -501,6 +540,7 @@ PRODUCT_COPY_FILES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
+    android.hardware.vibrator-V2-ndk.vendor:64 \
     android.hardware.vibrator-service.mediatek
 
 # VNDK
@@ -516,6 +556,8 @@ PRODUCT_PACKAGES += \
 # USB
 $(call soong_config_set_bool,android_hardware_mediatek_usb,audio_accessory_supported,true)
 PRODUCT_PACKAGES += \
+    android.hardware.usb-V1-ndk.vendor:64 \
+    android.hardware.usb.gadget-V1-ndk.vendor:64 \
     android.hardware.usb-service.mediatek \
     android.hardware.usb.gadget-service.mediatek \
     init.mt6768.usb.rc
@@ -531,6 +573,9 @@ PRODUCT_PACKAGES += \
 # Wi-Fi
 $(call soong_config_set_bool,mediatek_wifi_hal,use_pre_u_qpr2_struct,true)
 PRODUCT_PACKAGES += \
+    android.hardware.wifi.common-V1-ndk.vendor:64 \
+    android.hardware.wifi.hostapd-V2-ndk.vendor:64 \
+    android.hardware.wifi.supplicant-V3-ndk.vendor:64 \
     libwifi-hal-wrapper:64 \
     wlan_assistant \
     wpa_supplicant \
@@ -541,6 +586,7 @@ PRODUCT_PACKAGES += \
     libkeystore-engine-wifi-hidl:64
 
 PRODUCT_PACKAGES += \
+    android.hardware.tetheroffload-V1-ndk.vendor:64 \
     android.hardware.tetheroffload.config@1.0.vendor:64 \
     android.hardware.tetheroffload.control@1.0.vendor:64 \
     android.hardware.tetheroffload.control@1.1.vendor:64
