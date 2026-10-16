@@ -54,7 +54,7 @@
                 <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z @dp</string>
          @see https://www.w3.org/TR/SVG/paths.html#PathData
          -->
-    <string name="config_mainBuiltInDisplayCutout">M -24,0 L -24,36 L 24,36 L 24,0 Z @dp</string>
+    <string name="config_mainBuiltInDisplayCutout">M -24,0 L -24,40 L 24,40 L 24,0 Z @dp</string>
 
     <!-- Whether the display cutout region of the main built-in display should be forced to
          black in software (to avoid aliasing or emulate a cutout that is not physically existent).
@@ -93,31 +93,30 @@
          This array should have size one greater than the size of the config_autoBrightnessLevels
          array. The brightness values must be non-negative and non-decreasing. This must be
          overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>8</item>
-        <item>64</item>
-        <item>98</item>
-        <item>104</item>
-        <item>110</item>
-        <item>116</item>
-        <item>122</item>
-        <item>128</item>
-        <item>134</item>
-        <item>182</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
+    <integer-array name="config_autoBrightnessDisplayValuesNits">
+        <item>5</item>
+        <item>54.6545</item>
+        <item>100.5</item>
+        <item>130.65</item>
+        <item>143.154</item>
+        <item>149.102</item>
+        <item>186.53</item>
+        <item>202.579</item>
+        <item>212.019</item>
+        <item>226.287</item>
+        <item>232.303</item>
+        <item>243.737</item>
+        <item>284.086</item>
+        <item>322.051</item>
+        <item>412.914</item>
+        <item>500</item>
+        <item>560</item>
     </integer-array>
 
     <!-- An array describing the screen's backlight values corresponding to the brightness
     values in the config_screenBrightnessNits array. -->
     <integer-array name="config_screenBrightnessBacklight">
-         <item>1</item>
+         <item>2</item>
          <item>15</item>
          <item>30</item>
          <item>45</item>
@@ -144,24 +143,24 @@
     brightness modes but only the maximum brightness value obtainable in a sustainable manner.
     This array should be equal in size to config_screenBrightnessBacklight -->
     <array name="config_screenBrightnessNits">
-         <item>4.5215</item>
-         <item>33.37784</item>
-         <item>69.09702</item>
-         <item>105.53111</item>
-         <item>141.15657</item>
-         <item>177.40657</item>
-         <item>212.14172</item>
-         <item>247.64085</item>
-         <item>282.03754</item>
-         <item>317.2586</item>
-         <item>351.1292</item>
-         <item>384.87363</item>
-         <item>418.19705</item>
-         <item>451.90884</item>
-         <item>485.0235</item>
-         <item>517.10864</item>
-         <item>548.933</item>
-         <item>580</item>
+         <item>5</item>
+         <item>32.2269</item>
+         <item>66.7144</item>
+         <item>101.892</item>
+         <item>136.289</item>
+         <item>171.289</item>
+         <item>204.826</item>
+         <item>239.102</item>
+         <item>272.312</item>
+         <item>306.319</item>
+         <item>339.021</item>
+         <item>371.602</item>
+         <item>403.776</item>
+         <item>436.326</item>
+         <item>468.299</item>
+         <item>499.277</item>
+         <item>530.004</item>
+         <item>560</item>
     </array>
 
     <!-- Array of light sensor lux values to define our levels for auto backlight brightness
@@ -186,28 +185,27 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
+         <item>6</item>
+         <item>18</item>
+         <item>34</item>
+         <item>82</item>
          <item>128</item>
          <item>256</item>
          <item>384</item>
          <item>512</item>
-         <item>640</item>
          <item>768</item>
-         <item>896</item>
-         <item>1024</item>
-         <item>2048</item>
-         <item>4096</item>
-         <item>6144</item>
-         <item>8192</item>
-         <item>10240</item>
-         <item>12288</item>
-         <item>14336</item>
-         <item>16384</item>
-         <item>18432</item>
+         <item>900</item>
+         <item>1536</item>
+         <item>2000</item>
+         <item>2560</item>
+         <item>3148</item>
+         <item>4475</item>
+         <item>5000</item>
     </integer-array>
 
     <!-- Minimum screen brightness setting allowed by power manager.
          The user is forbidden from setting the brightness below this level.  -->
-    <item type="dimen" name="config_screenBrightnessSettingMinimumFloat">0.003921569</item>
+    <item type="dimen" name="config_screenBrightnessSettingMinimumFloat">0.005428</item>
 
     <!-- Maximum screen brightness allowed by the power manager.
          The user is forbidden from setting the brightness above this level. -->
@@ -215,7 +213,7 @@
 
     <!-- Default screen brightness setting
          Must be in the range specified by minimum and maximum. -->
-    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.19685</item>
 
     <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
          for debouncing the light sensor.  Different constants are used to debounce the light sensor
@@ -240,30 +238,8 @@
          and one pSIM) -->
     <integer name="config_num_physical_slots">2</integer>
 
-    <!-- Display settings screen, Color mode options. Must be the same length and order as
-          config_color_mode_options_values below. Only the values that also appear in
-          frameworks/base/core/res/res/values/config.xml's config_availableColorModes are shown. -->
-     <string-array name="config_color_mode_options_strings" translatable="false">
-          <item>Natural</item>
-          <item>Boosted</item>
-     </string-array>
-
-     <!-- Display settings screen, Color mode options. Must be the same length and order as
-          config_color_mode_options_strings above. Only the values that also appear in
-          frameworks/base/core/res/res/values/config.xml's config_availableColorModes are shown. -->
-     <integer-array name="config_color_mode_options_values">
-          <item>0</item>
-          <item>1</item>
-     </integer-array>
-
-     <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx. -->
-     <integer-array name="config_availableColorModes">
-          <item>0</item>
-          <item>1</item>
-     </integer-array>
-
     <!-- Default radius of the software rounded corners. -->
-    <dimen name="rounded_corner_radius">26.0dip</dimen>
+    <dimen name="rounded_corner_radius">0.0dip</dimen>
 
     <!-- Radius of the software rounded corners at the top of the display in its natural
         orientation. If zero, the value of rounded_corner_radius is used. -->
@@ -275,7 +251,7 @@
 
     <!-- The default height of the status bar used in {@link SystemBarUtils#getStatusBarHeight} to
          calculate the status bar height. -->
-    <dimen name="status_bar_height_default">42dp</dimen>
+    <dimen name="status_bar_height_default">24dp</dimen>
 
     <!-- Height of the status bar.
          Do not read this dimen directly. Use {@link SystemBarUtils#getStatusBarHeight} instead.
@@ -285,7 +261,7 @@
     <!-- Height of the status bar in portrait.
          Do not read this dimen directly. Use {@link SystemBarUtils#getStatusBarHeight} instead.
          -->
-    <dimen name="status_bar_height_portrait">42dp</dimen>
+    <dimen name="status_bar_height_portrait">36dp</dimen>
 
     <!-- Height of the status bar in landscape.
          Do not read this dimen directly. Use {@link SystemBarUtils#getStatusBarHeight} instead.
@@ -321,20 +297,6 @@
    
     <!-- Whether device uses power button fingerprint sensor or not -->
     <bool name="config_is_powerbutton_fps">true</bool>
-
-     <!-- An array of arrays of side fingerprint sensor properties relative to each display.
-     Note: this value is temporary and is expected to be queried directly
-     from the HAL in the future. -->
-     <array name="config_sfps_sensor_props" translatable="false">
-          <item>@array/config_sfps_sensor_props_0</item>
-     </array>
-
-     <array name="config_sfps_sensor_props_0" translatable="false">
-          <item>local:0</item>     <!-- displayId -->
-          <item>1080</item> <!-- sensorLocationX -->
-          <item>1056</item>  <!-- sensorLocationY -->
-          <item>210</item>  <!-- sensorRadius -->
-     </array>
 
      <!-- Whether device supports double tap to wake -->
      <bool name="config_supportDoubleTapWake">true</bool>
