@@ -541,6 +541,12 @@ PRODUCT_COPY_FILES += \
 BOARD_SHIPPING_API_LEVEL := 31
 PRODUCT_SHIPPING_API_LEVEL := 33
 
+# SoC info
+# hardware/mediatek builds the same chipinfo from the stock source. Two plain
+# sh_binary modules of one name cannot coexist across namespaces, so ship theirs.
+PRODUCT_PACKAGES += \
+    chipinfo
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
