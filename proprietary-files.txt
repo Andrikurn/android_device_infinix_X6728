@@ -1093,7 +1093,6 @@ vendor/lib64/AVCSecureVdecCA.so
 vendor/lib64/TranCaptureFilter.so
 vendor/lib64/VP9SecureVdecCA.so
 vendor/lib64/android.hardware.audio.core-impl-mediatek.so
-vendor/lib64/android.hardware.biometrics.common.thread.so
 vendor/lib64/android.hardware.biometrics.extension.fingerprint-V1-ndk.so
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
 vendor/lib64/android.hardware.bluetooth.audio@2.0.so
@@ -1282,7 +1281,6 @@ vendor/lib64/libaudiotoolkit_vendor.so
 vendor/lib64/libaurisysdemo.so
 vendor/lib64/libbessound_hd_mtk_vendor.so
 vendor/lib64/libblisrc32_vendor.so
-vendor/lib64/libbluetooth_audio_session_aidl.so
 vendor/lib64/libbluetooth_audio_session_aidl_mtk.so
 vendor/lib64/libbluetooth_audio_session_mediatek.so
 vendor/lib64/libbluetooth_hw_test.so
