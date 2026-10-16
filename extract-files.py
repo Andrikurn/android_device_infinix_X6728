@@ -33,6 +33,11 @@ namespace_imports = [
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
     return f'{lib}_{partition}' if partition == 'vendor' else None
 
+def lib_fixup_formatter(lib: str, *args, **kwargs):
+    # AOSP ships a host-only Rust module named libformatter, which disables our
+    # prebuilt of the same name. Ships as libformatter.so via the stem.
+    return 'libformatter_mtk'
+
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
@@ -43,6 +48,7 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.mediatek.hardware.apuware.hmp@1.0',
         'vendor.mediatek.hardware.apuware.utils@2.0',
     ): lib_fixup_vendor_suffix,
+    'libformatter': lib_fixup_formatter,
 }
 
 blob_fixups: blob_fixups_user_type = {

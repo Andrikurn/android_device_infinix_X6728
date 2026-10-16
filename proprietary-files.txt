@@ -1375,7 +1375,7 @@ vendor/lib64/libfft_vendor.so
 vendor/lib64/libfgauge_gm30.so
 vendor/lib64/libfile_op.so
 vendor/lib64/libforkexecwrap.so
-vendor/lib64/libformatter.so
+vendor/lib64/libformatter.so;MODULE_SUFFIX=_mtk
 vendor/lib64/libfsmaudio.so
 vendor/lib64/libgamehdr.so
 vendor/lib64/libged.so
