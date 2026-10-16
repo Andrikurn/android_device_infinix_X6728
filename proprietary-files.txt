@@ -555,14 +555,12 @@ vendor/etc/audio_param/preset_ringtone.bin
 vendor/etc/audio_param/preset_voip.bin
 # vendor/etc
 vendor/etc/audio_policy.conf
-vendor/etc/bluetooth_audio_policy_configuration.xml
 vendor/etc/bluetooth_offload_audio_policy_configuration.xml
 vendor/etc/boringssl_self_test.no_zygote.rc;SYMLINK=vendor/etc/boringssl_self_test.zygote64_32.rc
 vendor/etc/boringssl_self_test.zygote32.rc;SYMLINK=vendor/etc/boringssl_self_test.zygote64_32.rc
 vendor/etc/boringssl_self_test.zygote64.rc
 vendor/etc/boringssl_self_test.zygote64_32.rc
 vendor/etc/command.csv
-vendor/etc/default_volume_tables.xml
 # vendor/etc/displayconfig
 vendor/etc/displayconfig/display_id_4627039422300187648.xml
 # vendor/etc/dts/acc
@@ -823,7 +821,6 @@ vendor/etc/powercontable.xml
 vendor/etc/powerscntbl.xml
 vendor/etc/pq_flag.xml
 vendor/etc/qt.cfg
-vendor/etc/r_submix_audio_policy_configuration.xml
 # vendor/etc/seccomp_policy
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
