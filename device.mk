@@ -529,6 +529,7 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0.vendor:64 \
     android.hardware.sensors@2.1.vendor:64 \
     android.hardware.sensors-V2-ndk.vendor:64 \
+    android.hardware.sensors-V3-ndk.vendor:64 \
     android.frameworks.sensorservice@1.0:64 \
     android.frameworks.sensorservice-V1-ndk.vendor:64 \
     android.hardware.sensors-service.multihal \

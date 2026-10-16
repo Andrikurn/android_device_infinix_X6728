@@ -62,6 +62,15 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libaalservice.so',
     ): blob_fixup()
         .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so'),
+    # None of these reference the sensors AIDL symbols they link, and the
+    # platform's sensorservice stub reexports v3, so a module graph with both
+    # versions of the interface fails to build.
+    (
+        'vendor/bin/mnld',
+        'vendor/lib64/libaalservice.so',
+        'vendor/lib64/libcam.utils.sensorprovider.so',
+    ): blob_fixup()
+        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
     (
         'vendor/lib64/libnvram.so',
         'vendor/lib64/libsysenv.so',
