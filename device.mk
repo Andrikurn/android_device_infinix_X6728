@@ -241,7 +241,6 @@ PRODUCT_PACKAGES += \
     init.insmod.sh \
     init.insmod.mt6768.cfg \
     init.modem.rc \
-    init.mt6768.power.rc \
     init.mt6768.rc \
     init.mtkgki.rc \
     init.project.rc \

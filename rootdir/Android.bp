@@ -12,17 +12,10 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "fstab.mt6789",
-    src: "etc/fstab.mt6789",
+    name: "fstab.mt6768",
+    src: "etc/fstab.mt6768",
     vendor: true,
     vendor_ramdisk_available: true,
-}
-
-prebuilt_etc {
-    name: "init.mt6789.power.rc",
-    src: "etc/init/hw/init.mt6789.power.rc",
-    relative_install_path: "init/hw",
-    vendor: true,
 }
 
 prebuilt_etc {
@@ -40,8 +33,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.insmod.mt6789.cfg",
-    src: "etc/init.insmod.mt6789.cfg",
+    name: "init.insmod.mt6768.cfg",
+    src: "etc/init.insmod.mt6768.cfg",
     vendor: true,
 }
 
@@ -53,8 +46,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.mt6789.rc",
-    src: "etc/init/hw/init.mt6789.rc",
+    name: "init.mt6768.rc",
+    src: "etc/init/hw/init.mt6768.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
@@ -81,16 +74,16 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.sensor_2_0.rc",
-    src: "etc/init/hw/init.sensor_2_0.rc",
+    name: "init.sensor_1_0.rc",
+    src: "etc/init/hw/init.sensor_1_0.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
-    name: "ueventd.mt6789.rc",
+    name: "ueventd.mt6768.rc",
     filename: "ueventd.rc",
-    src: "etc/ueventd.mt6789.rc",
+    src: "etc/ueventd.mt6768.rc",
     vendor: true,
 }
 
