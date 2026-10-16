@@ -8,23 +8,23 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from device makefile.
-$(call inherit-product, device/tecno/LH7n/device.mk)
+$(call inherit-product, device/infinix/X6728/device.mk)
 
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-BOARD_VENDOR := TECNO
-PRODUCT_NAME := lineage_LH7n
-PRODUCT_DEVICE := LH7n
-PRODUCT_MANUFACTURER := TECNO
-PRODUCT_BRAND := TECNO
-PRODUCT_MODEL := TECNO LH7n
+BOARD_VENDOR := Infinix
+PRODUCT_NAME := lineage_X6728
+PRODUCT_DEVICE := X6728
+PRODUCT_MANUFACTURER := INFINIX
+PRODUCT_BRAND := Infinix
+PRODUCT_MODEL := Infinix HOT 60i
 
 PRODUCT_GMS_CLIENTID_BASE := android-transsion
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    DeviceName=LH7n \
-    BuildFingerprint=TECNO/LH7n-GL/TECNO-LH7n:14/UP1A.231005.007/241014V737:user/release-keys
+    DeviceName=X6728 \
+    BuildFingerprint=Infinix/X6728-OP/Infinix-X6728:15/AP3A.240905.015.A2/260715V2649:user/release-keys
 
 # Time
 LINEAGE_VERSION_APPEND_TIME_OF_DAY := true
