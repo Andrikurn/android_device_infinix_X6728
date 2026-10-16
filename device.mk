@@ -235,7 +235,8 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss-V4-ndk.vendor:64
 
 PRODUCT_PACKAGES += \
-    libcurl.vendor:64
+    libcurl.vendor:64 \
+    libmnl.vendor:64
 
 # Health
 PRODUCT_PACKAGES += \

@@ -1420,7 +1420,6 @@ vendor/lib64/libminiui.so
 vendor/lib64/libmipc.so
 vendor/lib64/libmmprofile.so
 vendor/lib64/libmnetlink_v104.so
-vendor/lib64/libmnl.so
 vendor/lib64/libmorpho_HDSR.so
 vendor/lib64/libmp4enc_sa.ca7.so
 vendor/lib64/libmpbase.so
