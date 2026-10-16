@@ -3,7 +3,7 @@
     {
       "Name": "CPU",
       "Type": "CPU",
-      "ZoneName": "soc_max",
+      "ZoneName": "mtktscpu",
       "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
       "VrThreshold": "85.0",
       "Multiplier": 0.001
@@ -11,41 +11,51 @@
     {
       "Name": "GPU",
       "Type": "GPU",
-      "ZoneName": "soc_max",
+      "ZoneName": "mtktscpu",
       "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
       "VrThreshold": "85.0",
       "Multiplier": 0.001
     },
     {
-      "Name": "battery",
+      "Name": "NPU",
+      "Type": "NPU",
+      "ZoneName": "mtktscpu",
+      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
+      "VrThreshold": "NaN",
+      "Multiplier": 0.001
+    },
+    {
+      "Name": "BATTERY",
       "Type": "BATTERY",
+      "ZoneName": "battery",
       "HotThreshold": ["NaN", "NaN", "NaN", 50.0, 55.0, 59.0, 60.0],
       "VrThreshold": "50.0",
       "Multiplier": 0.001
     },
     {
-      "Name": "ap_ntc",
+      "Name": "SKIN",
       "Type": "SKIN",
-      "HotThreshold": ["NaN", "NaN", "NaN", 50.0, 70.0, 80.0, 90.0],
-      "VrThreshold": "50.0",
+      "ZoneName": "mtktsAP",
+      "HotThreshold": ["NaN", 43.0, 45.0, 50.0, 70.0, 80.0, 90.0],
+      "VrThreshold": "43.0",
       "Multiplier": 0.001
     },
     {
-      "Name": "NPU",
-      "Type": "NPU",
-      "ZoneName": "soc_max",
-      "HotThreshold": ["NaN", "NaN", "NaN", 85.0, 90.0, 100.0, 117.0],
-      "VrThreshold": "NaN",
+      "Name": "POWER_AMPLIFIER",
+      "Type": "POWER_AMPLIFIER",
+      "ZoneName": "mtktsbtsmdpa",
+      "HotThreshold": ["NaN", "NaN", "NaN", 68.0, 90.0, 100.0, 110.0],
+      "VrThreshold": "68.0",
       "Multiplier": 0.001
     }
   ],
   "CoolingDevices": [
     {
-      "Name": "thermal-devfreq-0",
+      "Name": "cpu_adaptive_0",
       "Type": "CPU"
     },
     {
-      "Name": "mutt-pa1",
+      "Name": "mtk-cl-mutt01",
       "Type": "MODEM"
     }
   ]
