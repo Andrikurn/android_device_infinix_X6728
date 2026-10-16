@@ -77,6 +77,36 @@ blob_fixups: blob_fixups_user_type = {
     # camera.device v3.
     'vendor/lib64/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
+    # The platform's graphics stubs reexport common v7 and its bluetooth audio
+    # session library reexports audio v6, so a module graph holding the older
+    # version next to them fails to build. Same fix as the official MTK and
+    # Qualcomm trees on this branch.
+    (
+        'vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek',
+        'vendor/lib64/hw/android.hardware.graphics.allocator-V2-mediatek.so',
+        'vendor/lib64/hw/mapper.mediatek.so',
+        'vendor/lib64/egl/libGLES_mali.so',
+        'vendor/lib64/libaimemc.so',
+        'vendor/lib64/libcodec2_fsr.so',
+        'vendor/lib64/libgpud.so',
+        'vendor/lib64/libmtkcam_grallocutils.so',
+        'vendor/lib64/vendor.mediatek.hardware.camera.isphal-V1-ndk.so',
+        'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V2-ndk.so',
+        'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V4-ndk.so',
+        'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V8-ndk.so',
+    ): blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
+    (
+        'vendor/bin/hw/android.hardware.audio.service-aidl.mediatek',
+        'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
+        'vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so',
+        'vendor/lib64/hw/audio.bluetooth.default.so',
+        'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so',
+        'vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so',
+        'vendor/lib64/libbluetooth_audio_session_aidl_mtk.so',
+        'vendor/lib64/libpowerhal.so',
+    ): blob_fixup()
+        .replace_needed('android.hardware.bluetooth.audio-V4-ndk.so', 'android.hardware.bluetooth.audio-V6-ndk.so'),
     (
         'vendor/lib64/libnvram.so',
         'vendor/lib64/libsysenv.so',

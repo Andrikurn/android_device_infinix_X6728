@@ -75,7 +75,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect-V2-ndk.vendor:64 \
     android.hardware.soundtrigger3-V1-ndk.vendor:64 \
     android.hardware.soundtrigger3-V2-ndk.vendor:64 \
-    android.hardware.bluetooth.audio-V4-ndk.vendor:64 \
+    android.hardware.bluetooth.audio-V6-ndk.vendor:64 \
     android.media.audio.common.types-V2-ndk.vendor:64 \
     android.media.audio.common.types-V3-ndk.vendor:64 \
     android.media.soundtrigger.types-V1-ndk.vendor:64 \
@@ -182,7 +182,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator-V2-ndk.vendor:64 \
-    android.hardware.graphics.common-V5-ndk.vendor:64 \
+    android.hardware.graphics.common-V7-ndk.vendor:64 \
     android.hardware.graphics.composer3-V3-ndk.vendor:64 \
     android.hardware.graphics.mapper@4.0.vendor:64 \
     android.hardware.memtrack-V1-ndk.vendor:64 \
