@@ -1771,7 +1771,6 @@ vendor/lib64/vendor.mediatek.hardware.pq_aidl-V8-ndk.so
 vendor/lib64/vendor.mediatek.hardware.rcs-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.rcs@2.0.so
 vendor/lib64/vendor.mediatek.hardware.tranHwInfo@1.0.so
-vendor/lib64/vendor.nxp.nxpese@1.0.so
 vendor/lib64/vendor.transsion.hardware.biometrics.fingerprint-V1-ndk.so
 vendor/lib64/vendor.transsion.hardware.security.deviceauthen-V1-ndk.so
 vendor/lib64/vendor.transsion.hardware.security.deviceauthen@2.0.so

@@ -365,6 +365,7 @@ PRODUCT_PACKAGES += \
     android.hardware.nfc-service.nxp \
     com.android.nfc_extras \
     Tag \
+    vendor.nxp.nxpese@1.0.vendor:64 \
     vendor.nxp.nxpnfc_aidl-V1-ndk.vendor:64
 
 # Overlays
