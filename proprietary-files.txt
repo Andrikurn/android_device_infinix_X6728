@@ -47,10 +47,8 @@ vendor/bin/aeev_v2
 vendor/bin/atcid
 vendor/bin/audiocmdservice_atci
 vendor/bin/autobt
-vendor/bin/awk
 vendor/bin/bat_authencali
 vendor/bin/bip
-vendor/bin/boringssl_self_test64
 vendor/bin/ccci_mdinit
 vendor/bin/ccci_rpcd
 vendor/bin/charon
@@ -62,7 +60,6 @@ vendor/bin/doeapp-memtester
 vendor/bin/doeapp-sat
 vendor/bin/dreport
 vendor/bin/dtc_vendor
-vendor/bin/dumpsys
 vendor/bin/epdg_wod
 vendor/bin/factory
 vendor/bin/fuelgauged
@@ -123,7 +120,6 @@ vendor/bin/kmsetkey_ca.trustonic
 vendor/bin/lib3a.ccu.dm
 vendor/bin/lib3a.ccu.pm
 vendor/bin/loghidlvendorservice
-vendor/bin/logwrapper
 vendor/bin/mcDriverDaemon
 vendor/bin/md_monitor
 vendor/bin/md_monitor_ctrl
@@ -147,7 +143,6 @@ vendor/bin/recordevent
 vendor/bin/replayevent
 vendor/bin/rt5512_calibration
 vendor/bin/rttv_v2
-vendor/bin/sh
 vendor/bin/starter
 vendor/bin/storage_feature_cloudctl
 vendor/bin/stp_dump3
@@ -155,7 +150,6 @@ vendor/bin/stroke
 vendor/bin/thermal
 vendor/bin/thermal_manager
 vendor/bin/thermalloadalgod
-vendor/bin/toolbox;SYMLINK=vendor/bin/getevent,vendor/bin/getprop,vendor/bin/modprobe,vendor/bin/setprop,vendor/bin/start,vendor/bin/stop
 vendor/bin/toybox_vendor
 vendor/bin/tran_healthinfo_upload
 vendor/bin/tranfac_native
@@ -548,8 +542,6 @@ vendor/etc/audio_param/preset_voip.bin
 # vendor/etc
 vendor/etc/audio_policy.conf
 vendor/etc/bluetooth_offload_audio_policy_configuration.xml
-vendor/etc/boringssl_self_test.zygote64.rc
-vendor/etc/boringssl_self_test.zygote64_32.rc;SYMLINK=vendor/etc/boringssl_self_test.no_zygote.rc,vendor/etc/boringssl_self_test.zygote32.rc
 vendor/etc/command.csv
 # vendor/etc/displayconfig
 vendor/etc/displayconfig/display_id_4627039422300187648.xml
@@ -640,7 +632,6 @@ vendor/etc/init/atcid.rc
 vendor/etc/init/audiocmdservice_atci.rc
 vendor/etc/init/bat_authencali_init.rc
 vendor/etc/init/bootperf.rc
-vendor/etc/init/boringssl_self_test.rc
 vendor/etc/init/camerahalserver.rc
 vendor/etc/init/chg_sence_init.rc
 vendor/etc/init/dmc_core.rc
@@ -1027,7 +1018,6 @@ vendor/etc/vintf/manifest/android.hardware.security.keymint-service.trustonic.xm
 vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.trustonic.xml
 vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.trustonic.xml
 vendor/etc/vintf/manifest/android.hardware.tetheroffload-V1-service.xml
-vendor/etc/vintf/manifest/android.hardware.wifi.supplicant.xml
 vendor/etc/vintf/manifest/bluetooth_audio.xml
 vendor/etc/vintf/manifest/fingerprint-default.xml
 vendor/etc/vintf/manifest/gnss-default.xml
@@ -1545,7 +1535,6 @@ vendor/lib64/libpqhdrmetaparser.so
 vendor/lib64/libpqsharememory.so
 vendor/lib64/libpqtuning.so
 vendor/lib64/libpqxmlparser.so
-vendor/lib64/libprotobuf-cpp-full-21.12.so
 vendor/lib64/libratconfig.so
 vendor/lib64/librcs_volte_core.so
 vendor/lib64/libreference-ril.so
