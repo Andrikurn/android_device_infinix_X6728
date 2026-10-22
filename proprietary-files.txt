@@ -69,7 +69,8 @@ vendor/bin/hostapd_cli
 # vendor/bin/hw
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
 vendor/bin/hw/android.hardware.biometrics.fingerprint-service
-vendor/bin/hw/android.hardware.contexthub-service.tinysys;MODULE_SUFFIX=_mtk
+# android.hardware.contexthub-service.tinysys is unused on stock (no init_rc, no VINTF
+# fragment) and system/chre installs the platform module to the same path.
 vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
 vendor/bin/hw/android.hardware.gnss-service.mediatek
 vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek
