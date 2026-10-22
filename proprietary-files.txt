@@ -1763,10 +1763,10 @@ vendor/lib64/vpp_hdrmeta_handler_plugin.so
 # vendor
 vendor/libnfc-nxp_RF.conf
 # vendor/odm/etc/vintf
-vendor/odm/etc/vintf/manifest_dsds.xml;MAKE_COPY_RULE_ONLY
-vendor/odm/etc/vintf/manifest_qsqs.xml;MAKE_COPY_RULE_ONLY
-vendor/odm/etc/vintf/manifest_ss.xml;MAKE_COPY_RULE_ONLY
-vendor/odm/etc/vintf/manifest_tsts.xml;MAKE_COPY_RULE_ONLY
+vendor/odm/etc/vintf/manifest_dsds.xml:odm/etc/vintf/manifest_dsds.xml
+vendor/odm/etc/vintf/manifest_qsqs.xml:odm/etc/vintf/manifest_qsqs.xml
+vendor/odm/etc/vintf/manifest_ss.xml:odm/etc/vintf/manifest_ss.xml
+vendor/odm/etc/vintf/manifest_tsts.xml:odm/etc/vintf/manifest_tsts.xml
 # vendor/res/images
 vendor/res/images/lcd_test_00.png
 vendor/res/images/lcd_test_01.png
