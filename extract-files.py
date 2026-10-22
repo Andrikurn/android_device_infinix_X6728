@@ -150,6 +150,18 @@ blob_fixups: blob_fixups_user_type = {
             'vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so',
             'vendor.mediatek.hardware.bluetooth.audio-V1-ndk_mtk.so',
         ),
+    # The stock lib leaves the tensorflow_gainference symbols unresolved and
+    # relies on the process already having the gainference library loaded.
+    # Link it explicitly so the ELF check can satisfy them.
+    'vendor/lib64/libsegmention.so': blob_fixup()
+        .add_needed('libtflite_native_gainference.so'),
+    # The platform libpcap and libmnl are different implementations from the
+    # MTK ones the stock blobs use. Both stock libraries ship under private
+    # names, so point the blobs that need them there.
+    'vendor/lib64/libpkm.so': blob_fixup()
+        .replace_needed('libpcap.so', 'libpcap-mtk.so'),
+    'vendor/bin/mnld': blob_fixup()
+        .replace_needed('libmnl.so', 'libmnl-mtk.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
