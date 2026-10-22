@@ -93,7 +93,7 @@
          This array should have size one greater than the size of the config_autoBrightnessLevels
          array. The brightness values must be non-negative and non-decreasing. This must be
          overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessDisplayValuesNits">
+    <array name="config_autoBrightnessDisplayValuesNits">
         <item>5</item>
         <item>54.6545</item>
         <item>100.5</item>
@@ -111,7 +111,7 @@
         <item>412.914</item>
         <item>500</item>
         <item>560</item>
-    </integer-array>
+    </array>
 
     <!-- An array describing the screen's backlight values corresponding to the brightness
     values in the config_screenBrightnessNits array. -->
