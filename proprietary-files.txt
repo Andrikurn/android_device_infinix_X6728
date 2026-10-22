@@ -623,7 +623,7 @@ vendor/etc/init/android.hardware.gatekeeper-service.trustonic.rc
 vendor/etc/init/android.hardware.gnss-service.mediatek.rc
 vendor/etc/init/android.hardware.graphics.allocator-V2-service-mediatek.rc
 vendor/etc/init/android.hardware.graphics.composer@3.3-service.rc
-vendor/etc/init/android.hardware.ir-service.example.rc
+vendor/etc/init/android.hardware.ir-service.example.rc:vendor/etc/init/android.hardware.ir-service.example-mtk.rc
 vendor/etc/init/android.hardware.secure_element@1.2-service-mediatek.rc
 vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic.rc
 vendor/etc/init/android.hardware.tetheroffload-V1-service.rc
@@ -1011,16 +1011,16 @@ vendor/etc/vendor-apns-conf.xml
 # vendor/etc/vintf/manifest
 vendor/etc/vintf/manifest/CommandService.xml
 vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
-vendor/etc/vintf/manifest/android.hardware.audio.service-aidl.xml
+vendor/etc/vintf/manifest/android.hardware.audio.service-aidl.xml:vendor/etc/vintf/manifest/android.hardware.audio.service-aidl-mtk.xml
 vendor/etc/vintf/manifest/android.hardware.gatekeeper-service.trustonic.xml
-vendor/etc/vintf/manifest/android.hardware.ir-service.example.xml
+vendor/etc/vintf/manifest/android.hardware.ir-service.example.xml:vendor/etc/vintf/manifest/android.hardware.ir-service.example-mtk.xml
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service.trustonic.xml
 vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.trustonic.xml
 vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.trustonic.xml
 vendor/etc/vintf/manifest/android.hardware.tetheroffload-V1-service.xml
 vendor/etc/vintf/manifest/bluetooth_audio.xml
 vendor/etc/vintf/manifest/fingerprint-default.xml
-vendor/etc/vintf/manifest/gnss-default.xml
+vendor/etc/vintf/manifest/gnss-default.xml:vendor/etc/vintf/manifest/gnss-default-mtk.xml
 vendor/etc/vintf/manifest/gnss-mtk.xml
 vendor/etc/vintf/manifest/manifest_allocator.xml
 vendor/etc/vintf/manifest/manifest_hwcomposer.xml
