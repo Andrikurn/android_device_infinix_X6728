@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<compatibility-matrix version="8.0" type="framework">
+<compatibility-matrix version="8.0" type="framework" level="202404">
     <hal format="aidl" optional="true">
         <name>android.hardware.biometrics.fingerprint</name>
         <version>3</version>
@@ -33,6 +33,160 @@
         <name>vendor.trustonic.tui</name>
         <interface>
             <name>ITui</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.hardware.trancharge</name>
+        <version>1</version>
+        <interface>
+            <name>ITranCharge</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.hardware.trantp</name>
+        <version>1</version>
+        <interface>
+            <name>ITrantp</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.mediatek.hardware.pq_aidl</name>
+        <version>8</version>
+        <interface>
+            <name>IPictureQuality_AIDL</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.biometrics.fingerprint</name>
+        <version>1</version>
+        <interface>
+            <name>ITranssionFingerprintDaemon</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.security.deviceauthen</name>
+        <version>1</version>
+        <interface>
+            <name>IDeviceAuthen</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.security.paytrigger</name>
+        <version>1</version>
+        <interface>
+            <name>IPayTrigger</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.security.rpmbservice</name>
+        <version>1</version>
+        <interface>
+            <name>IRpmbservice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.security.trancriticalparavfy</name>
+        <version>1</version>
+        <interface>
+            <name>ITranCriticalParaVfy</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.trandatacenter</name>
+        <version>1</version>
+        <interface>
+            <name>ITranAidlDataCenter</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.tranfacaidl</name>
+        <version>1</version>
+        <interface>
+            <name>ITranfacAidl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.tranlog</name>
+        <version>1</version>
+        <interface>
+            <name>ITranLogAidl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.tranlogconfig</name>
+        <version>1</version>
+        <interface>
+            <name>ITranLogAidlConfig</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.trannet</name>
+        <version>4</version>
+        <interface>
+            <name>ITranNet</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.tranradio</name>
+        <version>6</version>
+        <interface>
+            <name>ITranRadio</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.hardware.transtorage.storage</name>
+        <version>1</version>
+        <interface>
+            <name>IAidlStorage</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.performance.sched</name>
+        <version>1</version>
+        <interface>
+            <name>ITransSched</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.transsion.tranHwInfo</name>
+        <version>1</version>
+        <interface>
+            <name>ITranHwInfo</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <!-- The vendor still serves these HIDL HALs, and the device declares them
+         at its own FCM level so the deprecation check does not reject them. -->
+    <hal format="hidl">
+        <name>android.hardware.cas</name>
+        <version>1.2</version>
+        <interface>
+            <name>IMediaCasService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.media.c2</name>
+        <version>1.2</version>
+        <interface>
+            <name>IComponentStore</name>
             <instance>default</instance>
         </interface>
     </hal>
