@@ -5,3 +5,9 @@
 
 soong_namespace {
 }
+
+vintf_compatibility_matrix {
+    name: "X6728_compatibility_matrix_202404_extension",
+    stem: "compatibility_matrix.202404-extension.xml",
+    srcs: ["configs/vintf/compatibility_matrix.202404-extension.xml"],
+}

@@ -150,8 +150,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
 
 # Keep declaring the HIDL HAL instances that the vendor stack still serves.
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/vintf/compatibility_matrix.202404-extension.xml:system/etc/vintf/compatibility_matrix.202404-extension.xml
+PRODUCT_PACKAGES += \
+    X6728_compatibility_matrix_202404_extension
 
 PRODUCT_PACKAGES += \
     MtkInCallService
