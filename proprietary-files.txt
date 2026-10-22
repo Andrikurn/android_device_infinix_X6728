@@ -797,9 +797,6 @@ vendor/etc/memfusion2/fstab.enableswap_wb
 vendor/etc/mpe.conf
 vendor/etc/mtk_platform_codecs_config.xml
 vendor/etc/pnpmgr.db
-vendor/etc/power_app_cfg.xml
-vendor/etc/powercontable.xml
-vendor/etc/powerscntbl.xml
 vendor/etc/pq_flag.xml
 vendor/etc/qt.cfg
 # vendor/etc/seccomp_policy
