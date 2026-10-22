@@ -118,6 +118,14 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libsysenv.so',
     ): blob_fixup()
         .add_needed('libbase_shim.so'),
+    # These init scripts declare HIDL interfaces that only the stock MTK build
+    # defines. The lines are only used to reject duplicate interface
+    # declarations at build time, so drop them and keep the services.
+    (
+        'vendor/etc/init/vendor.mediatek.hardware.aee@1.1-service.rc',
+        'vendor/etc/init/hw/meta_init.rc',
+    ): blob_fixup()
+        .regex_replace(r'(?m)^\s*interface .*@.*::.*\n', ''),
     # hardware/mediatek defines the same bluetooth audio AIDL v1 interface, but
     # its v1 imports audio.common v1, which the rest of the bluetooth audio
     # stack cannot mix with its v3. Ship the stock library, which links v3,
