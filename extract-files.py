@@ -112,7 +112,17 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/android.hardware.audio.core-impl-mediatek.so',
         'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so',
     ): blob_fixup()
-        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so')
+        # The current libaudioutils no longer exports mutex_get_enable_flag();
+        # the compat shim provides it for blobs built against the older one.
+        .add_needed('libaudioutils_shim.so'),
+    # The stock aee helpers use CRYPTO_MUTEX_* which the current BoringSSL no
+    # longer exports; the compat VNDK v33 libcrypto still does.
+    (
+        'vendor/bin/aee_aedv64_v2',
+        'vendor/bin/aee_dumpstatev_v2',
+    ): blob_fixup()
+        .replace_needed('libcrypto.so', 'libcrypto-v33.so'),
     (
         'vendor/lib64/libnvram.so',
         'vendor/lib64/libsysenv.so',
