@@ -162,6 +162,17 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libpcap.so', 'libpcap-mtk.so'),
     'vendor/bin/mnld': blob_fixup()
         .replace_needed('libmnl.so', 'libmnl-mtk.so'),
+    # The source libtranlog is a stub without the listener helpers. These stock
+    # binaries call them, so link the stock implementation under a private name.
+    (
+        'vendor/bin/storage_feature_cloudctl',
+        'vendor/bin/hw/vendor.transsion.performance.sched.aidl-service',
+    ): blob_fixup()
+        .replace_needed('libtranlog.so', 'libtranlog-mtk.so'),
+    # The std::string overload of android::base::Trim is no longer exported by
+    # libbase; the compat shim provides it.
+    'vendor/bin/hw/tranradionet': blob_fixup()
+        .add_needed('libbase_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

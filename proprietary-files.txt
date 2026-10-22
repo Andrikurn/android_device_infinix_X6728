@@ -1579,6 +1579,7 @@ vendor/lib64/libtran_hal.so
 vendor/lib64/libtrancamJsonConvertor.so
 vendor/lib64/libtrancam_filelockmgr.so
 vendor/lib64/libtrancrypto.so
+vendor/lib64/libtranlog.so:vendor/lib64/libtranlog-mtk.so;FIX_SONAME
 vendor/lib64/libtranradionet_mtk.so
 vendor/lib64/libtranslator_mapi_v3.0.so
 vendor/lib64/libtranslator_mdmi_v2.8.2.so
