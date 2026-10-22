@@ -1328,7 +1328,7 @@ vendor/lib64/libccci_util.so
 vendor/lib64/libcharon-ss.so
 vendor/lib64/libchromanr.so
 vendor/lib64/libcodec2_fsr.so
-vendor/lib64/libcodec2_hidl_plugin.so
+# libcodec2_hidl_plugin.so is built from frameworks/av (same tree as libcodec2_hidl@1.x)
 vendor/lib64/libcodec2_mtk_c2store.so
 vendor/lib64/libcodec2_mtk_vdec.so
 vendor/lib64/libcodec2_mtk_venc.so
