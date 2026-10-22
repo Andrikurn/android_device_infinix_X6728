@@ -84,8 +84,7 @@ PRODUCT_PACKAGES += \
     android.media.audio.common.types-V5-ndk.vendor:64 \
     android.media.soundtrigger.types-V1-ndk.vendor:64 \
     android.media.soundtrigger.types-V2-ndk.vendor:64 \
-    vendor.mediatek.hardware.audio-V1-ndk.vendor:64 \
-    vendor.mediatek.hardware.bluetooth.audio-V1-ndk.vendor:64
+    vendor.mediatek.hardware.audio-V1-ndk.vendor:64
 
 # The AOSP effect implementations are built from source, like the reference
 # MTK trees on this branch do. The stock blobs would shadow the platform

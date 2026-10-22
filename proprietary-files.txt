@@ -1675,7 +1675,7 @@ vendor/lib64/vendor.mediatek.hardware.apmonitor-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apmonitor@2.0.so
 vendor/lib64/vendor.mediatek.hardware.atci-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
-# built from hardware/mediatek (v1 is frozen; the stock blobs were built against it)
+vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so;MODULE_SUFFIX=_mtk
 vendor/lib64/vendor.mediatek.hardware.camera.atms-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.camera.bgservice-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.camera.frhandler@1.0.so

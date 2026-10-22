@@ -38,6 +38,13 @@ def lib_fixup_formatter(lib: str, *args, **kwargs):
     # prebuilt of the same name. Ships as libformatter.so via the stem.
     return 'libformatter_mtk'
 
+def lib_fixup_bt_audio_aidl(lib: str, *args, **kwargs):
+    # hardware/mediatek defines the same bluetooth audio AIDL v1 interface, but
+    # is not vendor partitioned and its v1 imports audio.common v1, which the
+    # rest of the bluetooth audio stack cannot mix with its v3. Ship the stock
+    # library, which links v3, under a private module name.
+    return 'vendor.mediatek.hardware.bluetooth.audio-V1-ndk_mtk'
+
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
@@ -49,6 +56,7 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.mediatek.hardware.apuware.utils@2.0',
     ): lib_fixup_vendor_suffix,
     'libformatter': lib_fixup_formatter,
+    'vendor.mediatek.hardware.bluetooth.audio-V1-ndk': lib_fixup_bt_audio_aidl,
 }
 
 blob_fixups: blob_fixups_user_type = {
