@@ -1608,7 +1608,7 @@ vendor/lib64/libvpudv3a_vcodec.so
 vendor/lib64/libvtclib.so
 vendor/lib64/libwapi.so
 vendor/lib64/libwatermark.so
-vendor/lib64/libwifi-hal.so;MODULE_SUFFIX=_mtk
+vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal-mtk.so;FIX_SONAME
 vendor/lib64/libwifical.so
 vendor/lib64/libwifinvram.so
 vendor/lib64/libwifinvramdata.so
