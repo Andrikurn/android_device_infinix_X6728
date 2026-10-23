@@ -465,3 +465,27 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2024-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
+
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power-service.lineage-libperfmgr
+
+PRODUCT_PACKAGES += \
+    android.hardware.power-V4-ndk.vendor:64 \
+    android.hardware.power-V5-ndk.vendor:64 \
+    android.system.suspend-V1-ndk.vendor:64 \
+    vendor.mediatek.hardware.mtkpower@1.2-service.stub:64 \
+    vendor.mediatek.hardware.mtkpower@1.0.vendor:64 \
+    vendor.mediatek.hardware.mtkpower@1.1.vendor:64 \
+    vendor.mediatek.hardware.mtkpower@1.2.vendor:64 \
+    vendor.mediatek.hardware.mtkpower-V1-ndk.vendor:64 \
+    vendor.mediatek.hardware.mtkpower-V2-ndk.vendor:64
+
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.3.vendor:64
+
+# Power
+PRODUCT_PACKAGES += \
+    libmtkperf_client_vendor:64 \
+    libmtkperf_client:64 \
+    libpower.vendor:64
