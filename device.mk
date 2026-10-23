@@ -176,3 +176,22 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-V1-ndk.vendor:64 \
     android.hardware.boot-service.mediatek \
     android.hardware.boot-service.mediatek_recovery
+
+# Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.common@1.0.vendor:64 \
+    android.hardware.camera.device@3.6.vendor:64 \
+    android.hardware.camera.provider@2.4.vendor:64 \
+    android.hardware.camera.provider@2.5.vendor:64 \
+    android.hardware.camera.provider@2.6.vendor:64 \
+    android.hardware.camera.common-V1-ndk.vendor:64 \
+    android.hardware.camera.device-V3-ndk.vendor:64 \
+    android.hardware.camera.metadata-V3-ndk.vendor:64 \
+    android.hardware.camera.provider-V3-ndk.vendor:64
+
+PRODUCT_PACKAGES += \
+    libcamera_metadata_shim \
+    libdng_sdk.vendor \
+    libexif.vendor \
+    libpiex \
+    libpng.vendor
