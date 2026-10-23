@@ -641,3 +641,27 @@ PRODUCT_FS_COMPRESSION := 1
 PRODUCT_PACKAGES += \
    vndservicemanager \
    vndservice
+
+# Wi-Fi
+$(call soong_config_set_bool,mediatek_wifi_hal,use_pre_u_qpr2_struct,true)
+PRODUCT_PACKAGES += \
+    android.hardware.wifi.common-V1-ndk.vendor:64 \
+    android.hardware.wifi.hostapd-V2-ndk.vendor:64 \
+    android.hardware.wifi.supplicant-V3-ndk.vendor:64 \
+    libwifi-hal-wrapper:64 \
+    wlan_assistant \
+    wpa_supplicant \
+    hostapd \
+    android.hardware.wifi-service \
+    android.hardware.wifi-V2-ndk.vendor:64 \
+    libkeystore-wifi-hidl:64 \
+    libkeystore-engine-wifi-hidl:64
+
+PRODUCT_PACKAGES += \
+    android.hardware.tetheroffload-V1-ndk.vendor:64 \
+    android.hardware.tetheroffload.config@1.0.vendor:64 \
+    android.hardware.tetheroffload.control@1.0.vendor:64 \
+    android.hardware.tetheroffload.control@1.1.vendor:64
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
