@@ -1188,3 +1188,8 @@ vendor/etc/virtual-spn-conf-by-efpnn.xml
 vendor/etc/virtual-spn-conf-by-efspn.xml
 vendor/etc/wfd_source_capability.csv
 vendor/etc/xgf.cfg
+
+vendor/odm/etc/vintf/manifest_dsds.xml:odm/etc/vintf/manifest_dsds.xml
+vendor/odm/etc/vintf/manifest_qsqs.xml:odm/etc/vintf/manifest_qsqs.xml
+vendor/odm/etc/vintf/manifest_ss.xml:odm/etc/vintf/manifest_ss.xml
+vendor/odm/etc/vintf/manifest_tsts.xml:odm/etc/vintf/manifest_tsts.xml
