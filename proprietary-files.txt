@@ -835,3 +835,8 @@ vendor/lib64/libpowerhal.so
 vendor/lib64/libpowerhalwrap_vendor.so
 vendor/lib64/vendor.transsion.performance.sched.aidl-V1-ndk.so
 vendor/lib64/vendor.transsion.performance.sched@1.0.so
+
+vendor/lib64/hw/vibrator.default.so
+vendor/lib64/hw/vibrator.mt6768.so
+vendor/lib64/libaacvibrator.so
+vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk.so
