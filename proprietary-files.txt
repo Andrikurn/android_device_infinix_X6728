@@ -3,3 +3,13 @@
 vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
 vendor/etc/init/android.hardware.gatekeeper-service.trustonic.rc
 vendor/etc/vintf/manifest/android.hardware.gatekeeper-service.trustonic.xml
+
+vendor/bin/hw/android.hardware.security.keymint@3.0-service.trustonic
+vendor/bin/kmsetkey_ca.trustonic
+vendor/etc/init/android.hardware.security.keymint@3.0-service.trustonic.rc
+vendor/etc/init/trustonic_kmsetkey_ca.rc
+vendor/etc/vintf/manifest/android.hardware.security.keymint-service.trustonic.xml
+vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.trustonic.xml
+vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.trustonic.xml
+vendor/lib64/libWaterMarkProc.so
+vendor/lib64/libkmsetkey.so
