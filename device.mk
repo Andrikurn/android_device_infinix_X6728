@@ -584,3 +584,18 @@ PRODUCT_SHIPPING_API_LEVEL := 35
 # sh_binary modules of one name cannot coexist across namespaces, so ship theirs.
 PRODUCT_PACKAGES += \
     chipinfo
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH) \
+    hardware/mediatek \
+    hardware/mediatek/libmtkperf_client \
+    hardware/mediatek/libaedv \
+    hardware/mediatek/libion_mtk \
+    hardware/lineage/interfaces/power-libperfmgr \
+    hardware/google/interfaces \
+    hardware/google/pixel/pixelstats \
+    hardware/google/pixel/power-libperfmgr \
+    hardware/millennium \
+    hardware/millennium/libtranlog \
+    vendor/mediatek/ims
