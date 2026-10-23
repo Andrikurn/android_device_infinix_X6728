@@ -612,3 +612,15 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator-V2-ndk.vendor:64 \
     android.hardware.vibrator-service.mediatek \
     libvibratorutils.vendor:64
+
+# VNDK
+PRODUCT_PACKAGES += \
+    libaudioutils_shim:64 \
+    libbase_shim:64 \
+    libbinder-v32:64 \
+    libcrypto-v33:64 \
+    libhidlbase-v32:64 \
+    libhidlbase_shim:64 \
+    libstagefright_foundation-v33:64 \
+    libprocessgroup_shim:64 \
+    libutils-v32:64
