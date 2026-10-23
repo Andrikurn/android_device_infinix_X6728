@@ -272,3 +272,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libcurl.vendor:64 \
     libmnl.vendor:64
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health-V1-ndk.vendor:64 \
+    android.hardware.health-V3-ndk.vendor:64 \
+    android.hardware.health-service.mediatek \
+    android.hardware.health-service.mediatek-recovery \
+    charger_res_images_vendor
