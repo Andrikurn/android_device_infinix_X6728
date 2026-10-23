@@ -40,3 +40,6 @@ ART_BUILD_TARGET_DEBUG := false
 ART_BUILD_HOST_NDEBUG := true
 ART_BUILD_HOST_DEBUG := false
 endif
+
+# Audio
+BOARD_USES_ALSA_AUDIO := true
