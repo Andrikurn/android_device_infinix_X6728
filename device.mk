@@ -624,3 +624,12 @@ PRODUCT_PACKAGES += \
     libstagefright_foundation-v33:64 \
     libprocessgroup_shim:64 \
     libutils-v32:64
+
+# USB
+$(call soong_config_set_bool,android_hardware_mediatek_usb,audio_accessory_supported,true)
+PRODUCT_PACKAGES += \
+    android.hardware.usb-V1-ndk.vendor:64 \
+    android.hardware.usb.gadget-V1-ndk.vendor:64 \
+    android.hardware.usb-service.mediatek \
+    android.hardware.usb.gadget-service.mediatek \
+    init.mt6768.usb.rc
