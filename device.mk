@@ -324,3 +324,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light-V1-ndk.vendor:64 \
     android.hardware.light-V2-ndk.vendor:64 \
     android.hardware.lights-service.millennium
+
+# Enable DM file pre-opting to reduce first boot time
+PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
