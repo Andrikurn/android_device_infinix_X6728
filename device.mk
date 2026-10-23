@@ -496,3 +496,6 @@ PRODUCT_COPY_FILES += \
 
 # Project ID Quota
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
+# Properties
+include $(LOCAL_PATH)/vendor_logtag.mk
