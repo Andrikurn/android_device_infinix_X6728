@@ -403,3 +403,15 @@ PRODUCT_PACKAGES += \
     Tag \
     vendor.nxp.nxpese@1.0.vendor:64 \
     vendor.nxp.nxpnfc_aidl-V1-ndk.vendor:64
+
+# Overlays
+$(call inherit-product, hardware/mediatek/overlay/mssi.mk)
+PRODUCT_ENFORCE_RRO_TARGETS := *
+PRODUCT_PACKAGES += \
+    FrameworkResOverlayX6728 \
+    SettingsResOverlayX6728 \
+    SettingsProviderOverlayX6728 \
+    SystemUIResOverlayX6728
+
+PRODUCT_PACKAGES += \
+    NcmTetheringOverlay
