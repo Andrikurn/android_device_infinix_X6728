@@ -552,3 +552,8 @@ PRODUCT_PACKAGES += \
     libsqlite.vendor \
     libutilscallstack.vendor \
     libziparchive.vendor
+
+# Secure Element
+PRODUCT_PACKAGES += \
+    android.hardware.secure_element-V1-ndk.vendor:64 \
+    android.hardware.secure_element@1.2.vendor:64
