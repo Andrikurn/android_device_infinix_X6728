@@ -925,3 +925,14 @@ vendor/etc/init/vendor.transsion.hardware.security.trancriticalparavfy@1.0-servi
 vendor/etc/init/vendor.transsion.hardware.tranfacaidl-service.rc
 vendor/etc/init/vendor.transsion.rc
 vendor/etc/init/vendor.transsion.tranHwInfo-service.rc
+
+vendor/etc/vintf/manifest/CommandService.xml
+vendor/etc/vintf/manifest/android.hardware.ir-service.example.xml:vendor/etc/vintf/manifest/android.hardware.ir-service.example-mtk.xml
+vendor/etc/vintf/manifest/manifest_storage.xml
+vendor/etc/vintf/manifest/manifest_tneengine.xml
+vendor/etc/vintf/manifest/manifest_transsion.xml
+vendor/etc/vintf/manifest/vendor.hardware.trancharge-service.example.xml
+vendor/etc/vintf/manifest/vendor.hardware.trantp-service.xml
+vendor/etc/vintf/manifest/vendor.transsion.hardware.security.trancriticalparavfy@1.0-service.xml
+vendor/etc/vintf/manifest/vendor.transsion.hardware.tranfacaidl-service.xml
+vendor/etc/vintf/manifest/vendor.transsion.tranHwInfo.xml
