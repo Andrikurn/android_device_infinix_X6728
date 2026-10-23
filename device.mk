@@ -633,3 +633,6 @@ PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek \
     android.hardware.usb.gadget-service.mediatek \
     init.mt6768.usb.rc
+
+# userdata
+PRODUCT_FS_COMPRESSION := 1
