@@ -209,3 +209,23 @@ PRODUCT_VENDOR_PROPERTIES += \
     dalvik.vm.heaptargetutilization=0.46 \
     dalvik.vm.heapminfree=8m \
     dalvik.vm.heapmaxfree=48m
+
+# Display
+# The composer (AIDL composer3, named android.hardware.graphics.composer@3.3-service)
+# and the allocator are MediaTek prebuilts, so only memtrack is built here.
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack-service.mediatek
+
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator-V2-ndk.vendor:64 \
+    android.hardware.graphics.common-V7-ndk.vendor:64 \
+    android.hardware.graphics.composer3-V3-ndk.vendor:64 \
+    android.hardware.graphics.mapper@4.0.vendor:64 \
+    android.hardware.memtrack-V1-ndk.vendor:64 \
+    android.frameworks.sensorservice@1.0.vendor:64 \
+    libhwc2on1adapter:64 \
+    libhwc2onfbadapter:64 \
+    libdrm.vendor:64
+
+PRODUCT_PACKAGES += \
+    ANGLE
