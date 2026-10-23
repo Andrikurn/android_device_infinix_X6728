@@ -243,3 +243,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Enforce generic ramdisk allow list
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
+
+# FastbootD
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot-service.example_recovery \
+    fastbootd:64
