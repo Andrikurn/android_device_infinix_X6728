@@ -599,3 +599,10 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/millennium \
     hardware/millennium/libtranlog \
     vendor/mediatek/ims
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal-service.mediatek
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
