@@ -93,3 +93,15 @@ vendor/etc/vintf/manifest/fingerprint-default.xml
 vendor/lib64/android.hardware.biometrics.extension.fingerprint-V1-ndk.so
 vendor/lib64/hw/tran_fingerprint.default.so
 vendor/lib64/vendor.transsion.hardware.biometrics.fingerprint-V1-ndk.so
+
+vendor/bin/hw/android.hardware.secure_element@1.2-service-mediatek
+vendor/etc/init/android.hardware.secure_element@1.2-service-mediatek.rc
+vendor/etc/init/init.nxp.nfc.rc
+vendor/etc/libnfc-nci.conf
+vendor/etc/libnfc-nxp.conf
+vendor/etc/libnfc-slm.conf
+vendor/lib64/libmtkcam_devicesessionpolicy.so
+vendor/lib64/libnxp_extamp_intf.so
+vendor/lib64/libpn557_fw.so
+vendor/lib64/nfc_nci_nxp_snxxx_v.so
+vendor/libnfc-nxp_RF.conf
