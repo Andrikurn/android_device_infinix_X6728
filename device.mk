@@ -159,3 +159,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
    vendor.mediatek.hardware.bluetooth.audio@2.1.vendor:64 \
    vendor.mediatek.hardware.bluetooth.audio@2.2.vendor:64
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth-V1-ndk.vendor:64 \
+    android.hardware.bluetooth.audio@2.0.vendor:64 \
+    android.hardware.bluetooth.audio@2.1.vendor:64 \
+    android.hardware.bluetooth-service.mediatek
