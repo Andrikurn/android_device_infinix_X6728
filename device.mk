@@ -388,3 +388,9 @@ PRODUCT_COPY_FILES += \
 # Stock ships libmeminfo's dmabuf debug tool; the platform provides it.
 PRODUCT_PACKAGES += \
     dmabuf_dump.vendor:64
+
+# Neural networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.0.vendor:64 \
+    android.hardware.neuralnetworks@1.3.vendor:64 \
+    libtextclassifier_hash.vendor:64
