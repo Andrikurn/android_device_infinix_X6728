@@ -229,3 +229,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     ANGLE
+
+# DRM
+PRODUCT_PACKAGES += \
+    com.android.hardware.drm.clearkey
+
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.4.vendor \
+    android.hardware.drm-V1-ndk.vendor:64
