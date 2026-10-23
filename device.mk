@@ -489,3 +489,7 @@ PRODUCT_PACKAGES += \
     libmtkperf_client_vendor:64 \
     libmtkperf_client:64 \
     libpower.vendor:64
+
+# Power configurations
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
