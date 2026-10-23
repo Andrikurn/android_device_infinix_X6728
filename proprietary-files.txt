@@ -86,3 +86,10 @@ vendor/lib64/vendor.transsion.hardware.security.deviceauthen-V1-ndk.so
 vendor/lib64/vendor.transsion.hardware.security.deviceauthen@2.0.so
 vendor/lib64/vendor.transsion.hardware.security.paytrigger-V1-ndk.so
 vendor/lib64/vendor.transsion.hardware.security.rpmbservice-V1-ndk.so
+
+vendor/bin/hw/android.hardware.biometrics.fingerprint-service
+vendor/etc/init/fingerprint-default.rc
+vendor/etc/vintf/manifest/fingerprint-default.xml
+vendor/lib64/android.hardware.biometrics.extension.fingerprint-V1-ndk.so
+vendor/lib64/hw/tran_fingerprint.default.so
+vendor/lib64/vendor.transsion.hardware.biometrics.fingerprint-V1-ndk.so
