@@ -259,3 +259,16 @@ PRODUCT_PACKAGES += \
 # X6728 provides gatekeeper through the Trustonic service (prebuilt).
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper-V1-ndk.vendor:64
+
+# GNSS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss.measurement_corrections@1.1.vendor:64 \
+    android.hardware.gnss.visibility_control@1.0.vendor:64 \
+    android.hardware.gnss@1.1.vendor:64 \
+    android.hardware.gnss@2.1.vendor:64 \
+    android.hardware.gnss-V1-ndk.vendor:64 \
+    android.hardware.gnss-V4-ndk.vendor:64
+
+PRODUCT_PACKAGES += \
+    libcurl.vendor:64 \
+    libmnl.vendor:64
