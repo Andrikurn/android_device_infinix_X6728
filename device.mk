@@ -343,3 +343,7 @@ PRODUCT_PACKAGES += \
     android.hardware.security.sharedsecret-V1-ndk.vendor:64 \
     android.hardware.security.rkp-V3-ndk.vendor \
     libcppbor_external.vendor:64
+
+# Keystore
+PRODUCT_PACKAGES += \
+    android.system.keystore2-V1-ndk.vendor:64
