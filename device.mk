@@ -166,3 +166,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0.vendor:64 \
     android.hardware.bluetooth.audio@2.1.vendor:64 \
     android.hardware.bluetooth-service.mediatek
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1600
+TARGET_SCREEN_WIDTH := 720
