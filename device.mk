@@ -170,3 +170,9 @@ PRODUCT_PACKAGES += \
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1600
 TARGET_SCREEN_WIDTH := 720
+
+# Boot control HAL
+PRODUCT_PACKAGES += \
+    android.hardware.boot-V1-ndk.vendor:64 \
+    android.hardware.boot-service.mediatek \
+    android.hardware.boot-service.mediatek_recovery
