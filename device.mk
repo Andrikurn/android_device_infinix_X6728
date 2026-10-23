@@ -636,3 +636,8 @@ PRODUCT_PACKAGES += \
 
 # userdata
 PRODUCT_FS_COMPRESSION := 1
+
+# vndservice
+PRODUCT_PACKAGES += \
+   vndservicemanager \
+   vndservice
