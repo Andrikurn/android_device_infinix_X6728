@@ -383,3 +383,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/media,$(TARGET_COPY_OUT_VENDOR)/etc)
+
+# Memory
+# Stock ships libmeminfo's dmabuf debug tool; the platform provides it.
+PRODUCT_PACKAGES += \
+    dmabuf_dump.vendor:64
