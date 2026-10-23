@@ -318,3 +318,9 @@ PRODUCT_PACKAGES += \
     init.recovery.usb.rc \
     init.sensor_1_0.rc \
     ueventd.mt6768.rc
+
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-V1-ndk.vendor:64 \
+    android.hardware.light-V2-ndk.vendor:64 \
+    android.hardware.lights-service.millennium
