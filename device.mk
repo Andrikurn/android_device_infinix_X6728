@@ -280,3 +280,15 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
     android.hardware.health-service.mediatek-recovery \
     charger_res_images_vendor
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0:64 \
+    android.hidl.allocator@1.0:64 \
+    android.hidl.base@1.0.vendor:64 \
+    android.hidl.allocator@1.0.vendor:64 \
+    libhidltransport:64 \
+    libhidlmemory.vendor:64 \
+    libhidltransport.vendor:64 \
+    libhwbinder:64 \
+    libhwbinder.vendor:64
