@@ -788,3 +788,10 @@ vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.rcs-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.rcs@2.0.so
 vendor/lib64/vendor.transsion.hardware.tranradio-V6-ndk.so
+
+vendor/lib64/chre_atoms_log.so
+vendor/lib64/chremetrics-cpp.so
+vendor/lib64/hw/sensors.dynamic_sensor_hal.so
+vendor/lib64/hw/sensors.mt6768.so
+vendor/lib64/librgbwlightsensor.so
+vendor/lib64/libsensor_custom.so
