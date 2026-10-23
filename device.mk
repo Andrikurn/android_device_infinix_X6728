@@ -248,3 +248,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 PRODUCT_PACKAGES += \
     android.hardware.fastboot-service.example_recovery \
     fastbootd:64
+
+# Fingerprint
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.common-V3-ndk.vendor:64 \
+    android.hardware.biometrics.fingerprint@2.1.vendor:64 \
+    android.hardware.biometrics.fingerprint-V3-ndk.vendor:64
