@@ -292,3 +292,6 @@ PRODUCT_PACKAGES += \
     libhidltransport.vendor:64 \
     libhwbinder:64 \
     libhwbinder.vendor:64
+
+# IMS
+$(call inherit-product, vendor/mediatek/ims/ims.mk)
