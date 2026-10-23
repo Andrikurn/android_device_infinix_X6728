@@ -511,3 +511,20 @@ PRODUCT_PACKAGES += \
 # Public Libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+
+# Radio
+ENABLE_VENDOR_RIL_SERVICE := true
+PRODUCT_PACKAGES += \
+    android.hardware.radio-V3-ndk.vendor:64 \
+    android.hardware.radio.config-V3-ndk.vendor:64 \
+    android.hardware.radio.data-V3-ndk.vendor:64 \
+    android.hardware.radio.ims-V2-ndk.vendor:64 \
+    android.hardware.radio.messaging-V3-ndk.vendor:64 \
+    android.hardware.radio.modem-V3-ndk.vendor:64 \
+    android.hardware.radio.network-V3-ndk.vendor:64 \
+    android.hardware.radio.sap-V1-ndk.vendor:64 \
+    android.hardware.radio.sim-V3-ndk.vendor:64 \
+    android.hardware.radio.voice-V3-ndk.vendor:64
+
+PRODUCT_PACKAGES += \
+    mdota_symlink
