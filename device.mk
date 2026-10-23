@@ -295,3 +295,9 @@ PRODUCT_PACKAGES += \
 
 # IMS
 $(call inherit-product, vendor/mediatek/ims/ims.mk)
+
+# IR
+# X6728 ships AOSP's example IR HAL as a prebuilt service, so only the AIDL
+# interface is built here.
+PRODUCT_PACKAGES += \
+    android.hardware.ir-V1-ndk.vendor:64
