@@ -848,3 +848,15 @@ vendor/etc/vintf/manifest/android.hardware.tetheroffload-V1-service.xml
 vendor/lib64/android.hardware.light@2.0.so
 vendor/lib64/hw/lights.mt6768.so
 vendor/lib64/libTranHumanLight.so
+
+vendor/bin/bat_authencali
+vendor/bin/chg_sence
+vendor/bin/fuelgauged
+vendor/bin/fuelgauged_nvram
+vendor/etc/init/bat_authencali_init.rc
+vendor/etc/init/chg_sence_init.rc
+vendor/etc/init/fuelgauged_init.rc
+vendor/etc/init/fuelgauged_nvram_init.rc
+vendor/etc/init/init.charger.rc
+vendor/lib64/lib_healthinfo_vendor.so
+vendor/lib64/libfgauge_gm30.so
