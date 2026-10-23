@@ -301,3 +301,20 @@ $(call inherit-product, vendor/mediatek/ims/ims.mk)
 # interface is built here.
 PRODUCT_PACKAGES += \
     android.hardware.ir-V1-ndk.vendor:64
+
+# Init files
+PRODUCT_PACKAGES += \
+    fstab.mt6768 \
+    fstab.mt6768.vendor_ramdisk \
+    init_connectivity.rc \
+    init.connectivity.common.rc \
+    init.connectivity.rc \
+    init.insmod.sh \
+    init.insmod.mt6768.cfg \
+    init.modem.rc \
+    init.mt6768.rc \
+    init.mtkgki.rc \
+    init.project.rc \
+    init.recovery.usb.rc \
+    init.sensor_1_0.rc \
+    ueventd.mt6768.rc
