@@ -52,3 +52,11 @@ PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 PRODUCT_PACKAGES += \
     create_pl_dev \
     create_pl_dev.recovery
+
+# AIDL
+# The prebuilt HALs link AIDL support libraries that the platform provides.
+PRODUCT_PACKAGES += \
+    android.frameworks.stats-V1-ndk.vendor:64 \
+    android.frameworks.stats-V2-ndk.vendor:64 \
+    android.hardware.common-V2-ndk.vendor:64 \
+    android.hardware.common.fmq-V1-ndk.vendor:64
