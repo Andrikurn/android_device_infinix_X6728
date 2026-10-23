@@ -840,3 +840,7 @@ vendor/lib64/hw/vibrator.default.so
 vendor/lib64/hw/vibrator.mt6768.so
 vendor/lib64/libaacvibrator.so
 vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk.so
+
+vendor/bin/hw/tetheroffloadservice
+vendor/etc/init/android.hardware.tetheroffload-V1-service.rc
+vendor/etc/vintf/manifest/android.hardware.tetheroffload-V1-service.xml
