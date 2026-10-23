@@ -528,3 +528,27 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     mdota_symlink
+
+# Required for QPR3
+PRODUCT_PACKAGES += \
+    libexpat.vendor \
+    libunwindstack.vendor \
+    libchrome.vendor:64 \
+    libcurl.vendor \
+    libexif.vendor \
+    libdng_sdk.vendor \
+    liblz4.vendor \
+    libpiex \
+    libpng.vendor \
+    libion.vendor \
+    libui.vendor \
+    libmemunreachable.vendor \
+    libgatekeeper.vendor \
+    libjsoncpp.vendor \
+    libnetutils.vendor \
+    libdumpstateutil.vendor \
+    libruy.vendor \
+    libpcap.vendor \
+    libsqlite.vendor \
+    libutilscallstack.vendor \
+    libziparchive.vendor
