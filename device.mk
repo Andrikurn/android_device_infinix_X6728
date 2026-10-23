@@ -578,3 +578,9 @@ PRODUCT_COPY_FILES += \
 # Stock: ro.board.first_api_level=30, ro.product.first_api_level=35 (Android 15)
 BOARD_SHIPPING_API_LEVEL := 30
 PRODUCT_SHIPPING_API_LEVEL := 35
+
+# SoC info
+# hardware/mediatek builds the same chipinfo from the stock source. Two plain
+# sh_binary modules of one name cannot coexist across namespaces, so ship theirs.
+PRODUCT_PACKAGES += \
+    chipinfo
