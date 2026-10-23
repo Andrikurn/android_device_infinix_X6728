@@ -60,3 +60,91 @@ PRODUCT_PACKAGES += \
     android.frameworks.stats-V2-ndk.vendor:64 \
     android.hardware.common-V2-ndk.vendor:64 \
     android.hardware.common.fmq-V1-ndk.vendor:64
+
+# Audio
+$(call soong_config_set,android_hardware_audio,run_64bit,true)
+$(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
+
+# X6728 ships the AIDL audio HAL: the service
+# (vendor/bin/hw/android.hardware.audio.service-aidl.mediatek) and its impls are
+# prebuilts, so here we only provide the AIDL interfaces.
+PRODUCT_PACKAGES += \
+    android.hardware.audio.core-V2-ndk.vendor:64 \
+    android.hardware.audio.core.sounddose-V2-ndk.vendor:64 \
+    android.hardware.audio.common-V3-ndk.vendor:64 \
+    android.hardware.audio.common-V5-ndk.vendor:64 \
+    android.hardware.audio.effect-V2-ndk.vendor:64 \
+    android.hardware.audio.effect-V4-ndk.vendor:64 \
+    android.hardware.soundtrigger3-V1-ndk.vendor:64 \
+    android.hardware.soundtrigger3-V2-ndk.vendor:64 \
+    android.hardware.bluetooth.audio-V4-ndk.vendor:64 \
+    android.hardware.bluetooth.audio-V6-ndk.vendor:64 \
+    android.media.audio.common.types-V2-ndk.vendor:64 \
+    android.media.audio.common.types-V3-ndk.vendor:64 \
+    android.media.audio.common.types-V5-ndk.vendor:64 \
+    android.media.soundtrigger.types-V1-ndk.vendor:64 \
+    android.media.soundtrigger.types-V2-ndk.vendor:64 \
+    vendor.mediatek.hardware.audio-V1-ndk.vendor:64
+
+# The AOSP effect implementations are built from source, like the reference
+# MTK trees on this branch do. The stock blobs would shadow the platform
+# modules and drag in the AIDL versions they were built against.
+PRODUCT_PACKAGES += \
+    libaecsw \
+    libagc1sw \
+    libagc2sw \
+    libbassboostsw \
+    libbundleaidl \
+    libdownmixaidl \
+    libdynamicsprocessingaidl \
+    libenvreverbsw \
+    libequalizersw \
+    libextensioneffect \
+    libhapticgeneratoraidl \
+    libloudnessenhanceraidl \
+    libnssw \
+    libpreprocessingaidl \
+    libpresetreverbsw \
+    libreverbaidl \
+    libvirtualizersw \
+    libvisualizeraidl \
+    libvolumesw \
+    libaudioaidlcommon.vendor:64 \
+    libaudio_aidl_conversion_common_ndk.vendor:64
+
+PRODUCT_PACKAGES += \
+    audio.r_submix.default:64 \
+    audio.usb.default:64
+
+PRODUCT_PACKAGES += \
+    audio_policy.stub:64 \
+    libopus.vendor:64 \
+    audioclient-types-aidl-cpp.vendor:64 \
+    libaudioroute.vendor:64 \
+    libaudiofoundation.vendor:64 \
+    libbundlewrapper:64 \
+    libbluetooth_audio_session:64 \
+    libbluetooth_audio_session_aidl.vendor:64 \
+    libaudiopreprocessing:64 \
+    libalsautils:64 \
+    libdownmix:64 \
+    libeffectproxy:64 \
+    libnbaio_mono:64 \
+    libtinycompress:64 \
+    libtinyalsa.vendor:64 \
+    android.hardware.audio.common-util.vendor:64 \
+    android.hardware.audio.common@6.0-util.vendor:64 \
+    libdynproc:64 \
+    libhapticgenerator:64 \
+    libldnhncr:64 \
+    libreverbwrapper:64 \
+    libvisualizer:64 \
+    libprocessgroup.vendor:64
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
