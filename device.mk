@@ -254,3 +254,8 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.common-V3-ndk.vendor:64 \
     android.hardware.biometrics.fingerprint@2.1.vendor:64 \
     android.hardware.biometrics.fingerprint-V3-ndk.vendor:64
+
+# Gatekeeper
+# X6728 provides gatekeeper through the Trustonic service (prebuilt).
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper-V1-ndk.vendor:64
