@@ -351,3 +351,35 @@ PRODUCT_PACKAGES += \
 # Linker
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     $(LOCAL_PATH)/configs/linker.config.json
+
+# Media
+$(call soong_config_set_bool,android_hardware_mediatek_codec2,link_v33_libstagefright_foundation,true)
+PRODUCT_PACKAGES += \
+    android.hardware.cas@1.2-service-lazy \
+    android.hardware.media.bufferpool2-V2-ndk.vendor:64 \
+    android.hardware.media.c2-V1-ndk.vendor:64 \
+    android.hardware.media.c2-mtk-service \
+    libcodec2_vndk.vendor:64 \
+    libcodec2_aidl.vendor:64 \
+    libcodec2_hidl@1.0.vendor:64 \
+    libcodec2_hidl@1.1.vendor:64 \
+    libcodec2_hidl@1.2.vendor:64 \
+    libcodec2_hidl_plugin:64 \
+    libeffects:64 \
+    libeffectsconfig.vendor:64 \
+    libavservices_minijail_vendor:64 \
+    libstagefright_softomx_plugin.vendor:64 \
+    libsfplugin_ccodec_utils.vendor:64 \
+    libcodec2_soft_common.vendor:64 \
+    libcodec2.vendor:64 \
+    libstagefright_bufferpool@2.0.1.vendor:64 \
+    libmediautils_vendor.vendor:64 \
+    libflatbuffers-cpp.vendor:64
+
+PRODUCT_PACKAGES += \
+    libchrome.vendor:64 \
+    libminijail:64 \
+    libminijail.vendor:64
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/media,$(TARGET_COPY_OUT_VENDOR)/etc)
