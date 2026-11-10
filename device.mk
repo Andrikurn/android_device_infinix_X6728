@@ -50,7 +50,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
+    FILESYSTEM_TYPE_vendor=ext4 \
     POSTINSTALL_OPTIONAL_vendor=true
 
 PRODUCT_PACKAGES += \
@@ -62,6 +62,10 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@7.0-impl:32 \
     android.hardware.audio.effect@7.0-impl:32 \
     android.hardware.audio.service
+
+# AOSP pre-processing effects (AGC/AEC/NS) referenced by audio_effects.xml
+PRODUCT_PACKAGES += \
+    libaudiopreprocessing
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default:32 \
@@ -149,6 +153,38 @@ PRODUCT_PACKAGES += \
     libruy.vendor \
     libtextclassifier_hash.vendor
     
+# NFC (X6531B only): TMS/THN31 controller, so this block is gated on PRODUCT_NAME.
+ifneq ($(filter lineage_X6531B,$(PRODUCT_NAME)),)
+
+# RRO for com.android.nfc (enable_secure_nfc_support for the eSE/UICC routes
+# in libnfc-tms.conf).
+PRODUCT_PACKAGES += \
+    NfcResOverlay_X6531B \
+    Tag \
+    com.android.nfc_extras
+
+# NFC init: init.mt6768.rc and the connectivity rc files already import this file.
+PRODUCT_PACKAGES += \
+    init.stnfc.rc
+
+# NFC config: libnfc-tms*.conf (HAL, and libese-tms.conf) + libnfc-nci.conf.
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*.conf,$(LOCAL_PATH)/configs/nfc,$(TARGET_COPY_OUT_VENDOR)/etc) \
+    $(LOCAL_PATH)/configs/nfc/manifest_x6531b.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vintf/manifest/vendor.tms.hardware.nfc.xml
+
+# NFC features (the framework only enables NFC when these are present).
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
+    frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml
+
+# NFC HAL, config and firmware blobs (vendor/infinix/X6531).
+$(call inherit-product, vendor/infinix/X6531/X6531B-nfc.mk)
+
+endif
+
 # Media
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/seccomp,$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy) \
@@ -341,8 +377,19 @@ PRODUCT_PACKAGES += \
 ifeq ($(WITH_XGSI_LOGS),true)
     PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/logging/init.xgsi-bootlog.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.xgsi-bootlog.rc \
-        $(LOCAL_PATH)/logging/xgsi-bootlog.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/init/xgsi-bootlog.sh \
-        $(LOCAL_PATH)/logging/xgsi-dmesg.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/init/xgsi-dmesg.sh
+        $(LOCAL_PATH)/logging/xgsi-bootlog.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/xgsi/xgsi-bootlog.sh \
+        $(LOCAL_PATH)/logging/xgsi-dmesg.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/xgsi/xgsi-dmesg.sh
+endif
+
+# GMS variant: vanilla / gapps / microg, selected by build-all.sh --gms.  Read at
+# product-config time, so clear out/target/product/<device> when switching mode.
+ifeq ($(WITH_GAPPS),true)
+$(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
+endif
+ifeq ($(WITH_MICROG),true)
+# keep microG's GmsCore out of the default namespace so gapps doesn't clash
+PRODUCT_SOONG_NAMESPACES += vendor/partner_gms
+$(call inherit-product, vendor/partner_gms/microg.mk)
 endif
 
 PRODUCT_COPY_FILES += \
@@ -350,6 +397,3 @@ PRODUCT_COPY_FILES += \
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/infinix/X6531/X6531-vendor.mk)
-
-# Inherit the sign keys
-$(call inherit-product, vendor/lineage-priv/keys/keys.mk)
