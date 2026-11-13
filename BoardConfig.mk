@@ -228,5 +228,11 @@ WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{P2P}, 1}}
 WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{NAN}, 1}}
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
+# Soong config
+SOONG_CONFIG_NAMESPACES += mediatek_vibrator
+SOONG_CONFIG_mediatek_vibrator := \
+    supports_effects
+SOONG_CONFIG_mediatek_vibrator_supports_effects := false
+
 # Inherit the proprietary files
 include vendor/infinix/X6728/BoardConfigVendor.mk
