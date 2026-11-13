@@ -17,6 +17,9 @@
 /dev/block/by-name/md1img_1  0640    root    system
 /dev/block/by-name/md1img_a  0640    root    system
 /dev/block/by-name/md1img_b  0640    root    system
+/dev/block/by-name/modem     0640    root    system
+/dev/block/by-name/modem_a   0640    root    system
+/dev/block/by-name/modem_b   0640    root    system
 /dev/block/by-name/md1dsp    0660    root    system
 /dev/block/by-name/boot_para 0640    root    system
 
@@ -47,14 +50,10 @@
 /dev/fw_log_wifi          0660   wifi     wifi
 
 # FMRadio
-#TCD:add XLJLHLJYR-21 for dev/fm by shouhui.li 20200810 start
-/dev/fm                   0666   media     media
-#TCD:add XLJLHLJYR-21 for dev/fm by shouhui.li 20200810 end
+/dev/fm                   0660   media     media
 
 # NFC
 /dev/st21nfc              0660   nfc        radio
-/dev/tms_nfc              0660   nfc        nfc
-/dev/tms_ese              0660   secure_element        secure_element
 /dev/st54spi              0660   secure_element        secure_element
 
 # MTK BTIF driver
@@ -72,45 +71,45 @@
 /dev/mobicore-user        0666   system     system
 /dev/t-base-tui           0666   system     system
 
-#BSP: add ultrasound support CILHLJYQ-4 by yu.xiang5 20220126 start
-#elliptic sensor
-/dev/elliptic0            0644   system     system
-/dev/elliptic1            0644   system     system
-#BSP: add ultrasound support CILHLJYQ-4 by yu.xiang5 20220126 end
-
 #MDP
 /dev/mt-mdp               0660   system     media
 /dev/mtk_mdp              0660   system     system
 /dev/mdp_sync             0660   system     system
 
-#ITD: Modify ATA Test Witchout Witchout Permission By fei.wu5 230317 start
 #Camera
-#/dev/camera-sysram        0660   system     camera
-#/dev/camera-mem           0660   system     camera
-#/dev/camera-isp           0660   system     camera
-#/dev/camera-dip           0660   system     camera
-#/dev/camera-tsf           0660   system     camera
-#/dev/camera-dpe           0660   system     camera
-#/dev/camera-mfb           0660   system     camera
-#/dev/camera-rsc           0660   system     camera
-#/dev/camera-owe           0660   system     camera
-#/dev/camera-fdvt          0660   system     camera
-#/dev/camera-wpe           0660   system     camera
-#/dev/camera-pipemgr       0660   system     camera
-#/dev/kd_camera_hw         0660   system     camera
-#/dev/seninf               0660   system     camera
-#/dev/flashlight           0660   system     camera
-#/dev/kd_camera_hw_bus2    0660   system     camera
-#/dev/FM50AF               0660   system     camera
-#/dev/CAM_CAL_DRV          0660   system     camera
-#/dev/MAINAF               0660   system     camera
-#/dev/MAIN2AF              0660   system     camera
-#/dev/SUBAF                0660   system     camera
-#/dev/vpu                  0660   system     camera
+/dev/camera-sysram        0660   system     camera
+/dev/camera-mem           0660   system     camera
+/dev/camera-isp           0660   system     camera
+/dev/camera-dip           0660   system     camera
+/dev/camera-tsf           0660   system     camera
+/dev/camera-dpe           0660   system     camera
+/dev/camera-mfb           0660   system     camera
+/dev/camera-rsc           0660   system     camera
+/dev/camera-owe           0660   system     camera
+/dev/camera-fdvt          0660   system     camera
+/dev/camera-wpe           0660   system     camera
+/dev/camera-pipemgr       0660   system     camera
+/dev/kd_camera_hw         0660   system     camera
+/dev/seninf               0660   system     camera
+/dev/flashlight           0660   system     camera
+/dev/kd_camera_hw_bus2    0660   system     camera
+/dev/FM50AF               0660   system     camera
+/dev/CAM_CAL_DRV          0660   system     camera
+/dev/MAINAF               0660   system     camera
+/dev/MAIN2AF              0660   system     camera
+/dev/SUBAF                0660   system     camera
+/dev/vpu                  0660   system     camera
 
 #CCU
-#/dev/ccu                  0660   system     camera
-#ITD: Modify ATA Test Witchout Witchout Permission By fei.wu5 230317 End
+/dev/ccu                  0660   system     camera
+
+#v4l2 device
+/dev/video*      0660 camera system
+/dev/media*      0660 camera system
+/dev/v4l-subdev* 0660 camera system
+
+# gzvm for AVF
+/dev/gzvm 0666 root root
 
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
@@ -207,11 +206,6 @@
 
 #v4l2 device
 /dev/video*  0660 media system
-
-#BSP: modify Widenine L1 for kernel-5.10 ALPS08519340 LI9H335-210 by jiayi.xiong start
-#widevine driver node
-/dev/drm_wv               0660   media      system
-#BSP: modify Widenine L1 for kernel-5.10 ALPS08519340 LI9H335-210 by jiayi.xiong end
 
 #VideoCodec
 /dev/vcu 0660 media system

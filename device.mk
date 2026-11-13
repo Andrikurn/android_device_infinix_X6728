@@ -72,13 +72,7 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
-
-# Cgroup
-PRODUCT_COPY_FILES += \
-    system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
-    $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -202,9 +196,6 @@ PRODUCT_PACKAGES += \
     libmtkperf_client_vendor \
     libmtkperf_client
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-
 # Power Off Alarm
 PRODUCT_PACKAGES += \
     PowerOffAlarm
@@ -220,13 +211,13 @@ PRODUCT_PACKAGES += \
     init.modem.rc \
     init.insmod.mt6768.cfg \
     init.mtkgki.rc \
-    init.connectivity.mt6768.rc \
     init.connectivity.common.rc \
     init_connectivity.rc \
     init.mt6768.rc \
+    init.ago.rc \
     init.cgroup.rc \
     init.insmod.sh \
-    init.x6728.usb.rc \
+    init.mt6768.usb.rc \
     init.project.rc \
     init.sensor_1_0.rc \
     init.target.rc \
@@ -255,9 +246,6 @@ PRODUCT_SHIPPING_API_LEVEL := 35
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/google/interfaces \
-    hardware/google/pixel \
-    hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client 
 

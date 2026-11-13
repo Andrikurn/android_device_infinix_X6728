@@ -1,35 +1,45 @@
 # MTK platform .rc configure
 
-import /vendor/etc/init/hw/init.connectivity.rc
-import /vendor/etc/init/hw/init.x6728.usb.rc
+import ${ro.vendor.rc}init.connectivity.rc
+import ${ro.vendor.rc}init.mt6768.usb.rc
 import /vendor/etc/init/hw/init.project.rc
+import /system_ext/etc/init/hw/init.aee.rc
+import /FWUpgradeInit.rc
 import /vendor/etc/init/hw/init.aee.rc
-import /vendor/etc/init/hw/init.sensor_1_0.rc
+import ${ro.vendor.rc}init.volte.rc
+import ${ro.vendor.rc}init.mal.rc
+import ${ro.vendor.rc}init.sensor_1_0.rc
+import ${ro.vendor.rc}init.ago.rc
 import /vendor/etc/init/hw/init.stnfc.rc
-import /vendor/etc/init/hw/init.cgroup.rc
+import /system/etc/init/hw/init.stnfc.rc
+import ${ro.vendor.rc}init.cgroup.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
-import /vendor/etc/init/hw/init.modem.rc
+import ${ro.vendor.rc}init.modem.rc
 # *** DO NOT import the new rc file after this line ***
 
+on early-init
+    write /proc/bootprof "INIT:early-init"
+
+    # initialize vendor.all.modules.ready to 1 here to prevent NOT GKI project blocked
+    setprop vendor.all.modules.ready 1
+    # boot perf. tune
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
+
 on init
+    write /proc/bootprof "INIT:init"
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard
 
- #SPD: add dex2oat to 0-7 core by dewang.tan 20231214 start
-    mkdir /dev/cpuset/dex2oat
-    copy /dev/cpuset/cpus /dev/cpuset/dex2oat/cpus
-    copy /dev/cpuset/mems /dev/cpuset/dex2oat/mems
+    # if primary storage is physical, set ro.vold.primary_physical to 1
+    # setprop ro.vold.primary_physical 1
 
-    chown system system /dev/cpuset/dex2oat
-    chown system system /dev/cpuset/dex2oat/tasks
-    chown system system /dev/cpuset/dex2oat/cpus
-    chmod 0664 /dev/cpuset/dex2oat/tasks
-    chmod 0664 /dev/cpuset/dex2oat/cpus
-    write /dev/cpuset/dex2oat/cpus 0-7
-    #SPD: add dex2oat to 0-7 core by dewang.tan 20231214 end
+    mkdir /mnt/cd-rom 0000 system system
 
-#BSP:add XLLSHLSSP-17 for tranfs by shentao.yang 20190603 start
+#MD:add TBYHSSL-43 for tranfs by xiaoxiang.xiong 20210705 start
     mkdir /tranfs 0771 system system
-#BSP:add XLLSHLSSP-17 for tranfs by shentao.yang 20190603 end
+#MD:add TBYHSSL-43 for tranfs by xiaoxiang.xiong 20210705 end
 
 # change lk_env permission
     chown root system /proc/lk_env
@@ -45,20 +55,24 @@ on init
     write /dev/cpuset/background/cpus 0-3
     write /dev/cpuset/system-background/cpus 0-5
     write /dev/cpuset/top-app/cpus 0-7
-    #SPD: add boost_cpu for big core by fan.feng1 20221021 start
-    write /dev/cpuset/anibooster/cpus 0-5
-    #SPD: add boost_cpu for big core by fan.feng1 20221021 end
 
-    # dex2oat_threads add by dewang.tan 20231227 start
+# dex2oat_threads add by dewang.tan 20231227 start
     setprop persist.vendor.powerhal.dex2oat_threads 0
-    # dex2oat_threads add by dewang.tan 20231227 end
+# dex2oat_threads add by dewang.tan 20231227 end
 
+on late-init
+    write /proc/bootprof "INIT:late-init"
+# enable rcu_expedited
+    write /sys/kernel/rcu_expedited 1
 
 # mount different fs start
 
 on charger
+    exec /system/bin/e2fsck -f -p /dev/block/platform/bootdevice/by-name/cache
+    mount ext4 /dev/block/platform/bootdevice/by-name/cache /cache rw wait
     chmod 0660 /dev/spm
     chown system system /dev/spm
+    start spm_script
     chmod 0666 /dev/kmsg
     chmod 0775 /mnt/vendor
     mkdir /mnt/vendor/nvcfg
@@ -83,31 +97,48 @@ on charger
 
     start fuelgauged
     start fuelgauged_nvram
-	start vendor.light-default 
 
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
 
+    start vendor.light-default
+    start vendor.health-default
+
+    # Stop bootprof
+    write /proc/bootprof "0"
+
+on property:sys.boot_completed=1
+    write /proc/pl_lk "0"
+
+on early-fs
+    write /proc/bootprof "INIT:early-fs"
 
 on fs
+    write /proc/bootprof "INIT:fs"
+    start vendor.boot-default
 
     # mount fstab
+    write /proc/bootprof "INIT:Mount_START"
+    write /sys/kernel/tracing/trace_marker "B|1|Mount"
     mount_all /vendor/etc/fstab.mt6768 --early
-    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/by-name/userdata
-
     write /sys/kernel/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END"
 
-
     write /sys/block/zram0/comp_algorithm lz4
     write /proc/sys/vm/page-cluster 0
-    write /proc/sys/vm/swappiness 150
+    write /proc/sys/vm/swappiness 100
     write /sys/kernel/mm/swap/vma_ra_enabled false
-    swapon_all /vendor/etc/fstab.mt6768
+    # swapon_all /vendor/fstab.enableswap
 
+    mount iso9660 loop@/vendor/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on post-fs
+    write /proc/bootprof "INIT:post-fs"
+
+    # Support legacy paths
+    symlink /sdcard /storage/sdcard0
+
     #change permissions for mediaserver
     chown root media /proc/clkmgr/mipi_test
 
@@ -146,34 +177,41 @@ on post-fs
     # allow ccci_mdinit access ccci_dump
     chown root system /proc/ccci_dump
 
-    #BSP:add ffu upgrade KFLJHLEYB-2005 by wang.qin 20210304 start
-    restorecon_recursive /tranfs
-    mkdir /tranfs/ffu 0700 system shell
-    chmod 0777 /tranfs/ffu
-    #BSP:add ffu upgrade KFLJHLEYB-2005 by wang.qin 20210304 end
-
-    #STD:add XLLWCHLYEL-738 kfp by hao.lv5 20220907 start
-    restorecon_recursive /tranfs
-    mkdir /tranfs/tranf2fs 0700 root shell
-    chmod 0771 /tranfs/tranf2fs
-    mkdir /tranfs/tranf2fs/kfp 0700 root shell
-    chmod 0771 /tranfs/tranf2fs/kfp
-    #STD:add XLLWCHLYEL-738 kfp by hao.lv5 20220907 end
-
 on late-fs
-    wait_for_prop hwservicemanager.ready "true"
+    write /proc/bootprof "INIT:late-fs"
     setprop init.userspace_reboot.userdata_remount.timeoutmillis 10000
+    write /proc/bootprof "INIT:Mount_START --late"
+    write /sys/kernel/tracing/trace_marker "B|1|Mount late"
     mount_all /vendor/etc/fstab.mt6768 --late
+    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/bootdevice/by-name/userdata
+    write /sys/kernel/tracing/trace_marker "E"
+    write /proc/bootprof "INIT:Mount_END --late"
 
 on post-fs-data
-
-    rm /data/boot_lc_main2.txt
-    start boot_lc_main2
-
-    
     write /proc/bootprof "INIT:post-fs-data"
     wait_for_prop vendor.all.modules.ready 1
-    
+    write /proc/bootprof "modprobe: Load_Module_DONE"
+
+    # boot time fs tune
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/nr_requests 256
+    write /sys/block/sdc/queue/iostats 0
+    write /sys/block/sdc/queue/read_ahead_kb 2048
+    write /sys/block/sdc/queue/nr_requests 256
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/dm-1/queue/read_ahead_kb 2048
+    write /sys/block/dm-2/queue/read_ahead_kb 2048
+    write /sys/block/dm-3/queue/read_ahead_kb 2048
+    write /sys/block/dm-4/queue/read_ahead_kb 2048
+    write /sys/block/dm-5/queue/read_ahead_kb 2048
+
+#SPD: add for control dex2oat cpu by fan.feng1 20230619 start
+    write /dev/cpuset/dex2oat/cpus 0-3
+    write /dev/cpuctl/dex2oat/cpu.shares 512
+    setprop persist.vendor.powerhal.dex2oat_threads 4
+#SPD: add for control dex2oat cpu by fan.feng1 20230619 end
+
 
     chown system system /mnt/vendor/nvcfg
     chmod 0771 /mnt/vendor/nvcfg
@@ -182,12 +220,10 @@ on post-fs-data
     chown system system /mnt/vendor/nvcfg/fg/old_fg_data
     chown system system /mnt/vendor/nvcfg/fg/car_tune_value
 
-
-
-#BSP:add XLLSHLSSP-17 for tranfs by shentao.yang 20190603 start
+#MD:add TBYHSSL-43 for tranfs by xiaoxiang.xiong 20210705 start
     chown system system /tranfs
     chmod 0777 /tranfs
-#BSP:add XLLSHLSSP-17 for tranfs by shentao.yang 20190603 end
+#MD:add TBYHSSL-43 for tranfs by xiaoxiang.xiong 20210705 end
 
     # create basic filesystem structure
     # We chown/chmod /mnt/vendor/nvdata again so because mount is run as root + defaults
@@ -199,10 +235,6 @@ on post-fs-data
     mkdir /mnt/vendor/cct
     chown root system /mnt/vendor/cct
     chmod 0771 /mnt/vendor/cct
-	
-    # Audio dump
-    mkdir /data/vendor/audiohal 0771 system audio
-    mkdir /data/vendor/audiohal/audio_param 0771 system audio
 
     #Create flash folder
     mkdir /data/vendor/flash
@@ -228,15 +260,21 @@ on post-fs-data
     mkdir /data/vendor/dipdebug
     chown root system /data/vendor/dipdebug
     chmod 0771 /data/vendor/dipdebug
-    
+
+#ITD:add flashlight system node permission by qinlong.lu 2025/02/08 start
+    chmod 0666 /sys/devices/virtual/flashlight_core/flashlight/flashlight_fault
+    chmod 0666 /sys/devices/virtual/flashlight_core/flashlight/flashlight_torch
+    chmod 0666 /sys/devices/virtual/flashlight_core/flashlight/flashlight_strobe
+#ITD:add flashlight system node permission by qinlong.lu 2025/02/08 end
+
     #Create flicker mount point
     mkdir /data/vendor/flicker
     chown root system /data/vendor/flicker
     chmod 0771 /data/vendor/flicker
 
-#BSP:add XLLSHLSSP-17 for tranfs by shentao.yang 20190603 start
+#MD:add TBYHSSL-43 for tranfs by xiaoxiang.xiong 20210705 start
     restorecon_recursive /tranfs
-#BSP:add XLLSHLSSP-17 for tranfs by shentao.yang 20190603 end
+#MD:add TBYHSSL-43 for tranfs by xiaoxiang.xiong 20210705 end
 
     # Set SELinux security contexts on upgrade or policy update.
     restorecon_recursive /mnt/vendor/nvdata
@@ -300,6 +338,17 @@ on post-fs-data
     # set ptmx group to non-root
     chown root radio /dev/ptmx
 
+    # M4U
+    #insmod /vendor/lib/modules/m4u.ko
+    #mknod /dev/M4U_device c 188 0
+    chmod 0444 /dev/m4u
+    #chown system media /dev/M4U_device
+    chmod 0640 /proc/m4u
+    chown system media /proc/m4u
+
+    #set mlock limit to infinate (for m4u operation)
+    setrlimit 8 -1 -1
+
     # CMDQ
     chmod 0640 /dev/mtk_cmdq
     chown system system /dev/mtk_cmdq
@@ -327,14 +376,6 @@ on post-fs-data
 
     #Fingerprint
     chmod 0666 /dev/goodix_fp
-    chmod 0666 /sys/class/leds/lcd-backlight/brightness
-    chmod 0666 /sys/kernel/lcm_hbm/lcm_hbm
-    chmod 0666 /sys/devices/platform/mtkfb@0/lcm_name
-    #BSP:add fp CK6CK6NU-528 by xin.li9 20240327 start
-    chmod 0666 /sys/devices/platform/soc/14014000.dsi/lcm_hbm_state
-    chmod 0666 /sys/kernel/tran_display/lcm_name
-    chmod 0666 /sys/kernel/tran_display/lcm_hbm_state
-    #BSP:add fp CK6CK6NU-528 by xin.li9 20240327 end
 
     #VideoCodec
     mkdir /data/vendor/vcodec 0777 media system
@@ -354,33 +395,9 @@ on post-fs-data
     #Charging Battery
     chown radio radio /sys/devices/platform/battery/Charging_CallState
 
-    #SDD:add OTG feature for TESSCR-6368 by weike.xu 20210512 start
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/OTG_CTL
-    #SDD:add OTG feature for TESSCR-6368 by weike.xu 20210512 end
-    #BSP: modify for battery aging feature XLBEPUB-6 by fan.hong 20200723 end
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/AGING_FG
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/AGING_CALCULATE
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/ESTIMATE_RATE
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/AGING_RESET
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery_aging/PLUG_TIMES
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/tran_set_current
-    #BSP: modify for battery aging feature XLBEPUB-6 by fan.hong 20200723 start
-    #MG-CHG(Bypass):bypass function by jianqiang.ouyang 20230110 start
-    chown system system /sys/devices/platform/charger/tran_aichg_bigdata
-    chmod 0666 /sys/devices/platform/charger/tran_aichg_bigdata
-    chown system system /sys/devices/platform/charger/tran_aichg_disable_charger
-    chmod 0666 /sys/devices/platform/charger/tran_aichg_disable_charger
-    chown system system /sys/devices/platform/charger/bypass_charger
-    chmod 0666 /sys/devices/platform/charger/bypass_charger
-    #MG-CHG(Bypass):bypass function by jianqiang.ouyang 20230110 end
-
     # PMIC property
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_stop
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
-
-    # FM
-    chown system system /sys/class/fm/fm/lan_enable
-    chmod 0660 /sys/class/fm/fm/lan_enable
 
     #MDDB
     mkdir /data/vendor_de/meta 0770 system system
@@ -481,9 +498,7 @@ on post-fs-data
     chown root system /dev/sec
 
     # FM Radio device node
-    #TCD:add XLJLHLJYR-21 by shouhui.li 2020.08.05 start
-    chmod 0666 /dev/fm
-    #TCD:add XLJLHLJYR-21 by shouhui.li 2020.08.05 end
+    chmod 0660 /dev/fm
     chown media media /dev/fm
 
     # device apc settings
@@ -525,7 +540,7 @@ on post-fs-data
 
     # gz device
     chmod 0660 /dev/gz_kree
-    chown system camera /dev/gz_kree
+    chown system system /dev/gz_kree
 
 #ITD:modify by camera driver team start
     #ArcDualCam
@@ -541,82 +556,19 @@ on post-fs-data
     mkdir /data/vendor/meg_working_dir/anc_yuvhdr 0777 system system
     mkdir /data/vendor/meg_working_dir/anc_yuvllhdr 0777 system system
     mkdir /data/vendor/meg_working_dir/anc_fullhdr 0777 system system
+    #PIX_HDR
+    mkdir /data/vendor/pix_working_dir 0777 system system
+    mkdir /data/vendor/pix_working_dir/hdr 0777 system system
+    mkdir /data/vendor/pix_working_dir/hdr/bin 0777 system system
     #watermark 2.0
     mkdir /data/vendor/camera_watermark 0777 system system
 #ITD:modify by camera driver team end
 
-
-#ITD: Modify ATA Test Witchout Permission By fei.wu5 230317 Start
-    # MDP
-    chmod 0640 /dev/mtk_mdp
-    chown system system /dev/mtk_mdp
-
-    # MDP SYNC
-    chmod 0640 /dev/mdp_sync
-    chown system system /dev/mdp_sync
-       #Camera
-    chmod 0660 /dev/camera-sysram
-    chmod 0660 /dev/camera-mem
-    chmod 0660 /dev/camera-isp
-    chmod 0660 /dev/camera-dip
-    chmod 0660 /dev/camera-tsf
-    chmod 0660 /dev/camera-dpe
-    chmod 0660 /dev/camera-mfb
-    chmod 0660 /dev/camera-rsc
-    chmod 0660 /dev/camera-owe
-    chmod 0660 /dev/camera-fdvt
-    chmod 0660 /dev/camera-wpe
-    chmod 0660 /dev/camera-pipemgr
-    chmod 0660 /dev/kd_camera_hw
-    chmod 0660 /dev/seninf
-    chmod 0660 /dev/flashlight
-    chmod 0660 /dev/kd_camera_hw_bus2
-    chmod 0660 /dev/FM50AF
-    chmod 0660 /dev/CAM_CAL_DRV
-    chmod 0660 /dev/MAINAF
-    chmod 0660 /dev/MAIN2AF
-    chmod 0660 /dev/SUBAF
-    chmod 0660 /dev/vpu
-
-    chown system camera /dev/camera-sysram
-    chown system camera /dev/camera-mem
-    chown system camera /dev/camera-isp
-    chown system camera /dev/camera-dip
-    chown system camera /dev/camera-dpe
-    chown system camera /dev/camera-mfb
-    chown system camera /dev/camera-rsc
-    chown system camera /dev/camera-owe
-    chown system camera /dev/camera-tsf
-    chown system camera /dev/camera-fdvt
-    chown system camera /dev/camera-wpe
-    chown system camera /dev/camera-pipemgr
-    chown system camera /dev/kd_camera_hw
-    chown system camera /dev/seninf
-    chown system camera /dev/flashlight
-    chown system camera /dev/kd_camera_hw_bus2
-    chown system camera /dev/FM50AF
-    chown system camera /dev/CAM_CAL_DRV
-    chown system camera /dev/MAINAF
-    chown system camera /dev/MAIN2AF
-    chown system camera /dev/SUBAF
-    chown system camera /dev/vpu
-
-    #CCU
-    chmod 0660 /dev/ccu
-    chown system camera /dev/ccu
-
-    # MDP
-    chmod 0660 /dev/mt-mdp
-    chown system media /dev/mt-mdp
-
-#ITD: Modify ATA Test Witchout Witchout Permission By fei.wu5 230317 End
-
-
-#ITD:modify by camera driver team start
-    #fake dual camera
+#ITD:add fake sensor porting by qinlong.lu 2025/02/28 start
     chown root root /sys/class/main2_light/main2_light/main2_light
     chmod 0666 /sys/class/main2_light/main2_light/main2_light
-#ITD:modify by camera driver team end
+#ITD:add fake sensor porting by qinlong.lu 2025/02/28 end
+
     #VOW
     chmod 0640 /dev/vow
     chown media media /dev/vow
@@ -671,6 +623,9 @@ on post-fs-data
     chmod 0664 /sys/bus/platform/drivers/emi_ctrl/concurrency_scenario
     chown media media /sys/bus/platform/drivers/emi_ctrl/concurrency_scenario
 
+    #mtk_sched
+    chmod 0660 /dev/mtk_sched
+    chown system media /dev/mtk_sched
 
     #BT SCO CVSD, for MT6572 and MT6582 CVSD codec on AP
     chmod 0660 /dev/ebc
@@ -700,16 +655,23 @@ on post-fs-data
 # End of adding by MTK drivers
 # -----------------------
 
+on zygote-start
+    write /proc/bootprof "INIT:zygote-start"
+
+on early-boot
+    write /proc/bootprof "INIT:early-boot"
+    verity_update_state
 
 on boot
-    # start EAS+
-    write /sys/devices/system/cpu/eas/enable 1
+    write /proc/bootprof "INIT:boot"
 
     write /proc/sys/vm/dirty_writeback_centisecs 300
     chmod 0660 /sys/power/autosleep
 
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
+    chmod 0644 /sys/class/leds/lcd-backlight/led_type
+    chown system system /sys/class/leds/lcd-backlight/led_type
     chmod 0664 /sys/class/leds/red/brightness
     chown system system /sys/class/leds/red/brightness
     chmod 0664 /sys/class/leds/green/brightness
@@ -717,41 +679,13 @@ on boot
     chmod 0664 /sys/class/leds/blue/brightness
     chown system system /sys/class/leds/blue/brightness
 
-    #TCD:add XLJLHLJYR-21 by shouhui.li 2020.08.05 start
-    chmod 0666 /dev/MT_pmic_adc_cali
-    chmod 0666 /sys/class/leds/red/brightness
-    chmod 0666 /sys/class/leds/blue/brightness
-    chmod 0666 /sys/class/leds/green/brightness
-    chmod 0666 /sys/class/leds/lcd-backlight/brightness
-    chmod 0666 /sys/devices/virtual/torch/torch/torch_level
-    chmod 0666 /sys/devices/virtual/sub_torch/sub_torch/sub_torch_level
-    chmod 0666 /sys/devices/virtual/tele_torch/tele_torch/tele_torch_level
-    chmod 0666 /sys/devices/platform/tran_battery/tran_bat_temp
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/tran_bat_temp
-	chown system system /sys/devices/platform/charger/tran_aichg_bigdata
-	chmod 0666 /sys/devices/platform/charger/tran_aichg_bigdata
-	chown system system /sys/devices/platform/charger/tran_aichg_disable_charger
-	chmod 0666 /sys/devices/platform/charger/tran_aichg_disable_charger
-    #TCD:add XLJLHLJYR-21 by shouhui.li 2020.08.05 end
-    #//TDD:add XWWYWPO-58 by weijia.huang 2018.07.19 start
-    chmod 0666 /sys/devices/platform/odm/odm:tran_battery/CHG_CAPACITY_TEST
-    chmod 0666 /proc/mtk_battery_cmd/en_safety_timer
-    #//TDD:add XWWYWPO-58 by weijia.huang 2018.07.19 end
-
-    #CHG:ADD add LFQHLJYB-261 by minglong.li 20220104 LF7 backled start
-    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_blink
-    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_blink
-    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_breathe
-    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_breathe
-    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_brightness
-    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_brightness
-    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_alone_contrl
-    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/rgb_alone_contrl
-    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/enable_IC
-    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/enable_IC
-    chmod 0666 /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/get_backled_fpc
-    chown system system /sys/devices/platform/11007000.i2c0/i2c-0/0-005b/get_backled_fpc
-    #CHG:ADD add LFQHLJYB-261 by minglong.li 20220104 LF7 backled end
+    chown system system /sys/class/leds/vibrator/trigger
+    write /sys/class/leds/vibrator/trigger "transient"
+    chown system system /sys/class/leds/vibrator/activate
+    chown system system /sys/class/leds/vibrator/brightness
+    chown system system /sys/class/leds/vibrator/duration
+    chown system system /sys/class/leds/vibrator/state
+    chown system system /sys/class/timed_output/vibrator/enable
 
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
@@ -926,42 +860,96 @@ on boot
 #Power Manager
     write /sys/power/pm_freeze_timeout 2000
 
+on property:vold.decrypt=trigger_reset_main
+    write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"
+    setprop sys.boot_completed 0
+    setprop dev.bootcomplete 0
+
+on property:vold.decrypt=trigger_post_fs_data
+    write /proc/bootprof "INIT:vold.decrypt=trigger_post_fs_data"
+
+on property:vold.decrypt=trigger_restart_min_framework
+    write /proc/bootprof "INIT:vold.decrypt=trigger_restart_min_framework"
+    start nvram_daemon
+    start msensord
+
+on property:vold.decrypt=trigger_restart_framework
+    write /proc/bootprof "INIT:vold.decrypt=trigger_restart_framework"
+    start nvram_daemon
+    start msensord
+
+on property:vold.decrypt=trigger_shutdown_framework
+    write /proc/bootprof "INIT:vold.decrypt=trigger_shutdown_framework"
+    setprop sys.boot_completed 0
+    setprop dev.bootcomplete 0
+
+# bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/dumpstate -d -p -B -z \
+        -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
+    class late_start
+    disabled
+    oneshot
+    keycodes 114 115 116
+
 # end boot time fs tune
+on property:sys.boot_completed=1
+    write /sys/block/mmcblk0/queue/iostats 1
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
+    write /sys/block/mmcblk0/queue/nr_requests 128
+    write /sys/block/sdc/queue/iostats 1
+    write /sys/block/sdc/queue/read_ahead_kb 128
+    write /sys/block/sdc/queue/nr_requests 128
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/dm-2/queue/read_ahead_kb 128
+    write /sys/block/dm-3/queue/read_ahead_kb 128
+    write /sys/block/dm-4/queue/read_ahead_kb 128
+    write /sys/block/dm-5/queue/read_ahead_kb 128
 
 on property:sys.boot_completed=1
+
+    # Stop bootprof
     write /proc/bootprof "0"
-    write /proc/pl_lk "0"
-# Back to default VM settings
-    write /proc/sys/vm/dirty_expire_centisecs 3000
-    write /proc/sys/vm/dirty_background_ratio 10
-#USD: add cgroup customise profiles by chaoquan.li at 20240110 start
-    write /proc/sys/vm/watermark_scale_factor 10
-    write /dev/cpuctl/top-app/cpu.shares 5120
-    write /dev/cpuctl/foreground/cpu.shares 2048
-    write /dev/cpuset/foreground-l/cpus 0-6
-    write /dev/cpuset/background-l/cpus 0-1
-    write /dev/cpuctl/foreground-l/cpu.shares 2048
-    write /dev/cpuctl/background-l/cpu.shares 512
-#USD: add cgroup customise profiles by chaoquan.li at 20240110 end
 
-#SPD: add for control dex2oat cpu by fan.feng1 20230619 start
-    write /dev/cpuset/dex2oat/cpus 0-3
-    write /dev/cpuctl/dex2oat/cpu.shares 512
-    setprop persist.vendor.powerhal.dex2oat_threads 4
-#SPD: add for control dex2oat cpu by fan.feng1 20230619 end
+#service dpfd /vendor/bin/dpfd
+#	user root
+#	group system media
 
-# OTG
-    write /sys/devices/platform/odm/odm:tran_battery/OTG_CTL 1
-    
-# Extra Props    
-    setprop sys.brightness.disable_gamma_conversion true
-    setprop vendor.mediatek.powerhal.init 1
-    restart android-hardware-media-c2-hal-1-2
+#
+#  External Modme control related services
+#
+
+#
+#  Modem related services (Begin)
+#
+##Add by T.Zh for ppp daemon
+#service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
+#    user root
+#    disabled
+#    oneshot
+#
+##
+#
+#  Modem related services (End)
+#
+
+#add for power-off alarm
+#service poad /vendor/bin/poad
+#    class main
+#    user system
+#    group system
+#    oneshot
+
+#service BGW /vendor/xbin/BGW
+#	user system
+#	group gps system radio
+#	class main
 
 # Battery info
 on property:persist.vendor.mediatek.fg.disable=1
     write /sys/devices/platform/battery_meter/FG_daemon_disable 1
     write /sys/bus/platform/devices/battery/FG_daemon_disable 1
+    write /sys/devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-gauge/FG_daemon_disable 1
 
 on property:persist.vendor.mediatek.fg.force25c=1
     write /sys/devices/platform/battery_meter/FG_drv_force25c 1
@@ -974,6 +962,7 @@ on property:persist.vendor.mediatek.fg.force25c=0
 on property:persist.vendor.mediatek.fg.log.enable=1
     write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
     write /sys/bus/platform/devices/battery/FG_daemon_log_level 7
+    write /sys/devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-gauge/FG_daemon_log_level 7
     write /proc/sys/kernel/printk 8
 
 
@@ -994,7 +983,7 @@ service factory_no_image /vendor/bin/factory
     socket factory-atci stream 660 radio system
     disabled
     oneshot
-	
+
 # start meta_tst for ATM
 on property:sys.boot_completed=1 && property:ro.boot.atm=enable
     start meta_tst
@@ -1007,23 +996,39 @@ on property:vendor.mtk.md1.status=reset
 on property:persist.vendor.mediatek.fast_charging.support=*
     write /sys/devices/platform/charger/fast_chg_indicator ${persist.vendor.mediatek.fast_charging.support}
 
-    
-service vendor.hwcomposer-2-1 /vendor/bin/hw/android.hardware.graphics.composer@2.1-service
-    interface android.hardware.graphics.composer@2.1::IComposer default
-    class hal animation
-    user system
-    group graphics drmrpc
-    capabilities SYS_NICE
-    onrestart restart surfaceflinger
-    task_profiles ProcessCapacityHigh MaxPerformance
-	override
+# FPSGO FBT Game
+on boot
+    insmod /vendor/lib/modules/fpsgo.ko
 
-service vendor.gralloc-4-0 /vendor/bin/hw/android.hardware.graphics.allocator@4.0-service-mediatek
-    interface android.hardware.graphics.allocator@4.0::IAllocator default
-    class hal animation
-    interface android.hardware.graphics.allocator@4.0::IAllocator default
-    user system
-    group graphics drmrpc
-    capabilities SYS_NICE
-    task_profiles ProcessCapacityHigh MaxPerformance
-    onrestart restart surfaceflinger
+# VSIM service (vendor OSI)
+service osi /system/bin/osi
+    class main
+    user root
+    disabled
+    oneshot
+    #seclabel u:r:osi:s0
+
+# USD : add by wangqin.kou 202501113 start
+on property:persist.vendor.tran.wipedata=1 && property:ro.boot.atm=enable
+    tran_factory_reset
+# USD : add by wangqin.kou 202501113 end
+
+#USD: add for memfusion2_2 by dongyun.liu at 20240927 start
+on property:persist.vendor.swapfile_enable=false
+    swapon_all /vendor/etc/fstab.enableswap
+on property:persist.vendor.swapfile_enable=true && property:ro.vendor.memfusion2_2.support=false
+    swapon_all /vendor/etc/fstab.enableswap
+#USD: add for memfusion2_2 by dongyun.liu at 20240927 end
+
+#USD: add auto set pid  by dongyun.liu 20240821 start
+service mf_nowb_sh /vendor/bin/init.mf_nowb.sh
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start mf_nowb_sh
+#USD: add auto set pid  by dongyun.liu 20240821 end
+

@@ -870,8 +870,6 @@ system_ext/etc/audio_policy_engine_product_strategies.xml
 system_ext/etc/audio_policy_engine_stream_volumes.xml
 system_ext/etc/audio_policy_volumes.xml
 system_ext/etc/bluetooth_audio_policy_configuration.xml
-system_ext/etc/build.prop
-system_ext/etc/build_flags.json
 system_ext/etc/custom.conf
 system_ext/etc/default-permissions/default-permissions-appupdate.xml
 system_ext/etc/default-permissions/default-permissions-com.transsion.aivoiceassistant.xml
@@ -1502,8 +1500,6 @@ vendor/etc/aurisys_config.xml
 vendor/etc/aurisys_config_rv.xml
 vendor/etc/boringssl_self_test.zygote64_32.rc;SYMLINK=vendor/etc/boringssl_self_test.no_zygote.rc,vendor/etc/boringssl_self_test.zygote32.rc
 vendor/etc/boringssl_self_test.zygote64.rc
-vendor/etc/build_flags.json
-vendor/etc/cgroups.json
 vendor/etc/command.csv
 vendor/etc/displayconfig/display_id_4627039422300187648.xml
 vendor/etc/ecc_list.xml
@@ -1660,7 +1656,6 @@ vendor/etc/ipsec/ipsec.d/cacerts/thawte.der
 vendor/etc/ipsec/ssl/openssl.cnf
 vendor/etc/ipsec/strongswan.conf
 vendor/etc/le_audio_codec_capabilities.xml
-vendor/etc/linker.config.pb
 vendor/etc/logExportConfig.xml
 vendor/etc/mali_platform.config
 vendor/etc/mbrain/mbrain_runtime_appiot_config.bin
