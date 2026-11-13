@@ -153,38 +153,6 @@ PRODUCT_PACKAGES += \
     libruy.vendor \
     libtextclassifier_hash.vendor
     
-# NFC (X6531B only): TMS/THN31 controller, so this block is gated on PRODUCT_NAME.
-ifneq ($(filter lineage_X6531B,$(PRODUCT_NAME)),)
-
-# RRO for com.android.nfc (enable_secure_nfc_support for the eSE/UICC routes
-# in libnfc-tms.conf).
-PRODUCT_PACKAGES += \
-    NfcResOverlay_X6531B \
-    Tag \
-    com.android.nfc_extras
-
-# NFC init: init.mt6768.rc and the connectivity rc files already import this file.
-PRODUCT_PACKAGES += \
-    init.stnfc.rc
-
-# NFC config: libnfc-tms*.conf (HAL, and libese-tms.conf) + libnfc-nci.conf.
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*.conf,$(LOCAL_PATH)/configs/nfc,$(TARGET_COPY_OUT_VENDOR)/etc) \
-    $(LOCAL_PATH)/configs/nfc/manifest_x6531b.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vintf/manifest/vendor.tms.hardware.nfc.xml
-
-# NFC features (the framework only enables NFC when these are present).
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
-    frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml
-
-# NFC HAL, config and firmware blobs (vendor/infinix/X6531).
-$(call inherit-product, vendor/infinix/X6531/X6531B-nfc.mk)
-
-endif
-
 # Media
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/seccomp,$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy) \
@@ -192,12 +160,12 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    CarrierConfigOverlay_X6531 \
-    FrameworksResOverlay_X6531 \
-    SystemUIOverlay_X6531 \
-    SettingsResOverlay_X6531 \
-    TetheringResOverlay_X6531 \
-    WifiResOverlay_X6531
+    CarrierConfigOverlay_X6728 \
+    FrameworksResOverlay_X6728 \
+    SystemUIOverlay_X6728 \
+    SettingsResOverlay_X6728 \
+    TetheringResOverlay_X6728 \
+    WifiResOverlay_X6728
 
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
@@ -289,7 +257,7 @@ PRODUCT_PACKAGES += \
     init.mt6768.rc \
     init.cgroup.rc \
     init.insmod.sh \
-    init.x6531.usb.rc \
+    init.x6728.usb.rc \
     init.project.rc \
     init.sensor_1_0.rc \
     init.target.rc \
@@ -396,4 +364,4 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/infinix/X6531/X6531-vendor.mk)
+$(call inherit-product, vendor/infinix/X6728/X6728-vendor.mk)

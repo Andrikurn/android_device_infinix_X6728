@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise, are
-## from Infinix-X6531-17
+## from Infinix-X6728-17
 
 gz.img;AB
 lk.img;AB|34a4b57646314cf0d385c0031cb6ff786f191050

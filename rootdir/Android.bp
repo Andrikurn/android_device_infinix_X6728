@@ -74,18 +74,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.x6531.usb.rc",
-    src: "etc/init.x6531.usb.rc",
+    name: "init.x6728.usb.rc",
+    src: "etc/init.x6728.usb.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
 
-prebuilt_etc {
-    name: "init.stnfc.rc",
-    src: "etc/init.stnfc.rc",
-    sub_dir: "init/hw",
-    vendor: true,
-}
+
 
 prebuilt_etc {
     name: "init.project.rc",

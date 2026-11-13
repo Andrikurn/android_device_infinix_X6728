@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/infinix/X6531
-KERNEL_PATH := device/infinix/X6531-kernel
+DEVICE_PATH := device/infinix/X6728
+KERNEL_PATH := device/infinix/X6728-kernel
 
 BUILD_BROKEN_DUP_RULES := true
 
@@ -50,7 +50,7 @@ TARGET_DYNAMIC_64_32_MEDIASERVER := true
 TARGET_DYNAMIC_64_32_DRMSERVER := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := X6531
+TARGET_BOOTLOADER_BOARD_NAME := X6728
 TARGET_NO_BOOTLOADER := true
 
 # Boot Image
@@ -223,4 +223,4 @@ WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{NAN}, 1}}
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Inherit the proprietary files
-include vendor/infinix/X6531/BoardConfigVendor.mk
+include vendor/infinix/X6728/BoardConfigVendor.mk
