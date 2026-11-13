@@ -134,7 +134,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     CarrierConfigOverlay_X6728 \
     FrameworksResOverlay_X6728 \
-    SystemUIOverlay_X6728 \
     SettingsResOverlay_X6728 \
     TetheringResOverlay_X6728 \
     WifiResOverlay_X6728

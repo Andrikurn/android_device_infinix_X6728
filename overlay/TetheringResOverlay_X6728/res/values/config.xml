@@ -34,4 +34,6 @@
         <item>ap\\d</item>
         <item>ap_br_ap\\d</item>
     </string-array>
+
+    <bool translatable="false" name="config_tether_enable_bpf_offload">false</bool>
 </resources>

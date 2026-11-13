@@ -11,8 +11,6 @@
      NOTE: The naming convention is "config_camelCaseValue". Some legacy
      entries do not follow the convention, but all new entries should. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Stock KL5n punch-hole (48x40dp): keeps the status bar and app headers
-         clear of the camera. -->
     <string name="config_mainBuiltInDisplayCutout" translatable="false">M -24,0 L -24,40 L 24,40 L 24,0 Z @dp</string>
 
     <!-- Array of desired screen brightness in nits corresponding to the lux values
@@ -27,25 +25,23 @@
       array. The brightness values must be non-negative and non-decreasing. This must be
       overridden in platform specific overlays -->
     <array name="config_autoBrightnessDisplayValuesNits">
-        <item>4.5225</item>
-        <item>20.246</item>
-        <item>55.509</item>
-        <item>74.653</item>
-        <item>82.757</item>
-        <item>93.15</item>
-        <item>117.678</item>
-        <item>138.666</item>
-        <item>164.847</item>
-        <item>189.157</item>
-        <item>207.656</item>
-        <item>221.191</item>
-        <item>277.164</item>
-        <item>350.798</item>
-        <item>391.524</item>
-        <item>414.81</item>
-        <item>434.151</item>
-        <item>455.291</item>
-        <item>480</item>
+        <item>5</item>
+        <item>54.654499</item>
+        <item>100.500000</item>
+        <item>130.650406</item>
+        <item>143.154495</item>
+        <item>149.101593</item>
+        <item>186.530304</item>
+        <item>202.578796</item>
+        <item>212.019196</item>
+        <item>226.286804</item>
+        <item>232.302795</item>
+        <item>243.736694</item>
+        <item>284.085602</item>
+        <item>322.050507</item>
+        <item>412.914490</item>
+        <item>500</item>
+        <item>560</item>
     </array>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
@@ -65,66 +61,18 @@
         <item>256</item>
         <item>384</item>
         <item>512</item>
-        <item>640</item>
         <item>768</item>
-        <item>896</item>
+        <item>900</item>
         <item>1536</item>
+        <item>2000</item>
         <item>2560</item>
-        <item>3584</item>
-        <item>4608</item>
-        <item>5632</item>
-        <item>7168</item>
-        <item>8192</item>
-    </integer-array>
-
-    <integer-array name="config_backlightSettingsValues">
-        <item>1</item>
-        <item>10</item>
-        <item>20</item>
-        <item>31</item>
-        <item>43</item>
-        <item>56</item>
-        <item>70</item>
-        <item>85</item>
-        <item>88</item>
-        <item>97</item>
-        <item>108</item>
-        <item>120</item>
-        <item>133</item>
-        <item>147</item>
-        <item>162</item>
-        <item>178</item>
-        <item>195</item>
-        <item>213</item>
-        <item>232</item>
-        <item>255</item>
-    </integer-array>
-
-    <integer-array name="config_brightnessSettingsValues">
-        <item>1</item>
-        <item>15</item>
-        <item>29</item>
-        <item>43</item>
-        <item>57</item>
-        <item>71</item>
-        <item>85</item>
-        <item>99</item>
-        <item>102</item>
-        <item>113</item>
-        <item>127</item>
-        <item>141</item>
-        <item>155</item>
-        <item>169</item>
-        <item>183</item>
-        <item>197</item>
-        <item>211</item>
-        <item>225</item>
-        <item>239</item>
-        <item>255</item>
+        <item>3148</item>
+        <item>4475</item>
+        <item>5000</item>
     </integer-array>
 
     <integer-array name="config_screenBrightnessBacklight">
-        <item>1</item>
+        <item>2</item>
         <item>15</item>
         <item>30</item>
         <item>45</item>
@@ -145,24 +93,24 @@
     </integer-array>
 
     <array name="config_screenBrightnessNits">
-        <item>4.34064</item>
-        <item>27.62304</item>
-        <item>57.183743</item>
-        <item>87.3361</item>
-        <item>116.81923</item>
-        <item>146.81923</item>
-        <item>175.56557</item>
-        <item>204.94415</item>
-        <item>233.41037</item>
-        <item>262.55884</item>
-        <item>290.5897</item>
-        <item>318.51608</item>
-        <item>346.09412</item>
-        <item>373.99353</item>
-        <item>401.39874</item>
-        <item>427.95197</item>
-        <item>454.28937</item>
-        <item>480</item>
+        <item>5</item>
+        <item>32.226879</item>
+        <item>66.714371</item>
+        <item>101.892113</item>
+        <item>136.289108</item>
+        <item>171.289108</item>
+        <item>204.826492</item>
+        <item>239.101517</item>
+        <item>272.312103</item>
+        <item>306.318665</item>
+        <item>339.021301</item>
+        <item>371.602112</item>
+        <item>403.776459</item>
+        <item>436.325806</item>
+        <item>468.298553</item>
+        <item>499.277283</item>
+        <item>530.004272</item>
+        <item>560</item>
     </array>
 
     <!-- The type of the light sensor to be used by the display framework for things like
@@ -180,8 +128,8 @@
          when adapting to brighter or darker environments.  This parameter controls how quickly
          brightness changes occur in response to an observed change in light level that exceeds the
          hysteresis threshold. -->
-    <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
-    <integer name="config_autoBrightnessDarkeningLightDebounce">1000</integer>
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">3000</integer>
 
     <!-- Flag indicating whether we should enable the automatic brightness.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
@@ -191,7 +139,7 @@
          -2 is invalid so setting will resort to int value specified above.
          Set this to 0.0 to allow screen to go to minimal brightness.
          The user is forbidden from setting the brightness below this level. -->
-    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.001960785</item>
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.005428</item>
 
     <!-- Maximum screen brightness allowed by the power manager.
          -2 is invalid so setting will resort to int value specified above.
@@ -202,7 +150,7 @@
     <!-- Default screen brightness setting set.
          -2 is invalid so setting will resort to int value specified above.
          Must be in the range specified by minimum and maximum. -->
-    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.196850</item>
 
     <!-- Screen brightness used to dim the screen when the user activity
          timeout expires.  May be less than the minimum allowed brightness setting
@@ -222,12 +170,6 @@
 
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
-
-    <!-- Whether this device is supporting the camera toggle -->
-    <bool name="config_supportsCamToggle">false</bool>
-
-    <!-- Whether this device is supporting the software microphone toggle -->
-    <bool name="config_supportsMicToggle">true</bool>
 
     <!-- Whether UI for multi user should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
@@ -262,9 +204,6 @@
     <!-- Flag specifying whether VT is available on device -->
     <bool name="config_device_vt_available">true</bool>
 
-    <!-- The max scale for the wallpaper when it's zoomed in -->
-    <item name="config_wallpaperMaxScale" format="float" type="dimen">1</item>
-
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/framework/framework.jar"</item>
@@ -274,9 +213,6 @@
         <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
         <item>"/system/bin/surfaceflinger"</item>
     </string-array>
-
-    <!-- Should the pinner service pin the Home application? -->
-    <bool name="config_pinnerHomeApp">true</bool>
 
     <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
          when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
@@ -346,18 +282,12 @@
          manager will disable alpha trasformation in animations where not
          strictly needed. -->
     <bool name="config_sf_limitedAlpha">true</bool>
-    <!-- Whether WM DisplayContent supports high performance transitions
-         (lower-end devices may want to disable) -->
-    <bool name="config_deviceSupportsHighPerfTransitions">false</bool>
-
-    <!-- Enable pause wallpaper rendering upon state change such as app launch -->
-    <bool name="config_pauseWallpaperRenderWhenStateChangeEnabled">true</bool>
 
     <integer name="config_defaultPeakRefreshRate">120</integer>
     <integer name="config_defaultRefreshRate">0</integer>
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware. -->
-    <bool name="config_setColorTransformAccelerated">false</bool>
+    <bool name="config_setColorTransformAccelerated">true</bool>
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware for individual layers. -->
     <bool name="config_setColorTransformAcceleratedPerLayer">false</bool>
@@ -368,32 +298,6 @@
     <bool name="config_refreshRateSynchronizationEnabled">false</bool>
     <bool name="config_supportsSeamlessRefreshRateSwitching">false</bool>
     <bool name="config_ui_enableFadingMarquee">false</bool>
-    <bool name="config_quickSettingsShowMediaPlayer">true</bool>
-
-    <string-array name="config_network_type_tcp_buffers">
-        <item>GPRS:4092,8760,48000,4096,8760,48000</item>
-        <item>EDGE:4093,26280,70800,4096,16384,70800</item>
-        <item>UMTS:58254,349525,1048576,58254,349525,1048576</item>
-        <item>CDMA:4094,87380,262144,4096,16384,262144</item>
-        <item>1xRTT:16384,32768,131072,4096,16384,102400</item>
-        <item>EvDo_0:4094,87380,262144,4096,16384,262144</item>
-        <item>EvDo_A:4094,87380,262144,4096,16384,262144</item>
-        <item>HSDPA:61167,367002,1101005,8738,52429,262114</item>
-        <item>HSUPA:40778,244668,734003,16777,100663,301990</item>
-        <item>HSPA:40778,244668,734003,16777,100663,301990</item>
-        <item>EvDo_B:4094,87380,262144,4096,16384,262144</item>
-        <item>eHRPD:131072,262144,1048576,4096,16384,524288</item>
-        <item>iDEN:4094,87380,262144,4096,16384,262144</item>
-        <item>LTE:2097152,4194304,8388608,262144,524288,2097152</item>
-        <item>HSPA+:122334,734003,2202010,32040,192239,576717</item>
-        <item>GSM:4092,8760,48000,4096,8760,48000</item>
-        <item>TD_SCDMA:58254,349525,1048576,58254,349525,1048576</item>
-        <item>LTE_CA:4096,6291456,12582912,4096,1048576,2097152</item>
-        <item>NR_NSA:2097152,6291456,16777216,512000,2097152,8388608</item>
-        <item>NR_NSA_MMWAVE:2097152,6291456,16777216,512000,2097152,8388608</item>
-        <item>NR_SA:2097152,6291456,16777216,512000,2097152,8388608</item>
-        <item>NR_SA_MMWAVE:2097152,6291456,16777216,512000,2097152,8388608</item>
-    </string-array>
 
     <string-array name="networkAttributes">
         <item>wifi,1,1,1,-1,true</item>
