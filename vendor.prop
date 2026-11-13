@@ -62,7 +62,6 @@ persist.vendor.camera3.pipeline.bufnum.min.low_ram.lcso=6
 persist.vendor.camera3.pipeline.bufnum.min.low_ram.rrzo=6
 persist.vendor.camera3.pipeline.bufnum.min.low_ram.rsso=6
 ro.vendor.camera.isp.support.colorspace=0
-ro.vendor.camera3.zsl.default=140
 ro.vendor.mtk_cam_security_support=1
 ro.vendor.mtk_camera_app_version=3
 vendor.camera.mdp.cz.enable=1
@@ -83,7 +82,6 @@ vendor.connsys.driver.ready=no
 
 # Display
 ro.vendor.mtk_blulight_def_support=1
-ro.vendor.mtk_backlight_hwc_support=0
 ro.hardware.egl=meow
 ro.hardware.hwcomposer=mtk_common
 ro.opengles.version=196610
@@ -122,10 +120,7 @@ ro.vendor.pq.mtk_blulight_def_support=1
 ro.vendor.pq.disp_lcm_name_support=0
 ro.vendor.smvr.p2batch.hd=4
 ro.vendor.smvr.p2batch.vga=8
-ro.vendor.pq.disp_lcm_name_support=0
 ro.vendor.mtk_prefer_64bit_proc=0
-ro.vendor.mtk_backlight_hwc_support=0
-ro.vendor.mml.mtk_mml_support=0
 
 # DRM
 ro.netflix.bsp_rev=MTK6768-19054-1
@@ -266,7 +261,6 @@ ro.surface_flinger.default_composition_pixel_format=RGBX_8888
 # Trusted Execution Environment (TEE)
 ro.vendor.mtk_microtrust_tee_support=1
 ro.vendor.mtk_tee_gp_support=1
-ro.vendor.mtk_trustonic_tee_support=1
 ro.mtk_key_manager_support=1
 
 # Wi-Fi
