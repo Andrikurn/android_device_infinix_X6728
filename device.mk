@@ -26,7 +26,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.m
 
 # A/B
 PRODUCT_PACKAGES += \
-    com.android.hardware.boot \
     android.hardware.boot-service.default_recovery
 
 PRODUCT_PACKAGES += \
@@ -59,25 +58,15 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@7.0-impl:32 \
-    android.hardware.audio.effect@7.0-impl:32 \
-    android.hardware.audio.service
-
-# AOSP pre-processing effects (AGC/AEC/NS) referenced by audio_effects.xml
-PRODUCT_PACKAGES += \
     libaudiopreprocessing
-
-PRODUCT_PACKAGES += \
-    audio.bluetooth.default:32 \
-    android.hardware.bluetooth.audio-impl:32
 
 PRODUCT_PACKAGES += \
     Audioservice.tran \
     MtkInCallService
 
 PRODUCT_PACKAGES += \
-    libdynproc:32 \
-    libhapticgenerator:32
+    libdynproc \
+    libhapticgenerator
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
@@ -97,7 +86,6 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.1-service \
     android.hardware.memtrack-service.mediatek
 
 # DRM
@@ -119,26 +107,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FMRadio
 
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
-
-# Health
-PRODUCT_PACKAGES += \
-    android.hardware.health-V1-ndk \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery \
-    android.hardware.health@2.1-service
-
 # HIDL 
 PRODUCT_PACKAGES += \
     libhidltransport \
     libhidltransport.vendor 
-
-# Light
-PRODUCT_PACKAGES += \
-    android.hardware.light-service.lineage
 
 # Linker
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
@@ -175,6 +147,10 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 # Partition source order for Product/Build properties pickup.
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.product.property_source_order=odm,vendor,product,system_ext,system
+
+# NFC
+PRODUCT_PACKAGES += \
+    com.android.nfcservices
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -217,9 +193,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-PRODUCT_PACKAGES += \
-    android.hardware.hardware_keystore.km41.xml
-
 # vndservice
 PRODUCT_PACKAGES += \
    vndservicemanager \
@@ -227,9 +200,6 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.3.vendor \
-    android.hardware.power-service.lineage-libperfmgr \
-    vendor.mediatek.hardware.mtkpower@1.2-service.stub \
     libmtkperf_client_vendor \
     libmtkperf_client
 
@@ -272,7 +242,6 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.1.vendor:64 \
     android.frameworks.sensorservice@1.0:64 \
     android.frameworks.sensorservice@1.0.vendor:64 \
-    android.hardware.sensors@2.1-service.multihal \
     android.hardware.sensors@2.0-ScopedWakelock.vendor:64
 
 PRODUCT_PACKAGES += \
@@ -293,22 +262,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client 
 
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl
-
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0.vendor
-
-# USB
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3.vendor \
-    android.hardware.usb.gadget@1.1.vendor
-
-# Vibrator
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.mediatek
-
 # VNDK
 PRODUCT_PACKAGES += \
     libcrypto-v33 \
@@ -318,19 +271,6 @@ PRODUCT_PACKAGES += \
 # Wi-Fi
 $(call soong_config_set_bool,mediatek_wifi_hal,use_pre_u_qpr2_struct,true)
 PRODUCT_PACKAGES += \
-    android.system.wifi.keystore@1.0.vendor \
-    libkeystore-wifi-hidl:64 \
-    libkeystore-engine-wifi-hidl:64 \
-    libnl.vendor \
-    android.hardware.wifi@1.1.vendor \
-    android.hardware.wifi@1.2.vendor \
-    android.hardware.wifi@1.3.vendor \
-    android.hardware.wifi@1.4.vendor \
-    android.hardware.wifi.supplicant@1.0.vendor \
-    android.hardware.wifi.supplicant@1.1.vendor \
-    android.hardware.wifi.supplicant@1.2.vendor \
-    android.hardware.wifi.supplicant@1.3.vendor \
-    android.hardware.wifi.supplicant@1.4.vendor \
     wpa_supplicant \
     hostapd \
     libwifi-hal-wrapper:64 \
