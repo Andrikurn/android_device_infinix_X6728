@@ -2,8 +2,8 @@
 ## from X6728-15.1.2.195(OP001PF001AZ)
 
 gz.img;AB
-lk.img;AB|3d09421dcdaa04de589084fcc04711e99bc225e3
-logo.bin:logo.img;AB|66087a6b9a466de85c54d4643d90a9df81fc5b41
+lk.img;AB
+logo.bin:logo.img;AB
 modem.img;AB
 scp.img;AB
 spmfw.img;AB
