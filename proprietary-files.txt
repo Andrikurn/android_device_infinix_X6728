@@ -911,9 +911,9 @@ system_ext/lib64/libdrmmtkwhitelist.so
 system_ext/lib64/libneuron_graph_delegate.mtk.so
 system_ext/lib64/libneuronusdk_adapter.mtk.so
 system_ext/lib64/libtflite_mtk.mtk.so
-system_ext/lib64/vendor.mediatek.hardware.mtkpower_applist-V2-ndk.so
-system_ext/lib64/vendor.mediatek.hardware.pq_aidl-V2-ndk.so
-system_ext/lib64/vendor.mediatek.hardware.pq_aidl-V8-ndk.so
+system_ext/lib64/vendor.mediatek.hardware.mtkpower_applist-V2-ndk.so;MODULE_SUFFIX=_systemext
+system_ext/lib64/vendor.mediatek.hardware.pq_aidl-V2-ndk.so;MODULE_SUFFIX=_systemext
+system_ext/lib64/vendor.mediatek.hardware.pq_aidl-V8-ndk.so;MODULE_SUFFIX=_systemext
 vendor/apex/com.google.android.widevine.nonupdatable.apex
 vendor/app/mcRegistry/05070000000000000000000000000000.tlbin
 vendor/app/mcRegistry/05090000000000000000000000000000.tabin
@@ -1046,9 +1046,9 @@ system_ext/apex/com.android.vndk.v33.apex
 system_ext/apex/com.android.vndk.v34.apex
 system_ext/bin/hw/android.hardware.audio.parameter_parser.service
 system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
-system_ext/lib64/libcomposer_ext.so
-system_ext/lib64/vendor.mediatek.hardware.composer_ext-V1-ndk.so
-system_ext/lib64/vendor.mediatek.hardware.composer_ext@1.0.so
+system_ext/lib64/libcomposer_ext.so;MODULE_SUFFIX=_systemext
+system_ext/lib64/vendor.mediatek.hardware.composer_ext-V1-ndk.so;MODULE_SUFFIX=_systemext
+system_ext/lib64/vendor.mediatek.hardware.composer_ext@1.0.so;MODULE_SUFFIX=_systemext
 vendor/apex/com.android.hardware.cas.apex
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
 vendor/bin/hw/android.hardware.boot-service.mtk

@@ -136,7 +136,7 @@ PRODUCT_COPY_FILES += \
 
 # DTB
 PRODUCT_COPY_FILES += \
-    $(KERNEL_PATH)/dtb/mt6768.dtb:$(TARGET_OUT)/dtb.img
+    device/infinix/X6728-kernel/dtb/mt6768.dtb:$(TARGET_OUT)/dtb.img
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
