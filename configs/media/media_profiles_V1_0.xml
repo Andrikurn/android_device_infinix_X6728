@@ -10,7 +10,6 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<!-- ITD: modify for video-sieze by desuo.lu 20201028 start -->
 <!DOCTYPE MediaSettings [
 <!ELEMENT MediaSettings (CamcorderProfiles,
                          EncoderOutputFileFormat+,
@@ -23,7 +22,7 @@
 <!ATTLIST EncoderProfile quality (high|low) #REQUIRED>
 <!ATTLIST EncoderProfile fileFormat (mp4|3gp) #REQUIRED>
 <!ATTLIST EncoderProfile duration (30|60) #REQUIRED>
-<!ATTLIST EncoderProfile cameraId (0|1|2|3|4|5) #REQUIRED>
+<!ATTLIST EncoderProfile cameraId (0|1|2|3|4) #REQUIRED>
 <!ELEMENT Video EMPTY>
 <!ATTLIST Video codec (h264|h263|m4v) #REQUIRED>
 <!ATTLIST Video bitRate CDATA #REQUIRED>
@@ -69,7 +68,6 @@
 <!ATTLIST AudioDecoderCap name (wma) #REQUIRED>
 <!ATTLIST AudioDecoderCap enabled (true|false) #REQUIRED>
 ]>
-<!-- ITD: modify for video-sieze by desuo.lu 20201028 end -->
 <!--
      This file is used to declare the multimedia profiles and capabilities
      on an android-powered device.
@@ -77,19 +75,18 @@
 <MediaSettings>
     <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <CamcorderProfiles cameraId="0">
-    <!-- ITD: modify for add dulcam by desuo.lu 20201028 start -->
         <EncoderProfile quality="low" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
+<!-- #[ITD]add 2k video for front camera by jiajun.wang 20250113 start-->
         <EncoderProfile quality="high" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="50000000"
@@ -101,20 +98,31 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
-        <EncoderProfile quality="qcif" fileFormat="mp4" duration="30">
+<!-- #[ITD]add 2k video for front camera by jiajun.wang 20250113 end-->
+        <EncoderProfile quality="high" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="192000"
-                   width="176"
-                   height="144"
+                   bitRate="20000000"
+                   width="1920"
+                   height="1080"
                    frameRate="30" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
+        <EncoderProfile quality="qcif" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="192000"
+                   width="176"
+                   height="144"
+                   frameRate="20" />
+            <Audio codec="aac"
+                   bitRate="128000"
+                   sampleRate="48000"
+                   channels="1" />
+        </EncoderProfile>
         <EncoderProfile quality="qvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -125,7 +133,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="cif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -168,7 +176,7 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
+<!-- #[ITD]add 2k video for front camera by jiajun.wang 20250113 start-->
         <EncoderProfile quality="qhd" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="50000000"
@@ -180,44 +188,31 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
+<!-- #[ITD]add 2k video for front camera by jiajun.wang 20250113 end-->
         <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
-        <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="50000000"
-                   width="2560"
-                   height="1440"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="256000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
         <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapseqvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -228,7 +223,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -260,18 +255,19 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-        <EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="30">
+<!-- #[ITD]add 2k video for front camera by jiajun.wang 20250113 start-->
+        <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="20000000"
-                   width="1920"
-                   height="1080"
+                   bitRate="50000000"
+                   width="2560"
+                   height="1440"
                    frameRate="30" />
             <Audio codec="aac"
-                   bitRate="128000"
+                   bitRate="256000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
+<!-- #[ITD]add 2k video for front camera by jiajun.wang 20250113 start-->
         <EncoderProfile quality="timelapseqhd" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="50000000"
@@ -283,7 +279,7 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
+<!-- #[ITD]add 2k video for front camera by jiajun.wang 20250113 end-->
         <EncoderProfile quality="highspeedlow" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="36000000"
@@ -317,52 +313,49 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
-    <!-- ITD: modify for cameraid0 by desuo.lu 20201028 end -->
     </CamcorderProfiles>
     <CamcorderProfiles cameraId="1">
-    <!-- ITD: modify for cameraid1 by desuo.lu 20201028 start -->
         <EncoderProfile quality="low" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
-        <EncoderProfile quality="high" fileFormat="mp4" duration="30">
-            <Video codec="h264"
+        <!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
+      <EncoderProfile quality="high" fileFormat="mp4" duration="30">
+           <Video codec="h264"
                    bitRate="50000000"
                    width="2560"
                    height="1440"
                    frameRate="30" />
-            <Audio codec="aac"
+           <Audio codec="aac"
                    bitRate="256000"
                    sampleRate="48000"
                    channels="1" />
-        </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
+       </EncoderProfile>
+ <!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
         <EncoderProfile quality="qcif" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="qvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -373,7 +366,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="cif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -430,17 +423,17 @@
         </EncoderProfile>
 <!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
         <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
+        <!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
         <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="50000000"
@@ -452,20 +445,20 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
+       <!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
         <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapseqvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -476,7 +469,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -537,15 +530,13 @@
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
     </CamcorderProfiles>
-    <!-- ITD: modify for cameraid1 by desuo.lu 20201028 end -->
     <CamcorderProfiles cameraId="2">
-    <!-- ITD: modify for cameraid2 by desuo.lu 20201028 start -->
         <EncoderProfile quality="low" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
@@ -553,9 +544,9 @@
         </EncoderProfile>
         <EncoderProfile quality="high" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="9000000"
-                   width="1280"
-                   height="720"
+                   bitRate="20000000"
+                   width="1920"
+                   height="1080"
                    frameRate="30" />
             <Audio codec="aac"
                    bitRate="128000"
@@ -567,14 +558,14 @@
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="qvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -585,7 +576,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="cif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -617,7 +608,7 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-        <!--<EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="20000000"
                    width="1920"
@@ -627,13 +618,13 @@
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
-        </EncoderProfile>-->
+        </EncoderProfile>
         <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
@@ -641,9 +632,9 @@
         </EncoderProfile>
         <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="9000000"
-                   width="1280"
-                   height="720"
+                   bitRate="20000000"
+                   width="1920"
+                   height="1080"
                    frameRate="30" />
             <Audio codec="aac"
                    bitRate="128000"
@@ -651,18 +642,18 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapseqvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -673,7 +664,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -705,7 +696,7 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-        <!--<EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="20000000"
                    width="1920"
@@ -715,7 +706,7 @@
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
-        </EncoderProfile>-->
+        </EncoderProfile>
         <EncoderProfile quality="highspeedlow" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="3000000"
@@ -754,15 +745,13 @@
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
     </CamcorderProfiles>
-    <!-- ITD: modify for cameraid2 by desuo.lu 20201028 end -->
     <CamcorderProfiles cameraId="3">
-    <!-- ITD: modify for cameraid3 by desuo.lu 20201028 end -->
         <EncoderProfile quality="low" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
@@ -784,14 +773,14 @@
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="qvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -802,7 +791,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="cif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -835,11 +824,11 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
@@ -857,18 +846,18 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapseqvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -879,7 +868,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -916,15 +905,13 @@
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
     </CamcorderProfiles>
-    <!-- ITD: modify for cameraid3 by desuo.lu 20201028 end -->
     <CamcorderProfiles cameraId="4">
-    <!-- ITD: modify for cameraid4 by desuo.lu 20201028 start -->
         <EncoderProfile quality="low" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
@@ -946,14 +933,14 @@
                    bitRate="192000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="128000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="qvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -964,7 +951,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="cif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -1008,11 +995,11 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
@@ -1030,18 +1017,18 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="20" />
             <Audio codec="aac"
                    bitRate="64000"
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapseqvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1000000"
                    width="320"
                    height="240"
@@ -1052,7 +1039,7 @@
                    channels="1" />
         </EncoderProfile>
         <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
+            <Video codec="h264"
                    bitRate="1250000"
                    width="352"
                    height="288"
@@ -1133,225 +1120,6 @@
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
     </CamcorderProfiles>
-    <!-- ITD: modify for cameraid4 by desuo.lu 20201028 end -->
-    <CamcorderProfiles cameraId="5">
-    <!-- ITD: modify for add cameraId5 by desuo.lu 20201028 start -->
-        <EncoderProfile quality="low" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="192000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="high" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="20000000"
-                   width="1920"
-                   height="1080"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="qcif" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="192000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="qvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
-                   bitRate="1000000"
-                   width="320"
-                   height="240"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="cif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
-                   bitRate="1250000"
-                   width="352"
-                   height="288"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="480p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="4500000"
-                   width="640"
-                   height="480"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="9000000"
-                   width="1280"
-                   height="720"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="20000000"
-                   width="1920"
-                   height="1080"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
-            <Video codec="h263"
-                   bitRate="1000000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="64000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="20000000"
-                   width="1920"
-                   height="1080"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
-            <Video codec="h263"
-                   bitRate="1000000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="64000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="timelapseqvga" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
-                   bitRate="1000000"
-                   width="320"
-                   height="240"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
-            <Video codec="m4v"
-                   bitRate="1250000"
-                   width="352"
-                   height="288"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="timelapse480p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="4500000"
-                   width="640"
-                   height="480"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="9000000"
-                   width="1280"
-                   height="720"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="20000000"
-                   width="1920"
-                   height="1080"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="highspeedlow" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="36000000"
-                   width="1280"
-                   height="720"
-                   frameRate="120" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="highspeedhigh" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="36000000"
-                   width="1280"
-                   height="720"
-                   frameRate="120" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-        <EncoderProfile quality="highspeed720p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="36000000"
-                   width="1280"
-                   height="720"
-                   frameRate="120" />
-            <Audio codec="aac"
-                   bitRate="128000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-
-        <ImageEncoding quality="95" />
-        <ImageEncoding quality="80" />
-        <ImageEncoding quality="70" />
-        <ImageDecoding memCap="20000000" />
-    </CamcorderProfiles>
-    <!-- ITD: modify for cameraid5 by desuo.lu 20201028 end -->
     <EncoderOutputFileFormat name="mp4" />
     <EncoderOutputFileFormat name="3gp" />
     <!--
@@ -1359,25 +1127,23 @@
          In other words, the applications won't be able to use the codec
          or query the capabilities of the codec at all if it is disabled
     -->
-<!--[ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 start -->
     <VideoEncoderCap name="h264" enabled="true"
-        minBitRate="64000" maxBitRate="50000000"
-        minFrameWidth="176" maxFrameWidth="2560"
-        minFrameHeight="144" maxFrameHeight="1440"
+        minBitRate="64000" maxBitRate="40000000"
+        minFrameWidth="176" maxFrameWidth="1920"
+        minFrameHeight="144" maxFrameHeight="1080"
         minFrameRate="15" maxFrameRate="30" />
-<!-- [ITD] modify for XLBEPUB-63 2k video support by desuo.lu 20201028 end -->
-    <VideoEncoderCap name="h263" enabled="true"
+    <VideoEncoderCap name="h263" enabled="false"
         minBitRate="64000" maxBitRate="2000000"
         minFrameWidth="176" maxFrameWidth="640"
         minFrameHeight="144" maxFrameHeight="480"
         minFrameRate="15" maxFrameRate="30" />
-    <VideoEncoderCap name="m4v" enabled="true"
+    <VideoEncoderCap name="m4v" enabled="false"
         minBitRate="64000" maxBitRate="4000000"
         minFrameWidth="176" maxFrameWidth="640"
         minFrameHeight="144" maxFrameHeight="480"
         minFrameRate="15" maxFrameRate="30" />
     <VideoEncoderCap name="hevc" enabled="true"
-        minBitRate="64000" maxBitRate="60000000"
+        minBitRate="64000" maxBitRate="40000000"
         minFrameWidth="176" maxFrameWidth="2560"
         minFrameHeight="144" maxFrameHeight="1440"
         minFrameRate="15" maxFrameRate="30" />
