@@ -16,7 +16,6 @@
       "File": "memory.swappiness"
     }
   ],
-
   "Profiles": [
     {
       "Name": "LowIoPriority",
@@ -70,7 +69,6 @@
         }
       ]
     },
-
     {
       "Name": "TimerSlackHigh",
       "Actions": [
@@ -95,7 +93,6 @@
         }
       ]
     },
-
     {
       "Name": "PerfBoost",
       "Actions": [
@@ -122,7 +119,6 @@
         }
       ]
     },
-
     {
       "Name": "LowMemoryUsage",
       "Actions": [
@@ -140,7 +136,6 @@
           {
             "Name": "MemSwappiness",
             "Value": "150"
-
           }
         }
       ]
@@ -178,9 +173,125 @@
           }
         }
       ]
+    },
+    {
+      "Name": "Dex2oatCpuLimit",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "dex2oat"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TranFgCpusetLimit",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "foreground-l"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TranFgCpuLimit",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "foreground-l"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TranBgCpusetLimit",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "background-l"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TranBgCpuLimit",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "background-l"
+          }
+        }
+      ]
+        },
+    {
+      "Name": "TranSbgCpusetLimit",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "system-background-l"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TranSbgCpuLimit",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "system-background-l"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TranSbgCpusetHigh",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "system-background-h"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TranSbgCpuHigh",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "system-background-h"
+          }
+        }
+      ]
     }
   ],
-
   "AggregateProfiles": [
     {
       "Name": "SCHED_SP_DEFAULT",
@@ -225,6 +336,26 @@
     {
       "Name": "CPUSET_SP_RESTRICTED",
       "Profiles": [ "ServiceCapacityRestricted", "TimerSlackNormal" ]
+    },
+    {
+      "Name": "Dex2OatBootComplete",
+      "Profiles": [ "Dex2oatCpuLimit","LowIoPriority", "TimerSlackHigh" ]
+    },
+    {
+      "Name": "TRAN_FG_POLICY",
+      "Profiles": [ "TranFgCpusetLimit","TranFgCpuLimit" ]
+    },
+    {
+      "Name": "TRAN_BG_POLICY",
+      "Profiles": [ "TranBgCpusetLimit","TranBgCpuLimit" ]
+    },
+    {
+      "Name": "TRAN_SBG_H_POLICY",
+      "Profiles": [ "HighPerformance", "HighIoPriority", "TimerSlackNormal", "TranSbgCpuHigh" ]
+    },
+    {
+      "Name": "TRAN_SBG_L_POLICY",
+      "Profiles": [ "ServiceCapacityLow", "LowIoPriority", "TimerSlackNormal", "TranSbgCpuLimit" ]
     }
   ]
 }
