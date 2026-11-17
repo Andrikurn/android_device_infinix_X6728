@@ -1,7 +1,7 @@
 # patches/nfc
 
 Two patches for `hardware/nxp/nfc` (the NXP snxxx AIDL HAL, built from Lineage source)
-on the KL5n PN553. Both send RF_DEACTIVATE before a discovery command that the
+on the X6728 PN553. Both send RF_DEACTIVATE before a discovery command that the
 controller would otherwise reject with DISCOVERY_ALREADY_STARTED - which the HAL
 answers with CORE_RESET, so NfcService restarts the stack.
 
@@ -15,8 +15,8 @@ and skipped, so a `repo sync` that resets the HAL is repaired on the next envset
 By hand, from `hardware/nxp/nfc`:
 
 ```sh
-git apply ../../device/tecno/KL5/patches/nfc/0001-phNxpNciHal-stop-discovery-before-CE-discovery.patch
-git apply --reverse ../../device/tecno/KL5/patches/nfc/0001-*.patch    # revert
+git apply ../../device/infinix/X6728/patches/nfc/0001-phNxpNciHal-stop-discovery-before-CE-discovery.patch
+git apply --reverse ../../device/infinix/X6728/patches/nfc/0001-*.patch    # revert
 ```
 
 Generated against lineage-23.2. The longer analysis that produced these patches is in

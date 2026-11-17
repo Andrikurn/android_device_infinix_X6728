@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/tecno/KL5
-KERNEL_PATH := device/tecno/KL5-kernel
+DEVICE_PATH := device/infinix/X6728
+KERNEL_PATH := device/infinix/X6728-kernel
 
 BUILD_BROKEN_DUP_RULES := true
 
@@ -51,7 +51,7 @@ TARGET_DYNAMIC_64_32_MEDIASERVER := true
 TARGET_DYNAMIC_64_32_DRMSERVER := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := KL5
+TARGET_BOOTLOADER_BOARD_NAME := Infinix-X6728
 TARGET_NO_BOOTLOADER := true
 
 # Boot Image
@@ -69,7 +69,7 @@ BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x07c08000
 BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
 BOARD_DTB_OFFSET := 0x0bc08000
-BOARD_DTB_SIZE := 161454
+BOARD_DTB_SIZE := 162010
 
 BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
@@ -78,15 +78,15 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
 # Display
-TARGET_SCREEN_DENSITY := 300
+TARGET_SCREEN_DENSITY := 320
 
 # DTBO
 BOARD_KERNEL_SEPARATED_DTBO := true
 
 # HIDL
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    $(DEVICE_PATH)/framework_compatibility_matrix.xml
+    $(DEVICE_PATH)/configs/vintf/device_framework_compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := Image.gz
@@ -98,34 +98,29 @@ LOCAL_KERNEL := $(KERNEL_PATH)/$(BOARD_KERNEL_IMAGE_NAME)
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
 
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+TARGET_PREBUILT_DTB := $(KERNEL_PATH)/dtb/mt6768.dtb
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtb/dtbo.img
 
 ## vendor_boot modules
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules/modules.load.vendor_boot))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules/modules.load.vendor_boot))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(KERNEL_PATH)/modules/vendor_boot/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
 
 ## recovery modules
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules/modules.load.recovery))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules/modules.load.recovery))
 RECOVERY_MODULES := $(addprefix $(KERNEL_PATH)/modules/vendor_boot/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
 
 ## Prevent duplicated entries (to solve duplicated build rules problem)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(sort $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES) $(RECOVERY_MODULES))
 
 ## vendor modules
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules/modules.load.vendor))
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules/modules.load.vendor))
 BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules/vendor/*.ko)
 
-## KL5n: the KL5 kernel tree's imgsensor_isp4.ko has no imx582 support
-## (its camera sensor list stops at hi5022q/s5kjn1/gc08a8/hi846). Swap in the
-## vermagic-patched module shipped in the vendor tree (stock KL5n ko, vermagic
-## rewritten from 5.10.237-android12-9+ to 5.10.209-android12-9+). The module
-## keeps the same basename so modules.load.vendor and the init.insmod scripts
-## need no changes.
-ifneq ($(filter lineage_KL5n,$(PRODUCT_NAME)),)
+## X6728: swap in the vermagic-patched imgsensor_isp4.ko shipped in the vendor
+## tree. It keeps the same basename, so modules.load.vendor and the init.insmod
+## scripts need no changes.
 BOARD_VENDOR_KERNEL_MODULES := $(filter-out %/imgsensor_isp4.ko,$(BOARD_VENDOR_KERNEL_MODULES))
-BOARD_VENDOR_KERNEL_MODULES += vendor/tecno/KL5/proprietary_kl5n/vendor/lib/modules/imgsensor_isp4.ko
-endif
+BOARD_VENDOR_KERNEL_MODULES += vendor/infinix/X6728/proprietary_kl5n/vendor/lib/modules/imgsensor_isp4.ko
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # BOARD_KERNEL_PAGESIZE * 64
@@ -156,14 +151,14 @@ TARGET_BOARD_PLATFORM := mt6768
 BOARD_HAS_MTK_HARDWARE := true
 
 # Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
+TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/properties/product.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
+TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 
 # Recovery
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.mt6768
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/fstab.mt6768
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
@@ -221,4 +216,4 @@ WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{NAN}, 1}}
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Inherit the proprietary files
-include vendor/tecno/KL5/BoardConfigVendor.mk
+include vendor/infinix/X6728/BoardConfigVendor.mk

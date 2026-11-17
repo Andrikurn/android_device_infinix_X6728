@@ -158,7 +158,7 @@ PRODUCT_COPY_FILES += \
 
 # DTB
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/dtb.img:$(TARGET_OUT)/dtb.img
+    $(KERNEL_PATH)/dtb/mt6768.dtb:$(TARGET_OUT)/dtb.img
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -212,14 +212,14 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    CarrierConfigOverlay_KL5 \
-    FrameworksResOverlay_KL5 \
-    NfcResOverlay_KL5 \
-    SystemUIOverlay_KL5 \
-    SettingsResOverlay_KL5 \
-    TelephonyOverlay_KL5 \
-    TetheringResOverlay_KL5 \
-    WifiResOverlay_KL5
+    CarrierConfigOverlay_X6728 \
+    FrameworksResOverlay_X6728 \
+    NfcResOverlay_X6728 \
+    SystemUIOverlay_X6728 \
+    SettingsResOverlay_X6728 \
+    TelephonyOverlay_X6728 \
+    TetheringResOverlay_X6728 \
+    WifiResOverlay_X6728
 
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
@@ -310,7 +310,7 @@ PRODUCT_PACKAGES += \
     init.mt6768.rc \
     init.cgroup.rc \
     init.insmod.sh \
-    init.kl5.usb.rc \
+    init.x6728.usb.rc \
     init.project.rc \
     init.sensor_1_0.rc \
     init.target.rc \
@@ -321,8 +321,8 @@ PRODUCT_PACKAGES += \
 
 # Recovery touch firmware (DTB sets firmware_class.path=/vendor/firmware)
 PRODUCT_COPY_FILES += \
-    vendor/tecno/KL5/proprietary/vendor/firmware/hdl_firmware_00.img:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware/hdl_firmware_00.img \
-    vendor/tecno/KL5/proprietary/vendor/firmware/hdl_firmware_01.img:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware/hdl_firmware_01.img
+    vendor/infinix/X6728/proprietary/vendor/firmware/hdl_firmware_00.img:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware/hdl_firmware_00.img \
+    vendor/infinix/X6728/proprietary/vendor/firmware/hdl_firmware_01.img:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware/hdl_firmware_01.img
 
 PRODUCT_PACKAGES += \
     libsensorndkbridge:64 \
@@ -406,14 +406,6 @@ PRODUCT_PACKAGES += \
     libwifi-hal-wrapper:64 \
     android.hardware.wifi-service
 
-# Debugging
-ifeq ($(WITH_XGSI_LOGS),true)
-    PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/logging/init.xgsi-bootlog.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.xgsi-bootlog.rc \
-        $(LOCAL_PATH)/logging/xgsi-bootlog.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/xgsi/xgsi-bootlog.sh \
-        $(LOCAL_PATH)/logging/xgsi-dmesg.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/xgsi/xgsi-dmesg.sh
-endif
-
 # GMS variant: vanilla / gapps / microg, selected by build-all.sh --gms.  Read at
 # product-config time, so clear out/target/product/<device> when switching mode.
 ifeq ($(WITH_GAPPS),true)
@@ -429,10 +421,8 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/tecno/KL5/KL5-vendor.mk)
+$(call inherit-product, vendor/infinix/X6728/X6728-vendor.mk)
 
-# KL5n: layer the imx582 camera blobs and the PN553 NFC stack on the shared vendor tree.
-ifneq ($(filter kl5n,$(SOONG_CONFIG_tecno_camera_camera_variant)),)
-$(call inherit-product, vendor/tecno/KL5/KL5n-camera.mk)
-$(call inherit-product, vendor/tecno/KL5/KL5n-nfc.mk)
-endif
+# X6728: layer the camera blobs and the PN553 NFC stack on the shared vendor tree.
+$(call inherit-product, vendor/infinix/X6728/X6728-camera.mk)
+$(call inherit-product, vendor/infinix/X6728/X6728-nfc.mk)

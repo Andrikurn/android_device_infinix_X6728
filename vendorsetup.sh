@@ -3,13 +3,13 @@
 # Opt-in: export PATCH_NFC=true before sourcing envsetup.sh / lunch.
 # Details: patches/nfc/README.md.
 
-apply_kl5n_nfc_hal_patches() {
+apply_x6728_nfc_hal_patches() {
     top="${ANDROID_BUILD_TOP:-$PWD}"
     self="${BASH_SOURCE[0]:-$0}"
     here="$(cd "$(dirname "$self")" 2>/dev/null && pwd)" || here=""
 
     hal="$top/hardware/nxp/nfc"
-    pdir="${here:-$top/device/tecno/KL5}/patches/nfc"
+    pdir="${here:-$top/device/infinix/X6728}/patches/nfc"
 
     if [ ! -d "$hal" ]; then
         echo "vendorsetup.sh: PATCH_NFC is set but $hal does not exist - skipped"
@@ -72,19 +72,19 @@ apply_kl5n_nfc_hal_patches() {
 
 case "${PATCH_NFC:-}" in
     true|TRUE|True|1|yes|YES|on|ON)
-        apply_kl5n_nfc_hal_patches
+        apply_x6728_nfc_hal_patches
         ;;
 esac
 
 # Applies patches/systemui/*.patch to frameworks/base on every envsetup.sh run.
 # Opt out with PATCH_SHADE=0. Details: patches/systemui/README.md.
-apply_kl5_systemui_patches() {
+apply_x6728_systemui_patches() {
     top="${ANDROID_BUILD_TOP:-$PWD}"
     self="${BASH_SOURCE[0]:-$0}"
     here="$(cd "$(dirname "$self")" 2>/dev/null && pwd)" || here=""
 
     fb="$top/frameworks/base"
-    pdir="${here:-$top/device/tecno/KL5}/patches/systemui"
+    pdir="${here:-$top/device/infinix/X6728}/patches/systemui"
 
     if [ ! -d "$fb" ]; then
         echo "vendorsetup.sh: $fb does not exist - SystemUI patch skipped" >&2
@@ -148,6 +148,6 @@ case "${PATCH_SHADE:-1}" in
         echo "vendorsetup.sh: PATCH_SHADE=$PATCH_SHADE - SystemUI shade patch skipped"
         ;;
     *)
-        apply_kl5_systemui_patches
+        apply_x6728_systemui_patches
         ;;
 esac

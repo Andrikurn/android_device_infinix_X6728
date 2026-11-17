@@ -18,8 +18,8 @@ Applied by `vendorsetup.sh` on every `envsetup.sh` run, once, idempotently; opt 
 `PATCH_SHADE=0`. By hand, from `frameworks/base`:
 
 ```sh
-git apply ../../device/tecno/KL5/patches/systemui/0001-*.patch
-git apply --reverse ../../device/tecno/KL5/patches/systemui/0001-*.patch
+git apply ../../device/infinix/X6728/patches/systemui/0001-*.patch
+git apply --reverse ../../device/infinix/X6728/patches/systemui/0001-*.patch
 ```
 
 Generated against lineage-23.2 `NotificationShadeWindowControllerImpl.java`,

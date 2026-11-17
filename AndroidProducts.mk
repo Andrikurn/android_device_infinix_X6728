@@ -1,17 +1,13 @@
 #
-# Copyright (C) 2023 The LineageOS Project
+# Copyright (C) 2023-2026 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_KL5.mk \
-    $(LOCAL_DIR)/lineage_KL5n.mk
+    $(LOCAL_DIR)/lineage_X6728.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_KL5-user \
-    lineage_KL5-userdebug \
-    lineage_KL5-eng \
-    lineage_KL5n-user \
-    lineage_KL5n-userdebug \
-    lineage_KL5n-eng
+    lineage_X6728-user \
+    lineage_X6728-userdebug \
+    lineage_X6728-eng
