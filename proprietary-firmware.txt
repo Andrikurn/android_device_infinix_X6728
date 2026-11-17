@@ -1,10 +1,10 @@
-## All proprietary files from this list, unless pinned and noted otherwise, are
-## from Tecno-Spark-30C-KL5-31
+## All proprietary files from this list, unless pinned and noted otherwise,
+## are from Infinix/X6728-OP/Infinix-X6728:15/AP3A.240905.015.A2/260912V2641:user/release-keys
 
 gz.img;AB
-lk.img;AB|f12d57fc28c363529118d01e58501aa2e8034b3b
-logo.bin:logo.img;AB|0607e7eb5aaffc1cdc3a8a9316736ffa5b6c9a3e
-md1img.img;AB
+lk.img;AB|3d09421dcdaa04de589084fcc04711e99bc225e3
+logo.bin:logo.img;AB
+modem.img;AB
 scp.img;AB
 spmfw.img;AB
 sspm.img;AB
