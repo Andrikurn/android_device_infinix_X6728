@@ -54,7 +54,10 @@ PRODUCT_PACKAGES += \
     libaudioclient_shim \
     libui_shim
 
-# A/B (stock boot control service comes from the vendor tree)
+# A/B (normal boot control comes from the stock vendor blob; recovery still
+# needs the source-built variant for slot marking during OTA)
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.mediatek_recovery
 
 PRODUCT_PACKAGES += \
     create_pl_dev \
