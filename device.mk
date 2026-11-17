@@ -382,9 +382,5 @@ endif
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
 
-# Inherit the proprietary files
+# Inherit the proprietary files (camera, NFC, all blobs included)
 $(call inherit-product, vendor/infinix/X6728/X6728-vendor.mk)
-
-# X6728: layer the camera blobs and the PN553 NFC stack on the shared vendor tree.
-$(call inherit-product, vendor/infinix/X6728/X6728-camera.mk)
-$(call inherit-product, vendor/infinix/X6728/X6728-nfc.mk)
