@@ -13,6 +13,7 @@ BUILD_BROKEN_DUP_RULES := true
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
     boot \
+    init_boot \
     dtbo \
     vendor_boot \
     system \
@@ -116,16 +117,11 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(sort $(BOARD_VENDOR_RAMDISK_KERNEL_MODU
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules/modules.load.vendor))
 BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules/vendor/*.ko)
 
-## X6728: swap in the vermagic-patched imgsensor_isp4.ko shipped in the vendor
-## tree. It keeps the same basename, so modules.load.vendor and the init.insmod
-## scripts need no changes.
-BOARD_VENDOR_KERNEL_MODULES := $(filter-out %/imgsensor_isp4.ko,$(BOARD_VENDOR_KERNEL_MODULES))
-BOARD_VENDOR_KERNEL_MODULES += vendor/infinix/X6728/proprietary_kl5n/vendor/lib/modules/imgsensor_isp4.ko
-
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # BOARD_KERNEL_PAGESIZE * 64
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
+BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 8388608
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
 
 BOARD_SUPER_PARTITION_SIZE := 8589934592
