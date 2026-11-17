@@ -124,11 +124,8 @@ BOARD_SUPER_PARTITION_GROUPS := main
 BOARD_MAIN_PARTITION_LIST := \
     product \
     system \
-    system_dlkm \
     system_ext \
-    vendor \
-    vendor_dlkm \
-    odm_dlkm
+    vendor
 
 BOARD_MAIN_SIZE := 10735321088
 
@@ -142,11 +139,8 @@ BOARD_USES_METADATA_PARTITION := true
 
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM := system
-TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
-TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
-TARGET_COPY_OUT_ODM_DLKM := odm_dlkm
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
