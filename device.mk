@@ -87,19 +87,9 @@ PRODUCT_PACKAGES += \
     checkpoint_gc \
     otapreopt_script
 
-# Audio
-PRODUCT_PACKAGES += \
-    android.hardware.audio@7.0-impl:32 \
-    android.hardware.audio.effect@7.0-impl:32 \
-    android.hardware.audio.service
-
-# AOSP pre-processing effects (AGC/AEC/NS) referenced by audio_effects.xml
+# Audio (stock Android 15 AIDL audio + Bluetooth HALs come from the vendor tree)
 PRODUCT_PACKAGES += \
     libaudiopreprocessing
-
-PRODUCT_PACKAGES += \
-    audio.bluetooth.default:32 \
-    android.hardware.bluetooth.audio-impl:32
 
 PRODUCT_PACKAGES += \
     Audioservice.tran \
