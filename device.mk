@@ -133,14 +133,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
 
-# Display
+# Display (stock AIDL composer 3.3 comes from the vendor tree)
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.1-service \
     android.hardware.memtrack-service.mediatek
 
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm-service.clearkey
+# DRM (clearkey service comes from the vendor tree)
 
 # DT2W
 PRODUCT_COPY_FILES += \
@@ -161,10 +158,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FMRadio
 
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
+# Gatekeeper (stock trustonic service comes from the vendor tree)
 
 # Health
 PRODUCT_PACKAGES += \
@@ -178,9 +172,7 @@ PRODUCT_PACKAGES += \
     libhidltransport \
     libhidltransport.vendor 
 
-# Light
-PRODUCT_PACKAGES += \
-    android.hardware.light-service.lineage
+# Light (stock mediatek service comes from the vendor tree)
 
 # Linker
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
