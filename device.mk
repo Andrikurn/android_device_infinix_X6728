@@ -312,7 +312,6 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.1.vendor:64 \
     android.frameworks.sensorservice@1.0:64 \
     android.frameworks.sensorservice@1.0.vendor:64 \
-    android.hardware.sensors@2.1-service.multihal \
     android.hardware.sensors@2.0-ScopedWakelock.vendor:64
 
 PRODUCT_PACKAGES += \
@@ -335,10 +334,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client 
 
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl
-
+# Thermal (stock mediatek service comes from the vendor tree)
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0.vendor
 
