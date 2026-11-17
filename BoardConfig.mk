@@ -29,18 +29,11 @@ DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-2a-dotprod
+TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a75
-
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-2a
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
 
 # Enable 64-bit for non-zygote.
 ZYGOTE_FORCE_64 := true
@@ -125,7 +118,6 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 8388608
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
 
-# Partition layout per stock scatter / super metadata: 10 GiB super, group "main".
 BOARD_SUPER_PARTITION_SIZE := 10737418240
 BOARD_SUPER_PARTITION_GROUPS := main
 
@@ -137,6 +129,7 @@ BOARD_MAIN_PARTITION_LIST := \
     vendor \
     vendor_dlkm \
     odm_dlkm
+
 BOARD_MAIN_SIZE := 10735321088
 
 # Partitions - Filesystem
