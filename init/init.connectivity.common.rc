@@ -1,5 +1,4 @@
 # MTK connectivity .rc configure
-#NFBD:add for nfc by yunfei.wu 20211218
 on post-fs-data
 
 
