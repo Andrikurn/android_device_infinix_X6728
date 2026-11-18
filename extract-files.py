@@ -27,14 +27,13 @@ namespace_imports = [
 
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
-    ('libsink',): lib_fixup_remove,
 }
 
 blob_fixups: blob_fixups_user_type = {
-    'system_ext/lib64/libsink.so': blob_fixup()
-        .add_needed('libaudioclient_shim.so'),
-    'system_ext/lib64/libsource.so': blob_fixup()
-        .add_needed('libui_shim.so'),
+    # libsegmention uses tensorflow_gainference_* symbols but only declares
+    # libtflite_native_seginference in DT_NEEDED; add the real provider.
+    'vendor/lib64/libsegmention.so': blob_fixup()
+        .add_needed('libtflite_native_gainference.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

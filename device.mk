@@ -50,10 +50,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.dbg.vt_avail_ovr=1 \
     persist.dbg.wfc_avail_ovr=1
 
-PRODUCT_PACKAGES += \
-    libaudioclient_shim \
-    libui_shim
-
 # A/B (normal boot control comes from the stock vendor blob; recovery still
 # needs the source-built variant for slot marking during OTA)
 PRODUCT_PACKAGES += \
@@ -294,7 +290,6 @@ PRODUCT_PACKAGES += \
 
 # Recovery touch firmware (DTB sets firmware_class.path=/vendor/firmware)
 PRODUCT_COPY_FILES += \
-    vendor/infinix/X6728/proprietary/vendor/firmware/hdl_firmware_00.img:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware/hdl_firmware_00.img \
     vendor/infinix/X6728/proprietary/vendor/firmware/hdl_firmware_01.img:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware/hdl_firmware_01.img
 
 PRODUCT_PACKAGES += \
