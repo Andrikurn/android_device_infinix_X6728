@@ -75,7 +75,6 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_SCREEN_DENSITY := 320
 
 # DTBO
-BOARD_KERNEL_SEPARATED_DTBO := true
 
 # HIDL
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
@@ -151,7 +150,6 @@ BOARD_HAS_MTK_HARDWARE := true
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/properties/product.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
-TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 
 # Recovery
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
