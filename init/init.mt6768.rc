@@ -1007,24 +1007,3 @@ on property:vendor.mtk.md1.status=reset
 on property:persist.vendor.mediatek.fast_charging.support=*
     write /sys/devices/platform/charger/fast_chg_indicator ${persist.vendor.mediatek.fast_charging.support}
 
-
-service vendor.hwcomposer-2-1 /vendor/bin/hw/android.hardware.graphics.composer@2.1-service
-    interface android.hardware.graphics.composer@2.1::IComposer default
-    class hal animation
-    user system
-    group graphics drmrpc
-    capabilities SYS_NICE
-    onrestart restart surfaceflinger
-    task_profiles ProcessCapacityHigh MaxPerformance
-	override
-
-service vendor.gralloc-4-0 /vendor/bin/hw/android.hardware.graphics.allocator@4.0-service-mediatek
-    interface android.hardware.graphics.allocator@4.0::IAllocator default
-    class hal animation
-    interface android.hardware.graphics.allocator@4.0::IAllocator default
-    user system
-    group graphics drmrpc
-    capabilities SYS_NICE
-    task_profiles ProcessCapacityHigh MaxPerformance
-    onrestart restart surfaceflinger
-    override
