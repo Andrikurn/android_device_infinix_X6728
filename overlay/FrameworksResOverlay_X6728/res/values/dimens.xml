@@ -14,7 +14,7 @@
     <!-- Status bar heights: stock is 40dip portrait / 28dip landscape, +4dip so
          the bar content sits lower under the punch-hole (see config.xml). -->
     <dimen name="status_bar_height_default">44.0dip</dimen>
-    <dimen name="status_bar_height_portrait">44.0dip</dimen>
+    <dimen name="status_bar_height_portrait">36.0dip</dimen>
     <dimen name="status_bar_height_landscape">28.0dip</dimen>
     <!-- Navigation bar and display corners: stock X6728 values. -->
     <dimen name="navigation_bar_height">40.0dip</dimen>

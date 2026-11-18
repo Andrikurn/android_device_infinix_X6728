@@ -27,25 +27,23 @@
       array. The brightness values must be non-negative and non-decreasing. This must be
       overridden in platform specific overlays -->
     <array name="config_autoBrightnessDisplayValuesNits">
-        <item>4.5225</item>
-        <item>20.246</item>
-        <item>55.509</item>
-        <item>74.653</item>
-        <item>82.757</item>
-        <item>93.15</item>
-        <item>117.678</item>
-        <item>138.666</item>
-        <item>164.847</item>
-        <item>189.157</item>
-        <item>207.656</item>
-        <item>221.191</item>
-        <item>277.164</item>
-        <item>350.798</item>
-        <item>391.524</item>
-        <item>414.81</item>
-        <item>434.151</item>
-        <item>455.291</item>
-        <item>480</item>
+        <item>5</item>
+        <item>54.65449905395508</item>
+        <item>100.5</item>
+        <item>130.65040588378906</item>
+        <item>143.1544952392578</item>
+        <item>149.10159301757812</item>
+        <item>186.53030395507812</item>
+        <item>202.57879638671875</item>
+        <item>212.01919555664062</item>
+        <item>226.28680419921875</item>
+        <item>232.30279541015625</item>
+        <item>243.7366943359375</item>
+        <item>284.0856018066406</item>
+        <item>322.0505065917969</item>
+        <item>412.91448974609375</item>
+        <item>500</item>
+        <item>560</item>
     </array>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
@@ -65,66 +63,64 @@
         <item>256</item>
         <item>384</item>
         <item>512</item>
-        <item>640</item>
         <item>768</item>
-        <item>896</item>
+        <item>900</item>
         <item>1536</item>
+        <item>2000</item>
         <item>2560</item>
-        <item>3584</item>
-        <item>4608</item>
-        <item>5632</item>
-        <item>7168</item>
-        <item>8192</item>
+        <item>3148</item>
+        <item>4475</item>
+        <item>5000</item>
     </integer-array>
 
     <integer-array name="config_backlightSettingsValues">
-        <item>1</item>
+        <item>2</item>
         <item>10</item>
-        <item>20</item>
-        <item>31</item>
-        <item>43</item>
-        <item>56</item>
-        <item>70</item>
-        <item>85</item>
-        <item>88</item>
-        <item>97</item>
-        <item>108</item>
-        <item>120</item>
-        <item>133</item>
-        <item>147</item>
-        <item>162</item>
+        <item>19</item>
+        <item>29</item>
+        <item>40</item>
+        <item>52</item>
+        <item>65</item>
+        <item>79</item>
+        <item>81</item>
+        <item>91</item>
+        <item>103</item>
+        <item>116</item>
+        <item>130</item>
+        <item>145</item>
+        <item>161</item>
         <item>178</item>
-        <item>195</item>
-        <item>213</item>
-        <item>232</item>
+        <item>196</item>
+        <item>215</item>
+        <item>235</item>
         <item>255</item>
     </integer-array>
 
     <integer-array name="config_brightnessSettingsValues">
-        <item>1</item>
-        <item>15</item>
-        <item>29</item>
-        <item>43</item>
-        <item>57</item>
-        <item>71</item>
-        <item>85</item>
-        <item>99</item>
+        <item>2</item>
+        <item>16</item>
+        <item>30</item>
+        <item>44</item>
+        <item>58</item>
+        <item>72</item>
+        <item>86</item>
+        <item>100</item>
         <item>102</item>
-        <item>113</item>
-        <item>127</item>
-        <item>141</item>
-        <item>155</item>
-        <item>169</item>
-        <item>183</item>
-        <item>197</item>
-        <item>211</item>
-        <item>225</item>
-        <item>239</item>
+        <item>114</item>
+        <item>128</item>
+        <item>142</item>
+        <item>156</item>
+        <item>170</item>
+        <item>184</item>
+        <item>198</item>
+        <item>212</item>
+        <item>226</item>
+        <item>240</item>
         <item>255</item>
     </integer-array>
 
     <integer-array name="config_screenBrightnessBacklight">
-        <item>1</item>
+        <item>2</item>
         <item>15</item>
         <item>30</item>
         <item>45</item>
@@ -145,24 +141,24 @@
     </integer-array>
 
     <array name="config_screenBrightnessNits">
-        <item>4.34064</item>
-        <item>27.62304</item>
-        <item>57.183743</item>
-        <item>87.3361</item>
-        <item>116.81923</item>
-        <item>146.81923</item>
-        <item>175.56557</item>
-        <item>204.94415</item>
-        <item>233.41037</item>
-        <item>262.55884</item>
-        <item>290.5897</item>
-        <item>318.51608</item>
-        <item>346.09412</item>
-        <item>373.99353</item>
-        <item>401.39874</item>
-        <item>427.95197</item>
-        <item>454.28937</item>
-        <item>480</item>
+        <item>5</item>
+        <item>32.22687911987305</item>
+        <item>66.71437072753906</item>
+        <item>101.8921127319336</item>
+        <item>136.2891082763672</item>
+        <item>171.2891082763672</item>
+        <item>204.8264923095703</item>
+        <item>239.1015167236328</item>
+        <item>272.3121032714844</item>
+        <item>306.31866455078125</item>
+        <item>339.02130126953125</item>
+        <item>371.60211181640625</item>
+        <item>403.7764587402344</item>
+        <item>436.3258056640625</item>
+        <item>468.2985534667969</item>
+        <item>499.27728271484375</item>
+        <item>530.0042724609375</item>
+        <item>560</item>
     </array>
 
     <!-- The type of the light sensor to be used by the display framework for things like
@@ -180,8 +176,8 @@
          when adapting to brighter or darker environments.  This parameter controls how quickly
          brightness changes occur in response to an observed change in light level that exceeds the
          hysteresis threshold. -->
-    <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
-    <integer name="config_autoBrightnessDarkeningLightDebounce">1000</integer>
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">3000</integer>
 
     <!-- Flag indicating whether we should enable the automatic brightness.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
@@ -191,7 +187,7 @@
          -2 is invalid so setting will resort to int value specified above.
          Set this to 0.0 to allow screen to go to minimal brightness.
          The user is forbidden from setting the brightness below this level. -->
-    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.001960785</item>
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.005427997093647718</item>
 
     <!-- Maximum screen brightness allowed by the power manager.
          -2 is invalid so setting will resort to int value specified above.
@@ -202,7 +198,7 @@
     <!-- Default screen brightness setting set.
          -2 is invalid so setting will resort to int value specified above.
          Must be in the range specified by minimum and maximum. -->
-    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.19685038924217224</item>
 
     <!-- Screen brightness used to dim the screen when the user activity
          timeout expires.  May be less than the minimum allowed brightness setting
@@ -230,7 +226,7 @@
     <bool name="config_supportsMicToggle">true</bool>
 
     <!-- Whether UI for multi user should be shown -->
-    <bool name="config_enableMultiUserUI">true</bool>
+    <bool name="config_enableMultiUserUI">false</bool>
 
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
          on the headphone/microphone jack. When false use the older uevent framework. -->
@@ -267,12 +263,52 @@
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
-        <item>"/system/framework/framework.jar"</item>
-        <item>"/system/framework/services.jar"</item>
-        <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
-        <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
-        <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
-        <item>"/system/bin/surfaceflinger"</item>
+        <item>/system/framework/arm/boot-mediatek-framework.vdex</item>
+        <item>/system/lib/libjavacrypto.so</item>
+        <item>/system/lib/libhidltransport.so</item>
+        <item>/system/framework/arm/boot-core-libart.oat</item>
+        <item>/system/framework/arm/boot-conscrypt.oat</item>
+        <item>/system/framework/arm/boot-core-libart.vdex</item>
+        <item>/system/framework/arm/boot-ext.vdex</item>
+        <item>/system/framework/arm/boot.vdex</item>
+        <item>/system/framework/arm/boot-framework.vdex</item>
+        <item>/system/lib64/android.hardware.graphics.common@1.2.so</item>
+        <item>/system/lib64/android.hardware.graphics.common@1.0.so</item>
+        <item>/system/lib64/android.hardware.graphics.common@1.1.so</item>
+        <item>/system/lib64/android.hardware.graphics.common@2.1.so</item>
+        <item>/system/lib64/libdmabufheap.so</item>
+        <item>/system/lib64/libion.so</item>
+        <item>/vendor/lib64/vendor.mediatek.hardware.mtkpower@1.0.so</item>
+        <item>/system/lib64/libbinder.so</item>
+        <item>/system/lib64/libcamera_metadata.so</item>
+        <item>/vendor/lib64/libbwc.so</item>
+        <item>/system/lib64/libhidlbase.so</item>
+        <item>/system/framework/arm64/boot-framework-adservices.oat</item>
+        <item>/system/framework/arm64/boot-framework-adservices.vdex</item>
+        <item>/system/framework/arm64/boot-framework.oat</item>
+        <item>/system/lib64/libhwui.so</item>
+        <item>/system/lib64/libandroid_runtime.so</item>
+        <item>/system/lib64/libstlport_shared_n1.so</item>
+        <item>/system/lib64/libmedia_jni.so</item>
+        <item>/system/lib64/libgui.so</item>
+        <item>/apex/com.android.runtime/lib64/bionic/libc.so</item>
+        <item>/apex/com.android.art/javalib/core-oj.jar</item>
+        <item>/apex/com.android.i18n/javalib/core-icu4j.jar</item>
+        <item>/system/lib64/libexpat.so</item>
+        <item>/system/lib64/libutils.so</item>
+        <item>/system/lib64/libui.so</item>
+        <item>/system/lib64/libunwindstack.so</item>
+        <item>/system/lib64/libbase.so</item>
+        <item>/system/lib64/libc++.so</item>
+        <item>/vendor/lib64/libOpenCL.so</item>
+        <item>/apex/com.android.vndk.v31/lib64/libexif.so</item>
+        <item>/apex/com.android.vndk.v31/lib64/libfmq.so</item>
+        <item>/apex/com.android.vndk.v31/lib64/libhidlmemory.so</item>
+        <item>/system/bin/surfaceflinger</item>
+        <item>/system/lib64/libinputreader.so</item>
+        <item>/system/lib64/libinputflinger.so</item>
+        <item>/system/lib64/libinput.so</item>
+        <item>/vendor/lib64/hw/hwcomposer.mtk_common.so</item>
     </string-array>
 
     <!-- Should the pinner service pin the Home application? -->
@@ -369,7 +405,7 @@
     <integer name="config_defaultRefreshRate">0</integer>
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware. -->
-    <bool name="config_setColorTransformAccelerated">false</bool>
+    <bool name="config_setColorTransformAccelerated">true</bool>
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware for individual layers. -->
     <bool name="config_setColorTransformAcceleratedPerLayer">false</bool>
