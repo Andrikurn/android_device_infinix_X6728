@@ -974,7 +974,6 @@ system_ext/apex/com.android.vndk.v34.apex
 system_ext/lib64/libcomposer_ext.so;MODULE_SUFFIX=_systemext
 system_ext/lib64/vendor.mediatek.hardware.composer_ext-V1-ndk.so;MODULE_SUFFIX=_systemext
 system_ext/lib64/vendor.mediatek.hardware.composer_ext@1.0.so;MODULE_SUFFIX=_systemext
-vendor/apex/com.android.hardware.cas.apex
 vendor/bin/hw/android.hardware.audio.service-aidl.mediatek;DISABLE_DEPS
 vendor/bin/hw/android.hardware.boot-service.mtk;DISABLE_DEPS
 vendor/bin/hw/android.hardware.contexthub-service.tinysys;DISABLE_DEPS
