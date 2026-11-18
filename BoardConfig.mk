@@ -148,6 +148,8 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
+# X6728 does not ship the deprecated HIDL CAS 1.2 HAL (AOSP 15 deprecates it).
+TARGET_REQUIRES_HIDL_CAS_HAL := false
 BOARD_HAS_MTK_HARDWARE := true
 
 # Properties
