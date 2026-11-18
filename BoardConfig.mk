@@ -7,7 +7,6 @@
 DEVICE_PATH := device/infinix/X6728
 KERNEL_PATH := device/infinix/X6728-kernel
 
-BUILD_BROKEN_DUP_RULES := true
 
 # A/B
 AB_OTA_UPDATER := true
