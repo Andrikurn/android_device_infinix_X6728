@@ -80,7 +80,7 @@
         <value>72.39</value>
         <value>75.43</value>
     </array>
-    <array name="cpu.speeds.cluster1">
+    <array name="cpu.active.cluster1">
         <value>50.28</value>
         <value>52.34</value>
         <value>54.85</value>
@@ -138,7 +138,7 @@
     <array name="memory.bandwidths">
         <value>23.7</value>
     </array>
-    <item name="battery.capacity">5000</item>
+    <item name="battery.capacity">5160</item>
     <item name="wifi.controller.idle">0</item>
     <item name="wifi.controller.rx">0</item>
     <item name="wifi.controller.tx">0</item>
