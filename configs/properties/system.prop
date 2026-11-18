@@ -34,7 +34,6 @@ qs.fps.limited=2
 qs.blur.fps.limited=2
 
 # Power off opt in IPO
-sys.ipo.pwrdncap=2
 
 # Radio
 persist.sys.radio.force_lte_ca=true
