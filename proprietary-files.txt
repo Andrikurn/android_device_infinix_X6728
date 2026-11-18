@@ -884,7 +884,6 @@ vendor/app/mcRegistry/07150000000000000000000000000000.drbin
 vendor/app/mcRegistry/07150000000000000000000000000000.tlbin
 vendor/app/mcRegistry/07210000000000000000000000000000.drbin
 vendor/app/mcRegistry/07210000000000000000000000000000.tlbin
-vendor/bin/hw/android.hardware.drm-service.clearkey;DISABLE_DEPS
 vendor/bin/hw/vendor.mediatek.hardware.mtkpower_applist-service.mediatek;DISABLE_DEPS
 vendor/bin/hw/vendor.mediatek.hardware.pq_aidl-service
 vendor/bin/v3avpud-64b
@@ -909,7 +908,6 @@ vendor/etc/dts/current_bluetooth44k
 vendor/etc/dts/current_bluetooth48k
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_DoCoMo.xml
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Rakuten.xml
-vendor/etc/init/android.hardware.drm-service.clearkey.rc
 vendor/etc/init/mtkpower_applist-mtk-default.rc
 vendor/etc/init/thermal-mediatek.rc
 vendor/etc/init/v3avpud-64b.rc

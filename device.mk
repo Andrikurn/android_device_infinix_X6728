@@ -147,12 +147,9 @@ PRODUCT_PACKAGES += \
 
 # Gatekeeper (stock trustonic service comes from the vendor tree)
 
-# Health
+# Health (AIDL health service provided by the platform)
 PRODUCT_PACKAGES += \
-    android.hardware.health-V1-ndk \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery \
-    android.hardware.health@2.1-service
+    android.hardware.health-V1-ndk
 
 # HIDL 
 PRODUCT_PACKAGES += \
