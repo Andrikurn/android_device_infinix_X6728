@@ -1,4 +1,4 @@
 <config>
-    <allow-in-power-save package="com.transsition.audioserver" />
-    <allow-in-data-usage-save package="com.transsition.audioserver" />
+    <allow-in-power-save package="com.transsision.audioserver" />
+    <allow-in-data-usage-save package="com.transsision.audioserver" />
 </config>

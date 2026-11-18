@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 <permissions>
-    <privapp-permissions package="com.transsition.audioserver">
+    <privapp-permissions package="com.transsision.audioserver">
         <permission name="android.permission.RECEIVE_BOOT_COMPLETED"/>
         <permission name="android.permission.FOREGROUND_SERVICE"/>
         <permission name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
