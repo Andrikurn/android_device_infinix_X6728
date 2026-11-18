@@ -148,8 +148,6 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
-# X6728 does not ship the deprecated HIDL CAS 1.2 HAL (AOSP 15 deprecates it).
-TARGET_REQUIRES_HIDL_CAS_HAL := false
 BOARD_HAS_MTK_HARDWARE := true
 
 # Properties
@@ -174,7 +172,7 @@ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # SPL
-VENDOR_SECURITY_PATCH := 2025-07-01
+VENDOR_SECURITY_PATCH := 2026-09-05
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
