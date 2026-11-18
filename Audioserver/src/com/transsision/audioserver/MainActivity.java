@@ -24,8 +24,12 @@ public class MainActivity extends Activity {
     }
 
     private void setupEqualizer() {
-        equalizer = new Equalizer(0, 0);
-        equalizer.setEnabled(true);
+        try {
+            equalizer = new Equalizer(0, 0);
+            equalizer.setEnabled(true);
+        } catch (RuntimeException e) {
+            return;
+        }
 
         short[] range = equalizer.getBandLevelRange();
         final short minLevel = range[0];
