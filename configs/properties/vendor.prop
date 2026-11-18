@@ -1,8 +1,8 @@
 # Audio
 aaudio.mmap_exclusive_policy=0
 aaudio.mmap_policy=0
-ro.config.media_vol_default=10
-ro.config.vc_call_vol_default=4
+ro.config.media_vol_default=13
+ro.config.vc_call_vol_default=11
 ro.config.vc_call_vol_steps=11
 ro.vendor.audio.gain.support=true
 ro.vendor.audio.us.proximity=true
@@ -35,7 +35,7 @@ bluetooth.profile.pbap.server.enabled?=true
 bluetooth.profile.sap.server.enabled?=true
 persist.bluetooth.a2dp_offload.cap=sbc-aac
 persist.bluetooth.a2dp_offload.disabled=true
-ro.bluetooth.a2dp_offload.supported=true
+ro.bluetooth.a2dp_offload.supported=false
 ro.vendor.bt.platform=connac1x
 ro.vendor.mtk.bt_sap_enable=true
 vendor.bluetooth.ldac.abr=true
@@ -45,30 +45,30 @@ ro.mtk_cam_stereo_camera_support=1
 ro.vendor.mtk_slow_motion_support=1
 ro.vendor.camera3.zsl.default=140
 camera.disable_zsl_mode=1
-persist.vendor.camera3.pipeline.bufnum.base.imgo=4
+persist.vendor.camera3.pipeline.bufnum.base.imgo=3
 persist.vendor.camera3.pipeline.bufnum.base.lcso=4
-persist.vendor.camera3.pipeline.bufnum.base.rrzo=4
-persist.vendor.camera3.pipeline.bufnum.base.rsso=5
+persist.vendor.camera3.pipeline.bufnum.base.rrzo=3
+persist.vendor.camera3.pipeline.bufnum.base.rsso=4
 persist.vendor.camera3.pipeline.bufnum.min.high_ram.fdyuv=5
-persist.vendor.camera3.pipeline.bufnum.min.high_ram.imgo=7
+persist.vendor.camera3.pipeline.bufnum.min.high_ram.imgo=6
 persist.vendor.camera3.pipeline.bufnum.min.high_ram.lcso=7
-persist.vendor.camera3.pipeline.bufnum.min.high_ram.rrzo=7
-persist.vendor.camera3.pipeline.bufnum.min.high_ram.rsso=7
+persist.vendor.camera3.pipeline.bufnum.min.high_ram.rrzo=5
+persist.vendor.camera3.pipeline.bufnum.min.high_ram.rsso=6
 persist.vendor.camera3.pipeline.bufnum.min.low_ram.fdyuv=5
-persist.vendor.camera3.pipeline.bufnum.min.low_ram.imgo=6
+persist.vendor.camera3.pipeline.bufnum.min.low_ram.imgo=5
 persist.vendor.camera3.pipeline.bufnum.min.low_ram.lcso=6
-persist.vendor.camera3.pipeline.bufnum.min.low_ram.rrzo=6
-persist.vendor.camera3.pipeline.bufnum.min.low_ram.rsso=6
+persist.vendor.camera3.pipeline.bufnum.min.low_ram.rrzo=5
+persist.vendor.camera3.pipeline.bufnum.min.low_ram.rsso=5
 ro.vendor.camera.isp.support.colorspace=0
 ro.vendor.camera3.zsl.default=140
-ro.vendor.mtk_cam_security_support=1
+ro.vendor.mtk_cam_security_support=0
 ro.vendor.mtk_camera_app_version=3
 vendor.camera.mdp.cz.enable=1
 vendor.camera.mdp.dre.enable=0
 
 # Chip-info
 ro.soc.manufacturer=Mediatek
-ro.soc.model=MT6769S
+ro.soc.model=MT6768
 
 # Connsys
 persist.vendor.connsys.chipid=-1
@@ -109,7 +109,7 @@ ro.vendor.pq.mtk_pq_interface_support=0
 ro.vendor.pq.mtk_disp_c3d_support=0
 ro.vendor.pq.mtk_disp_tdshp_support=0
 ro.vendor.pq.mtk_disp_color_support=1
-ro.vendor.pq.mtk_disp_ccorr_support=0
+ro.vendor.pq.mtk_disp_ccorr_support=1
 ro.vendor.pq.mtk_disp_gamma_support=1
 ro.vendor.pq.mtk_aal_support=1
 ro.vendor.pq.mtk_dre30_support=0
@@ -121,7 +121,7 @@ ro.vendor.pq.disp_lcm_name_support=0
 ro.vendor.smvr.p2batch.hd=4
 ro.vendor.smvr.p2batch.vga=8
 ro.vendor.pq.disp_lcm_name_support=0
-ro.vendor.mtk_prefer_64bit_proc=0
+ro.vendor.mtk_prefer_64bit_proc=1
 ro.vendor.mtk_backlight_hwc_support=0
 ro.vendor.mml.mtk_mml_support=0
 
@@ -145,7 +145,7 @@ ro.vendor.mtk_trustonic_tee_support=1
 ro.hardware.gatekeeper=trustonic
 
 # GNSS
-ro.vendor.mtk_log_hide_gps=1
+ro.vendor.mtk_log_hide_gps=0
 
 # Keymaster
 ro.crypto.volume.filenames_mode=aes-256-cts
@@ -159,7 +159,7 @@ ro.vendor.mtk_config_max_dram_size=0x800000000
 ro.vendor.mtk_sec_video_path_support=1
 ro.vendor.mtk_video_hevc_enc_support=1
 ro.vendor.mtk_mvpu_security_support=0
-vendor.mtk.vdec.waitkeyframeforplay=9
+vendor.mtk.vdec.waitkeyframeforplay=11
 media.stagefright.thumbnail.prefer_hw_codecs=true
 ro.vendor.mtk_flv_playback_support=1
 vendor.mtk_thumbnail_optimization=true
@@ -167,8 +167,8 @@ vendor.media.omx=0
 
 # Mediatek
 ro.vendor.mediatek.platform=MT6768
-ro.vendor.mediatek.version.branch=alps-mp-s0.mp1
-ro.vendor.mediatek.version.release=alps-mp-s0.mp1.rc-V16.49_reallytek.wsr.s0mp1rc.k61v1.64.bsp_P9
+ro.vendor.mediatek.version.branch=alps-mp-v0.mp1
+ro.vendor.mediatek.version.release=alps-mp-v0.mp1.rc-V13.29_reallytek.v0mp1rc.k6991v1.64_P31
 
 # Neural Networks
 debug.mtk_tflite.target_nnapi=29
@@ -193,7 +193,7 @@ persist.vendor.radio.flashless.fsm_rw=0
 persist.vendor.radio.msimmode=dsds
 persist.vendor.radio.mtk_dsbp_support=2
 persist.vendor.radio.mtk_ps2_rat=L/W/G
-persist.vendor.radio.mtk_ps3_rat=G
+persist.vendor.radio.mtk_ps3_rat=W/G
 persist.vendor.radio.smart.data.switch=1
 ro.telephony.default_network=9,9,9,9
 ro.telephony.iwlan_operation_mode=AP-assisted
@@ -202,7 +202,7 @@ ro.vendor.mtk_c2k_lte_mode=0
 ro.vendor.mtk_c2k_support=0
 ro.vendor.mtk_eccci_c2k=1
 ro.vendor.mtk_embms_support=1
-ro.vendor.mtk_external_sim_only_slots=0
+ro.vendor.mtk_external_sim_only_slots=2
 ro.vendor.mtk_external_sim_support=1
 ro.vendor.mtk_fd_support=1
 ro.vendor.mtk_gwsd_capability=2
@@ -243,17 +243,17 @@ ro.vendor.mtk.sensor.support=yes
 debug.sf.enable_gl_backpressure=0
 debug.sf.latch_unsignaled=true
 debug.sf.auto_latch_unsignaled=true
-debug.sf.predict_hwc_composition_strategy=1
+debug.sf.predict_hwc_composition_strategy=0
 debug.sf.enable_transaction_tracing=false
 debug.sf.enable_hwc_vds=0
 debug.sf.disable_backpressure=1
 debug.sf.use_phase_offsets_as_durations=1
-debug.sf.late.sf.duration=14600000
-debug.sf.late.app.duration=16666666
-debug.sf.early.sf.duration=17600000
-debug.sf.early.app.duration=19000000
-debug.sf.earlyGl.sf.duration=19600000
-debug.sf.earlyGl.app.duration=21000000
+debug.sf.late.sf.duration=27600000
+debug.sf.late.app.duration=20000000
+debug.sf.early.sf.duration=27600000
+debug.sf.early.app.duration=20000000
+debug.sf.earlyGl.sf.duration=27600000
+debug.sf.earlyGl.app.duration=20000000
 debug.sf.late.sf.duration.90=9500000
 debug.sf.late.app.duration.90=11111111
 debug.sf.early.sf.duration.90=12500000
@@ -292,15 +292,15 @@ ro.mtk_key_manager_support=1
 ro.vendor.wifi.sap.concurrent.iface=ap1
 ro.vendor.wifi.sap.interface=ap0
 ro.vendor.wlan.chrdev=wmt_chrdev_wifi
-ro.vendor.wlan.gen=gen4m
+ro.vendor.wlan.gen=gen4m_6768
 ro.vendor.mtk_tb_wifi_3g_mode=0
 
 # LMKD
 ro.lmk.use_psi=true
-ro.lmk.psi_partial_stall_ms=70
+ro.lmk.psi_partial_stall_ms=35
 ro.lmk.psi_complete_stall_ms=350
 ro.lmk.thrashing_limit=50
 ro.lmk.thrashing_limit_decay=25
-ro.lmk.swap_free_low_percentage=10
+ro.lmk.swap_free_low_percentage=20
 ro.lmk.swap_util_max=95
 ro.lmk.kill_heaviest_task=true
