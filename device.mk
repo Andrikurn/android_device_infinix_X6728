@@ -270,7 +270,6 @@ PRODUCT_PACKAGES += \
     init.modem.rc \
     init.insmod.mt6768.cfg \
     init.mtkgki.rc \
-    init.connectivity.mt6768.rc \
     init.connectivity.common.rc \
     init_connectivity.rc \
     init.mt6768.rc \
