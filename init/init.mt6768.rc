@@ -81,7 +81,7 @@ on charger
 
     start fuelgauged
     start fuelgauged_nvram
-	start vendor.light-default 
+    start vendor.light-default
 
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/red/brightness
@@ -954,7 +954,7 @@ on property:sys.boot_completed=1
 # Extra Props    
     setprop sys.brightness.disable_gamma_conversion true
     setprop vendor.mediatek.powerhal.init 1
-    restart android-hardware-media-c2-hal-1-2
+    restart android-hardware-media-c2-hal
 
 # Battery info
 on property:persist.vendor.mediatek.fg.disable=1
