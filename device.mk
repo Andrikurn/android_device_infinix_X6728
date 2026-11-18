@@ -178,6 +178,7 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+    ApertureOverlay \
     CarrierConfigOverlay_X6728 \
     FrameworksResOverlay_X6728 \
     NfcResOverlay_X6728 \
