@@ -1,6 +1,5 @@
 <!-- VINTF device manifest for X6728, taken from the stock dump's combined
-     vendor/etc/vintf/manifest.xml (Android 15). Declares the HALs actually
-     registered by the blobs in vendor/infinix/X6728. -->
+     vendor/etc/vintf/manifest.xml (Android 15). -->
 <manifest version="8.0" type="device" target-level="202404">
     <hal format="aidl">
         <name>android.hardware.camera.provider</name>
