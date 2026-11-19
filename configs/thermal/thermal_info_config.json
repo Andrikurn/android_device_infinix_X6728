@@ -1,0 +1,40 @@
+{
+    "Sensors": [
+        {
+            "Name": "mtktsbattery",
+            "Type": "BATTERY",
+            "HotThreshold": ["NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN"],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "mtktscpu",
+            "Type": "CPU",
+            "HotThreshold": ["NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN"],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "mtktsAP",
+            "Type": "SKIN",
+            "HotThreshold": ["NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN"],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "mtktsbtsmdpa",
+            "Type": "POWER_AMPLIFIER",
+            "HotThreshold": ["NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN"],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        },
+        {
+            "Name": "mtktsbtsnrpa",
+            "Type": "POWER_AMPLIFIER",
+            "HotThreshold": ["NaN", "NaN", "NaN", "NaN", "NaN", "NaN", "NaN"],
+            "VrThreshold": "NaN",
+            "Multiplier": 0.001
+        }
+    ],
+    "CoolingDevices": []
+}
