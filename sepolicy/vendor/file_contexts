@@ -29,6 +29,15 @@
 
 # Trustonic
 /(vendor|system/vendor)/bin/kmsetkey_ca.trustonic                                                  u:object_r:trustonic_kmsetkey_ca_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.security\.keymint@3\.0-service\.trustonic        u:object_r:hal_keymint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper-service\.trustonic                    u:object_r:hal_gatekeeper_default_exec:s0
+/(vendor|system/vendor)/bin/mcDriverDaemon                                                         u:object_r:mobicore_exec:s0
+/(vendor|system/vendor)/app/mcRegistry(/.*)?                                                      u:object_r:mobicore_vendor_file:s0
+/data/vendor/mcRegistry(/.*)?                                                                     u:object_r:mobicore_data_file:s0
+/dev/mobicore                                                                                     u:object_r:mobicore_admin_device:s0
+/dev/mobicore-user                                                                                u:object_r:mobicore_user_device:s0
+/dev/t-base-tui                                                                                   u:object_r:mobicore_tui_device:s0
+/(vendor|system/vendor)/bin/hw/vendor\.trustonic\.tee-service                                     u:object_r:hal_tee_default_exec:s0
 
 # Vibrator
 /vendor/bin/hw/android\.hardware\.vibrator-service\.mediatek u:object_r:hal_vibrator_default_exec:s0

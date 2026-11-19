@@ -39,3 +39,4 @@ vendor.sys.thermal. u:object_r:vendor_thermal_engine_prop:s0
 
 # TEE property
 vendor.tee.googlekey.status                          u:object_r:vendor_mtk_trustonic_tee_prop:s0
+ro.vendor.trustonic.ready                           u:object_r:vendor_trustonic_prop:s0 exact bool
