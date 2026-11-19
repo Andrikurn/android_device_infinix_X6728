@@ -7,6 +7,7 @@ on post-fs-data
     chmod 0660 /dev/msensor
     chmod 0660 /dev/gsensor
     chmod 0660 /dev/als_ps
+    chmod 0660 /dev/sar
     chmod 0660 /dev/gyroscope
     chmod 0660 /dev/aal_als
     chmod 0660 /dev/humidity
@@ -31,6 +32,7 @@ on post-fs-data
     chown system system /dev/msensor
     chown radio system /dev/gsensor
     chown radio system /dev/als_ps
+    chown radio system /dev/sar
     chown radio system /dev/gyroscope
     chown system system /dev/aal_als
     chown system system /dev/humidity
