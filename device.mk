@@ -146,6 +146,12 @@ PRODUCT_PACKAGES += \
     FMRadio
 
 # Gatekeeper (stock trustonic service comes from the vendor tree)
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper-V1-ndk \
+    android.hardware.security.keymint-V3-ndk \
+    android.hardware.security.rkp-V3-ndk \
+    android.hardware.security.secureclock-V1-ndk \
+    android.hardware.security.sharedsecret-V1-ndk
 
 # Health (AIDL health service provided by the platform)
 PRODUCT_PACKAGES += \
