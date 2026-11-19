@@ -334,7 +334,9 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.3.vendor \
     android.hardware.usb.gadget@1.1.vendor
 
-# Vibrator (stock mediatek service comes from the vendor tree)
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator-service.mediatek
 
 # VNDK
 PRODUCT_PACKAGES += \
