@@ -715,6 +715,14 @@ on boot
     chmod 0664 /sys/class/leds/blue/brightness
     chown system system /sys/class/leds/blue/brightness
 
+    chown system system /sys/class/leds/vibrator/trigger
+    write /sys/class/leds/vibrator/trigger "transient"
+    chown system system /sys/class/leds/vibrator/activate
+    chown system system /sys/class/leds/vibrator/brightness
+    chown system system /sys/class/leds/vibrator/duration
+    chown system system /sys/class/leds/vibrator/state
+    chown system system /sys/class/timed_output/vibrator/enable
+
     #TCD:add XLJLHLJYR-21 by shouhui.li 2020.08.05 start
     chmod 0666 /dev/MT_pmic_adc_cali
     chmod 0666 /sys/class/leds/red/brightness
