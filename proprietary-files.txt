@@ -630,6 +630,7 @@ vendor/lib64/libtflite_native_seginference.so
 vendor/lib64/libcvsd_mtk.so
 # Tether Offload
 vendor/bin/hw/tetheroffloadservice;DISABLE_DEPS
+vendor/etc/init/android.hardware.tetheroffload-V1-service.rc
 vendor/bin/netdagent;DISABLE_DEPS
 vendor/etc/init/netdagent.rc
 vendor/lib64/libforkexecwrap.so

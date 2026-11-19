@@ -2,9 +2,81 @@
      vendor/etc/vintf/manifest.xml (Android 15). -->
 <manifest version="8.0" type="device" target-level="202404">
     <hal format="aidl">
+        <name>android.hardware.audio.core</name>
+        <version>2</version>
+        <fqname>IModule/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.audio.core</name>
+        <version>2</version>
+        <fqname>IModule/r_submix</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.audio.core</name>
+        <version>2</version>
+        <fqname>IModule/bluetooth</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.audio.core</name>
+        <version>2</version>
+        <fqname>IConfig/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.audio.effect</name>
+        <version>2</version>
+        <fqname>IFactory/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.biometrics.fingerprint</name>
+        <version>3</version>
+        <fqname>IFingerprint/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.bluetooth</name>
+        <fqname>IBluetoothHci/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.bluetooth.audio</name>
+        <version>4</version>
+        <fqname>IBluetoothAudioProviderFactory/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.boot</name>
+        <fqname>IBootControl/default</fqname>
+    </hal>
+    <hal format="aidl">
         <name>android.hardware.camera.provider</name>
         <version>3</version>
         <fqname>ICameraProvider/internal/0</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.gnss</name>
+        <version>4</version>
+        <fqname>IGnss/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.graphics.allocator</name>
+        <version>2</version>
+        <fqname>IAllocator/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.graphics.composer3</name>
+        <version>3</version>
+        <fqname>IComposer/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.light</name>
+        <version>2</version>
+        <fqname>ILights/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.media.c2</name>
+        <version>1</version>
+        <fqname>IComponentStore/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.nfc</name>
+        <fqname>INfc/default</fqname>
     </hal>
     <hal format="aidl">
         <name>android.hardware.radio.config</name>
@@ -98,9 +170,27 @@
         <fqname>ISharedSecret/default</fqname>
     </hal>
     <hal format="aidl">
+        <name>android.hardware.sensors</name>
+        <version>2</version>
+        <fqname>ISensors/default</fqname>
+    </hal>
+    <hal format="aidl">
         <name>android.hardware.soundtrigger3</name>
         <version>2</version>
         <fqname>ISoundTriggerHw/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.tetheroffload</name>
+        <version>1</version>
+        <fqname>IOffload/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.usb.gadget</name>
+        <fqname>IUsbGadget/default</fqname>
+    </hal>
+    <hal format="native">
+        <name>mapper</name>
+        <fqname>@5.0/mediatek</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.aee</name>
@@ -143,6 +233,11 @@
         <fqname>IDmcService/default</fqname>
     </hal>
     <hal format="aidl">
+        <name>vendor.mediatek.hardware.gnss</name>
+        <version>3</version>
+        <fqname>IMtkGnss/default</fqname>
+    </hal>
+    <hal format="aidl">
         <name>vendor.mediatek.hardware.log</name>
         <fqname>ILog/ATMWiFiHidlServer</fqname>
         <fqname>ILog/ConnsysFWHidlServer</fqname>
@@ -161,6 +256,11 @@
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mms</name>
         <fqname>IMms/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.mediatek.hardware.mtkpower_applist</name>
+        <version>2</version>
+        <fqname>IMtkpower_applist/default</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mtkradioex.data</name>
@@ -214,6 +314,10 @@
         <fqname>IMtkRadioExVoice/slot2</fqname>
     </hal>
     <hal format="aidl">
+        <name>vendor.mediatek.hardware.netdagent</name>
+        <fqname>INetdagents/default</fqname>
+    </hal>
+    <hal format="aidl">
         <name>vendor.mediatek.hardware.nvram</name>
         <fqname>INvram/default</fqname>
     </hal>
@@ -229,6 +333,10 @@
     <hal format="aidl">
         <name>vendor.mediatek.hardware.videotelephony</name>
         <fqname>IVideoTelephony/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.nxp.nxpnfc_aidl</name>
+        <fqname>INxpNfc/default</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.transsion.hardware.trandatacenter</name>
