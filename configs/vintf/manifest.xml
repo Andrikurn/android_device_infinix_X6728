@@ -185,11 +185,6 @@
         <fqname>IOffload/default</fqname>
     </hal>
     <hal format="aidl">
-        <name>android.hardware.thermal</name>
-        <version>2</version>
-        <fqname>IThermal/default</fqname>
-    </hal>
-    <hal format="aidl">
         <name>android.hardware.usb.gadget</name>
         <fqname>IUsbGadget/default</fqname>
     </hal>

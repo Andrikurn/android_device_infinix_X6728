@@ -910,7 +910,6 @@ vendor/etc/dts/current_bluetooth48k
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_DoCoMo.xml
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Rakuten.xml
 vendor/etc/init/mtkpower_applist-mtk-default.rc
-vendor/bin/hw/android.hardware.thermal-service.mediatek;DISABLE_DEPS;MODULE_SUFFIX=_vendor
 vendor/etc/init/thermal-mediatek.rc
 vendor/etc/init/v3avpud-64b.rc
 vendor/etc/init/vendor.mediatek.hardware.pq_aidl-service.rc
