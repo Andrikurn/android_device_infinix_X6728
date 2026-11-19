@@ -153,9 +153,11 @@ PRODUCT_PACKAGES += \
     android.hardware.security.secureclock-V1-ndk \
     android.hardware.security.sharedsecret-V1-ndk
 
-# Health (AIDL health service provided by the platform)
+# Health
 PRODUCT_PACKAGES += \
-    android.hardware.health-V1-ndk
+    android.hardware.health-V1-ndk \
+    android.hardware.health-service.mediatek \
+    android.hardware.health-service.mediatek-recovery
 
 # HIDL 
 PRODUCT_PACKAGES += \
