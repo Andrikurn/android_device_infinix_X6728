@@ -1,4 +1,6 @@
 import /vendor/etc/init/hw/init.mtkgki.rc
+on early-init
+    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules trace_mmstat.ko
 
 # MTK project .rc configure
 
@@ -37,6 +39,10 @@ on post-fs-data
 
     chmod 0660 /dev/spm
     chown system system /dev/spm
+    chmod 0666 /dev/lirc0
+    chown system system /dev/lirc0
+    chmod 0666 /dev/irtx
+    chown system system /dev/irtx
 
 
 
@@ -49,6 +55,7 @@ on init
     # Therefore, if the target doesn't support sd hot-plugging (Ex: the SD card slot in a battery compartment), we need to export SECONDARY_STORAGE in 'boot' section
     #
     # export SECONDARY_STORAGE /storage/sdcard1
+    setprop persist.vendor.powerhal.dex2oat_threads 0
 
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
     class late_start
