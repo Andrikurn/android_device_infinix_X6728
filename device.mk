@@ -157,6 +157,29 @@ PRODUCT_PACKAGES += \
     android.hardware.security.secureclock-V1-ndk.vendor \
     android.hardware.security.sharedsecret-V1-ndk.vendor
 
+PRODUCT_PACKAGES += \
+    liblog.vendor \
+    libbinder_ndk.vendor \
+    libnativewindow.vendor \
+    libsync.vendor \
+    android.hardware.radio-V3-ndk.vendor \
+    libEGL.vendor \
+    android.hardware.graphics.common-V5-ndk.vendor \
+    libaudioaidlcommon.vendor \
+    libGLESv2.vendor \
+    android.media.audio.common.types-V3-ndk.vendor \
+    android.hardware.audio.effect-V2-ndk.vendor \
+    libdrm.vendor \
+    libGLESv3.vendor \
+    android.hardware.bluetooth.audio-V4-ndk.vendor \
+    libmediandk.vendor \
+    android.hardware.sensors-V2-ndk.vendor \
+    android.hardware.audio.core-V2-ndk.vendor \
+    android.hardware.radio.modem-V3-ndk.vendor \
+    android.hardware.radio.network-V3-ndk.vendor \
+    libaudio_aidl_conversion_common_ndk.vendor \
+    android.hardware.camera.device-V3-ndk.vendor
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-V1-ndk \
