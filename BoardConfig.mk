@@ -20,7 +20,10 @@ AB_OTA_PARTITIONS := \
     system \
     system_ext \
     product \
+    system_dlkm \
+    odm_dlkm \
     vendor \
+    vendor_dlkm \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor
@@ -84,6 +87,9 @@ TARGET_SCREEN_DENSITY := 320
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/device_framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    hardware/mediatek/vintf/mediatek_framework_compatibility_matrix_aidl.xml \
+    hardware/mediatek/vintf/mediatek_framework_compatibility_matrix.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 
 # Kernel
@@ -99,6 +105,9 @@ PRODUCT_COPY_FILES += \
 TARGET_PREBUILT_DTB := $(KERNEL_PATH)/dtb/mt6768.dtb
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtb/dtbo.img
 
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules/modules.load.system_dlkm))
+BOARD_SYSTEM_KERNEL_MODULES := $(addprefix $(KERNEL_PATH)/modules/system_dlkm/, $(BOARD_SYSTEM_KERNEL_MODULES_LOAD))
+
 ## vendor_boot modules
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules/modules.load.vendor_boot))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(KERNEL_PATH)/modules/vendor_boot/, $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))
@@ -112,7 +121,7 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(sort $(BOARD_VENDOR_RAMDISK_KERNEL_MODU
 
 ## vendor modules
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/modules/modules.load.vendor))
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/modules/vendor/*.ko)
+BOARD_VENDOR_KERNEL_MODULES := $(addprefix $(KERNEL_PATH)/modules/vendor/, $(BOARD_VENDOR_KERNEL_MODULES_LOAD))
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # BOARD_KERNEL_PAGESIZE * 64
@@ -128,27 +137,39 @@ BOARD_SUPER_PARTITION_GROUPS := main
 BOARD_MAIN_PARTITION_LIST := \
     product \
     system \
+    system_dlkm \
     system_ext \
-    vendor
+    odm_dlkm \
+    vendor \
+    vendor_dlkm
 
-BOARD_MAIN_SIZE := 10735321088
+BOARD_MAIN_SIZE := $(shell expr $(BOARD_SUPER_PARTITION_SIZE) - 4194304)
 
 # Partitions - Filesystem
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_ODM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+
+BOARD_USES_VENDOR_DLKMIMAGE := true
 
 BOARD_USES_METADATA_PARTITION := true
 
 TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_ODM_DLKM := odm_dlkm
 TARGET_COPY_OUT_SYSTEM := system
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
 BOARD_HAS_MTK_HARDWARE := true
+TARGET_USES_VULKAN := true
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
@@ -156,7 +177,9 @@ TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/properties/product.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
 
 # Recovery
+BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
+BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/fstab.mt6768
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -185,6 +208,9 @@ BOARD_AVB_BOOT_ROLLBACK_INDEX := 1
 BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 3
 
 BOARD_AVB_VBMETA_SYSTEM := system
+BOARD_AVB_SYSTEM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_ODM_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := 1

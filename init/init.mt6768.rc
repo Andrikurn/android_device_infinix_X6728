@@ -12,8 +12,6 @@ import /vendor/etc/init/hw/init.modem.rc
 
 on init
 
-    setprop init.svc_debug.no_fatal.keystore2 true
-
  #SPD: add dex2oat to 0-7 core by dewang.tan 20231214 start
     mkdir /dev/cpuset/dex2oat
     copy /dev/cpuset/cpus /dev/cpuset/dex2oat/cpus
@@ -1014,4 +1012,3 @@ on property:vendor.mtk.md1.status=reset
 # MTK fast charging support
 on property:persist.vendor.mediatek.fast_charging.support=*
     write /sys/devices/platform/charger/fast_chg_indicator ${persist.vendor.mediatek.fast_charging.support}
-
