@@ -83,6 +83,10 @@ PRODUCT_PACKAGES += \
     checkpoint_gc \
     otapreopt_script
 
+PRODUCT_PACKAGES += \
+    libaedv \
+    libladder
+
 # Audio (stock Android 15 AIDL audio + Bluetooth HALs come from the vendor tree)
 PRODUCT_PACKAGES += \
     libaudiopreprocessing
@@ -323,6 +327,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel/usb \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek \
+    hardware/mediatek/libaedv \
     hardware/mediatek/libmtkperf_client 
 
 # Thermal (AIDL HAL from hardware/mediatek)
