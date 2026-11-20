@@ -374,6 +374,11 @@ PRODUCT_PACKAGES += \
     libwifi-hal-wrapper:64 \
     android.hardware.wifi-service
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/logging/init.xgsi-bootlog.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.xgsi-bootlog.rc \
+    $(LOCAL_PATH)/logging/xgsi-bootlog.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/xgsi/xgsi-bootlog.sh \
+    $(LOCAL_PATH)/logging/xgsi-dmesg.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/xgsi/xgsi-dmesg.sh
+
 # GMS variant: vanilla / gapps / microg, selected by build-all.sh --gms.  Read at
 # product-config time, so clear out/target/product/<device> when switching mode.
 ifeq ($(WITH_GAPPS),true)
