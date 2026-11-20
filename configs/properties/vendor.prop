@@ -1,3 +1,5 @@
+ro.board.api_level=202404
+
 # Audio
 aaudio.mmap_exclusive_policy=0
 aaudio.mmap_policy=0
