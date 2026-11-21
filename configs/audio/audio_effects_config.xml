@@ -35,6 +35,7 @@
         <library name="bundle" path="libbundleaidl.so"/>
         <library name="downmix" path="libdownmixaidl.so"/>
         <library name="dynamics_processing" path="libdynamicsprocessingaidl.so"/>
+        <library name="env_reverbsw" path="libenvreverbsw.so"/>
         <library name="equalizersw" path="libequalizersw.so"/>
         <library name="haptic_generator" path="libhapticgeneratoraidl.so"/>
         <library name="loudness_enhancer" path="libloudnessenhanceraidl.so"/>
@@ -46,7 +47,7 @@
         <library name="visualizer" path="libvisualizeraidl.so"/>
         <library name="volumesw" path="libvolumesw.so"/>
         <library name="extensioneffect" path="libextensioneffect.so"/>
-        <library name="spatializersw" path="libspatializeraidl.so"/>
+        <library name="spatializersw" path="libspatializersw.so"/>
     </libraries>
 
     <!-- list of effects to load.
