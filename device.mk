@@ -11,4 +11,4 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/tecno/X6728/X6728-vendor.mk)
+$(call inherit-product, vendor/infinix/X6728/X6728-vendor.mk)
