@@ -61,6 +61,7 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_CMDLINE += androidboot.serialconsole=0
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Bootloader
 BOARD_VENDOR := infinix
