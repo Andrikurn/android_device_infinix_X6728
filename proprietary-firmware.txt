@@ -1,4 +1,4 @@
-# Firmware - from Infinix/X6728-OP/Infinix-X6728:15/AP3A.240905.015.A2/260903V3113:user/release-keys
+# Firmware - from Infinix/X6728-OP/Infinix-X6728:15/AP3A.240905.015.A2/260912V2641:user/release-keys
 
 gz.img;AB
 lk.img;AB
