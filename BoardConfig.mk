@@ -71,9 +71,6 @@ TARGET_NO_BOOTLOADER := true
 TARGET_SCREEN_DENSITY := 320
 TARGET_USES_VULKAN := true
 
-# HIDL
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
-
 # Kernel
 TARGET_NO_KERNEL_OVERRIDE := true
 TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
@@ -131,9 +128,9 @@ BOARD_USES_VENDOR_DLKMIMAGE := true
 BOARD_HAS_MTK_HARDWARE := true
 
 # Properties
-TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
-TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/properties/product.prop
+TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/configs/properties/system_ext.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
 
 # Recovery
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
@@ -181,9 +178,11 @@ BOARD_AVB_VENDOR_DLKM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
 # VINTF
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
-    $(DEVICE_PATH)/framework_compatibility_matrix.xml \
+    $(DEVICE_PATH)/configs/vintf/device_framework_compatibility_matrix.xml \
     hardware/mediatek/vintf/mediatek_framework_compatibility_matrix_aidl.xml \
     hardware/mediatek/vintf/mediatek_framework_compatibility_matrix.xml
+
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
 
 # Wi-Fi
 WPA_SUPPLICANT_VERSION := VER_0_8_X

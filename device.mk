@@ -180,6 +180,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
+# Modules
+PRODUCT_PACKAGES += \
+    init.insmod.sh
+
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
@@ -196,14 +200,16 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, hardware/mediatek/overlay/mssi.mk)
 
 PRODUCT_PACKAGES += \
-    ApertureOverlayX6728 \
     CarrierConfigX6728 \
     FrameworkResOverlayX6728 \
-    LineageSettingsOverlayX6728 \
-    LineageSystemUIOverlayX6728 \
-    NcmTetheringOverlay \
     SystemUIOverlayX6728 \
     WifiResOverlayX6728
+
+PRODUCT_PACKAGES += \
+    ApertureOverlayX6728 \
+    LineageSettingsOverlayX6728 \
+    LineageSystemUIOverlayX6728 \
+    NcmTetheringOverlay
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
@@ -220,7 +226,7 @@ PRODUCT_PACKAGES += \
     libpowerhalwrap_vendor
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 PRODUCT_PACKAGES += \
     vendor.mediatek.hardware.mtkpower@1.0.vendor
@@ -256,7 +262,6 @@ PRODUCT_PACKAGES += \
     init.cgroup.rc \
     init.connectivity.common.rc \
     init.connectivity.rc \
-    init.insmod.sh \
     init.modem.rc \
     init.mt6768.rc \
     init.mt6768.usb.rc \
