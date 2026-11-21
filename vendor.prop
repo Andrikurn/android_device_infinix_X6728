@@ -1,7 +1,5 @@
 # Audio
 audio.deep_buffer.media=true
-ro.config.vc_call_vol_default=6
-ro.config.vc_call_vol_steps=8
 ro.vendor.mtk_audio_tuning_tool_ver=V2.2
 ro.vendor.mtk_besloudness_support=1
 vendor.audio.powerhal.latency.ul=true
@@ -40,11 +38,9 @@ vendor.camera.mdp.dre.enable=0
 # Connectivity
 persist.vendor.connsys.chipid=-1
 persist.vendor.connsys.dynamic.dump=0
-persist.vendor.connsys.fm_chipid=mt6631
 persist.vendor.connsys.patch.version=-1
 ro.vendor.bt.connac3=no
 ro.vendor.bt.platform=connac1x
-ro.vendor.fm.platform=mt6631
 ro.vendor.gps.chrdev=gps_drv_stp
 ro.vendor.wlan.chrdev=wmt_chrdev_wifi
 ro.vendor.wlan.gen=gen4m_6768

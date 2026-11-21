@@ -262,7 +262,6 @@ PRODUCT_PACKAGES += \
     init.mt6768.usb.rc \
     init.mtkgki.rc \
     init.project.rc \
-    init.recovery.mt6768.rc \
     init.sensor_1_0.rc \
     init_connectivity.rc \
     ueventd.mt6768.rc
