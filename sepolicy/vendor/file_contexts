@@ -4,13 +4,9 @@
 /data/vendor/camera_watermark(/.*)?                                              u:object_r:vendor_watermark_data_file:s0
 /data/vendor/multicam(/.*)?                                                      u:object_r:transsion_camera_data_file:s0
 
-# Display
-/sys/kernel/tran_display(/.*)?                                                   u:object_r:sysfs_lcm_name:s0
-
 # Fingerprint
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint-service u:object_r:hal_fingerprint_default_exec:s0
 /dev/tran_fp                                                                     u:object_r:fingerprint_device:s0
-/sys/kernel/tran_fp(/.*)?                                                        u:object_r:sysfs_tran_fp:s0
 /data/vendor/fingerprint(/.*)?                                                   u:object_r:vendor_fp_data_file:s0
 /data/vendor/fpdump(/.*)?                                                        u:object_r:vendor_fp_data_file:s0
 /data/vendor/tran_fp(/.*)?                                                       u:object_r:vendor_fp_data_file:s0
