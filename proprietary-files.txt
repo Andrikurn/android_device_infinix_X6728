@@ -1,4 +1,4 @@
-# Unpinned blobs from Infinix/X6728-OP/Infinix-X6728:15/AP3A.240905.015.A2/260903V3113:user/release-keys
+# Unpinned blobs from Infinix/X6728-OP/Infinix-X6728:15/AP3A.240905.015.A2/260912V2641:user/release-keys
 
 # Audio
 system/lib64/av-audio-types-aidl-V1-ndk.so:system/lib64/av-audio-types-aidl-V3-ndk.so;FIX_SONAME
@@ -220,6 +220,14 @@ vendor/bin/hw/camerahalserver
 vendor/bin/hw/trancamserver
 vendor/bin/lib3a.ccu.dm
 vendor/bin/lib3a.ccu.pm
+vendor/etc/anc_siq/cache_hi5022q_17201981_back_g81
+vendor/etc/anc_siq/cache_ov50d40_17201988_back_g81
+vendor/etc/anc_siq/hc_opr_lite_cache_hi5022q_17201981_back_g81
+vendor/etc/anc_siq/hc_opr_lite_cache_ov50d40_17201988_back_g81
+vendor/etc/anc_siq/siq_ocl_cache_hi5022q_17201981_back_g81
+vendor/etc/anc_siq/siq_ocl_cache_ov50d40_17201988_back_g81
+vendor/etc/anc_siq/superiq_model_hi5022q_17201981_back_g81
+vendor/etc/anc_siq/superiq_model_ov50d40_17201988_back_g81
 vendor/etc/init/camerahalserver.rc
 vendor/etc/init/trancamserver.rc
 vendor/etc/tran_camprofiles.xml
@@ -291,6 +299,7 @@ vendor/lib64/libWaterMarkProc.so
 vendor/lib64/lib_bsscore.so
 vendor/lib64/libabfadp.so
 vendor/lib64/libaipe_bokeh.so
+vendor/lib64/libanc_hdr.so
 vendor/lib64/libasd.so
 vendor/lib64/libcalculatesharpness.so
 vendor/lib64/libcam.chdr.so
@@ -504,6 +513,7 @@ vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek
 vendor/bin/hw/android.hardware.graphics.composer@3.3-service
 vendor/bin/hw/vendor.mediatek.hardware.mmlpq@V1-service
 vendor/bin/hw/vendor.mediatek.hardware.pq_aidl-service
+vendor/etc/displayconfig/display_id_4627039422300187648.xml
 vendor/etc/gralloc/cam.xml
 vendor/etc/gralloc/dpu.xml
 vendor/etc/gralloc/dpu_aeu.xml
@@ -541,8 +551,10 @@ vendor/lib64/libFrameRecord.so
 vendor/lib64/libNoFpsActor.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libaal_cust.so
+vendor/lib64/libaal_key.so
 vendor/lib64/libaal_sec.so
 vendor/lib64/libaalservice.so
+vendor/lib64/libappgamepq.so
 vendor/lib64/libarm_egl_properties_sysprop.so
 vendor/lib64/libarm_gralloc_properties_sysprop.so
 vendor/lib64/libarm_mali_config_sysprops.so
@@ -619,6 +631,24 @@ vendor/etc/init/android.hardware.gnss-service.mediatek.rc
 vendor/etc/init/init.gps_drv.rc
 vendor/etc/init/mtk_agpsd_p.rc
 vendor/etc/init/mtk_lbs_service.rc
+vendor/etc/security/cacerts_supl/111e6273.0
+vendor/etc/security/cacerts_supl/3ad48a91.0
+vendor/etc/security/cacerts_supl/7651b327.0
+vendor/etc/security/cacerts_supl/c542733d.0
+vendor/etc/security/cacerts_supl/f336e3d1.0
+vendor/etc/security/cacerts_supl/lab/18dc3a8d.0
+vendor/etc/security/cacerts_supl/lab/1bc5ca0c.0
+vendor/etc/security/cacerts_supl/lab/1bc5ca0c.1
+vendor/etc/security/cacerts_supl/lab/2cbfcc3a.0
+vendor/etc/security/cacerts_supl/lab/35ef1c14.0
+vendor/etc/security/cacerts_supl/lab/399e7759.0
+vendor/etc/security/cacerts_supl/lab/586933d9.0
+vendor/etc/security/cacerts_supl/lab/66272d0d.0
+vendor/etc/security/cacerts_supl/lab/6f1dbe5e.0
+vendor/etc/security/cacerts_supl/lab/b5805141.0
+vendor/etc/security/cacerts_supl/lab/b805b58a.0
+vendor/etc/security/cacerts_supl/lab/ed7b215e.0
+vendor/etc/security/cacerts_supl/lab/ef4b31e6.0
 vendor/etc/slp_conf
 vendor/etc/vintf/manifest/gnss-default.xml:vendor/etc/vintf/manifest/gnss-aosp-mtk.xml
 vendor/etc/vintf/manifest/gnss-mtk.xml
@@ -711,7 +741,11 @@ vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.truston
 # Media
 vendor/bin/v3avpud-64b
 vendor/etc/init/v3avpud-64b.rc
+vendor/lib64/AVCSecureVdecCA.so
+vendor/lib64/VP9SecureVdecCA.so
+vendor/lib64/libAVCSecureVencCA.so
 vendor/lib64/libHEVCdec_sa.ca7.android.so
+vendor/lib64/libgz_gp_client.so
 vendor/lib64/libh264dec_customize.so
 vendor/lib64/libh264dec_sa.ca7.so
 vendor/lib64/libh264dec_sd.ca7.so
@@ -887,6 +921,7 @@ vendor/etc/virtual-spn-conf-by-efgid1.xml
 vendor/etc/virtual-spn-conf-by-efpnn.xml
 vendor/etc/virtual-spn-conf-by-efspn.xml
 vendor/etc/virtual-spn-conf-by-imsi.xml
+vendor/lib64/libcapctrl.so
 vendor/lib64/libcarrierconfig.so
 vendor/lib64/libccci_util.so
 vendor/lib64/libforkexecwrap.so
