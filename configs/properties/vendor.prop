@@ -1,5 +1,8 @@
 # Audio
 audio.deep_buffer.media=true
+persist.vendor.audio.usb.offload=false
+ro.vendor.audio.number_of_mic=1
+ro.vendor.audio.number_of_speaker=2
 ro.vendor.mtk_audio_tuning_tool_ver=V2.2
 ro.vendor.mtk_besloudness_support=1
 vendor.audio.powerhal.latency.ul=true
@@ -193,6 +196,9 @@ ro.vendor.mtk_agps_app=1
 ro.vendor.mtk_gps_support=1
 ro.vendor.mtk_log_hide_gps=0
 
+# IR
+ro.vendor.tran.ir.led.back=1
+
 # Init
 ro.vendor.init.sensor.rc=init.sensor_1_0.rc
 ro.vendor.rc=/vendor/etc/init/hw/
@@ -211,6 +217,9 @@ vendor.mtk.vdec.waitkeyframeforplay=11
 # Performance
 ro.vendor.mtk_fast_charging_support=1
 ro.vendor.mtk_prefer_64bit_proc=1
+
+# Platform
+ro.vendor.mediatek.platform=MT6768
 
 # Radio
 persist.radio.multisim.config=dsds
@@ -262,6 +271,7 @@ telephony.active_modems.max_count=2
 
 # Sensors
 ro.vendor.mtk.sensor.support=yes
+ro.vendor.tran.sensor.rgt.devinfo=1
 
 # SurfaceFlinger
 debug.sf.disable_backpressure=1
