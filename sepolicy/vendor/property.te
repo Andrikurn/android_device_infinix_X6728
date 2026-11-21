@@ -1,0 +1,5 @@
+# Fingerprint
+vendor_internal_prop(vendor_fingerprint_prop)
+
+# NFC
+vendor_internal_prop(vendor_tran_nfc_chip_prop)

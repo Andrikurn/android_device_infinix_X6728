@@ -1,0 +1,9 @@
+# Fingerprint
+persist.vendor.fp.sensorUid                  u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.sys.fp.                       u:object_r:vendor_fingerprint_prop:s0
+vendor.fingerprint.                          u:object_r:vendor_fingerprint_prop:s0
+vendor.fp.                                   u:object_r:vendor_fingerprint_prop:s0
+vendor.tran.fp.                              u:object_r:vendor_fingerprint_prop:s0
+
+# NFC
+persist.vendor.tran_nfc_chip_manufacturer    u:object_r:vendor_tran_nfc_chip_prop:s0

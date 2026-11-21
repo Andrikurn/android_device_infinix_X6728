@@ -1,0 +1,5 @@
+# Camera
+vendor.transsion.hardware.trancam.trancamserver.ITrancamserver/default                   u:object_r:hal_trancamserver_service:s0
+
+# Fingerprint
+vendor.transsion.hardware.biometrics.fingerprint.ITranssionFingerprintDaemon/default     u:object_r:hal_fingerprint_service:s0
