@@ -61,8 +61,6 @@ on late-init
 # mount different fs start
 
 on charger
-    exec /system/bin/e2fsck -f -p /dev/block/platform/bootdevice/by-name/cache
-    mount ext4 /dev/block/platform/bootdevice/by-name/cache /cache rw wait
     chmod 0660 /dev/spm
     chown system system /dev/spm
     start spm_script
@@ -96,7 +94,7 @@ on charger
     chown system system /sys/class/leds/green/brightness
 
     start vendor.light-default
-    start vendor.health-default
+    start vendor.health-mediatek
 
     # Stop bootprof
     write /proc/bootprof "0"
@@ -109,7 +107,7 @@ on early-fs
 
 on fs
     write /proc/bootprof "INIT:fs"
-    start vendor.boot-default
+    start vendor.boot-mediatek
 
     # mount fstab
     write /proc/bootprof "INIT:Mount_START"
@@ -174,7 +172,6 @@ on late-fs
     write /proc/bootprof "INIT:Mount_START --late"
     write /sys/kernel/tracing/trace_marker "B|1|Mount late"
     mount_all /vendor/etc/fstab.mt6768 --late
-    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/bootdevice/by-name/userdata
     write /sys/kernel/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END --late"
 
