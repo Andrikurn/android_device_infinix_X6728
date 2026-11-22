@@ -141,16 +141,16 @@ diff --git a/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali b/smali/com/me
 index 014de0a8..87691a34 100644
 --- a/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
 +++ b/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
-@@ -4973,7 +4973,7 @@
+@@ -5184,7 +5184,7 @@
  .end method
  
  .method private registerForBroadcast()V
 -    .locals 3
 +    .locals 4
  
-     .line 1361
+     .line 1405
      new-instance v0, Landroid/content/IntentFilter;
-@@ -5000,7 +5000,9 @@
+@@ -5212,7 +5212,9 @@
  
      iget-object v2, p0, Lcom/mediatek/wfo/impl/ImsLocationHandler;->mReceiver:Landroid/content/BroadcastReceiver;
  
@@ -159,7 +159,7 @@ index 014de0a8..87691a34 100644
 +
 +    invoke-virtual {v1, v2, v0, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-     .line 1366
+     .line 1410
      return-void
 diff --git a/smali/com/mediatek/wfo/impl/MwiService.smali b/smali/com/mediatek/wfo/impl/MwiService.smali
 index e30abc92..2da05d42 100644
