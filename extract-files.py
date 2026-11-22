@@ -187,18 +187,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
     'vendor/lib64/libsegmention.so': blob_fixup()
-        .call(
-            clear_symbol_versions_by_type,
-            (
-                '_ZN24tensorflow_gainference_c13SetInputValueEPliPf',
-                '_ZN24tensorflow_gainference_c15CloseAndDestroyEv',
-                '_ZN24tensorflow_gainference_c18InitProcFromBufferEPcl',
-                '_ZN24tensorflow_gainference_c8Run_procEv',
-                '_ZN24tensorflow_gainference_cC1Ev',
-                '_ZN24tensorflow_gainference_cD1Ev',
-            ),
-            need_tmp_dir=False,
-        ),
+        .add_needed('libtflite_native_gainference.so'),
     'vendor/lib64/libtranssion_bodybeauty.so': blob_fixup()
         .call(
             clear_symbol_versions_by_type,
