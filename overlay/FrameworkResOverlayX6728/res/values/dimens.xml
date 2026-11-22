@@ -5,13 +5,13 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Minimum screen brightness allowed by the power manager -->
-    <dimen name="config_screenBrightnessSettingMinimumFloat">0.005428</dimen>
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.005428</item>
 
     <!-- Maximum screen brightness allowed by the power manager -->
-    <dimen name="config_screenBrightnessSettingMaximumFloat">1.0</dimen>
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
 
     <!-- Default screen brightness setting -->
-    <dimen name="config_screenBrightnessSettingDefaultFloat">0.19685</dimen>
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.19685</item>
 
     <!-- Height of the status bar in portrait -->
     <dimen name="status_bar_height_portrait">36dp</dimen>
@@ -19,9 +19,8 @@
     <!-- Height of the status bar in landscape -->
     <dimen name="status_bar_height_landscape">28dp</dimen>
 
-    <!-- Quick QS heights -->
+    <!-- Quick QS offset height -->
     <dimen name="quick_qs_offset_height">36dp</dimen>
-    <dimen name="quick_qs_total_height">164dp</dimen>
 
     <!-- Navigation bar dimensions -->
     <dimen name="navigation_bar_height">40dp</dimen>
