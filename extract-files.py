@@ -4,7 +4,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+import os
+import shutil
 import struct
+import subprocess
 
 from extract_utils.fixups_blob import (
     blob_fixup,
@@ -17,6 +20,10 @@ from extract_utils.fixups_lib import (
 from extract_utils.main import (
     ExtractUtils,
     ExtractUtilsModule,
+)
+from extract_utils.tools import (
+    apktool_path,
+    java_path,
 )
 
 namespace_imports = [
@@ -85,6 +92,32 @@ def clear_symbol_versions_by_type(
         f.write(data)
 
 
+def strip_jar_packages(
+    ctx,
+    file,
+    file_path: str,
+    packages: tuple[str, ...],
+    tmp_dir: str,
+    *args,
+    **kwargs,
+):
+    out_dir = os.path.join(tmp_dir, 'decoded')
+    rebuilt_jar = os.path.join(tmp_dir, 'rebuilt.jar')
+    subprocess.run(
+        [java_path, '-jar', apktool_path, 'd', '-r', '-f', '-api', '35', '-o', out_dir, file_path],
+        check=True,
+    )
+    for pkg in packages:
+        pkg_dir = os.path.join(out_dir, 'smali', *pkg.split('.'))
+        if os.path.isdir(pkg_dir):
+            shutil.rmtree(pkg_dir)
+    subprocess.run(
+        [java_path, '-jar', apktool_path, 'b', '-api', '35', '-o', rebuilt_jar, out_dir],
+        check=True,
+    )
+    shutil.copyfile(rebuilt_jar, file_path)
+
+
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
@@ -93,6 +126,12 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    'system/framework/mediatek-telephony-base.jar': blob_fixup()
+        .call(
+            strip_jar_packages,
+            ('com.transsion',),
+            need_tmp_dir=True,
+        ),
     'system_ext/bin/hw/android.hardware.audio.parameter_parser.service': blob_fixup()
         .replace_needed('av-audio-types-aidl-V1-ndk.so', 'av-audio-types-aidl-V3-ndk.so'),
     'system_ext/lib64/libimsma.so': blob_fixup()
@@ -147,6 +186,19 @@ blob_fixups: blob_fixups_user_type = {
         .binary_regex_replace(b'BTAudiosuspend', b'A2dpSuspended\x00'),
     'vendor/lib64/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
+    'vendor/lib64/libsegmention.so': blob_fixup()
+        .call(
+            clear_symbol_versions_by_type,
+            (
+                '_ZN24tensorflow_gainference_c13SetInputValueEPliPf',
+                '_ZN24tensorflow_gainference_c15CloseAndDestroyEv',
+                '_ZN24tensorflow_gainference_c18InitProcFromBufferEPcl',
+                '_ZN24tensorflow_gainference_c8Run_procEv',
+                '_ZN24tensorflow_gainference_cC1Ev',
+                '_ZN24tensorflow_gainference_cD1Ev',
+            ),
+            need_tmp_dir=False,
+        ),
     'vendor/lib64/libtranssion_bodybeauty.so': blob_fixup()
         .call(
             clear_symbol_versions_by_type,
