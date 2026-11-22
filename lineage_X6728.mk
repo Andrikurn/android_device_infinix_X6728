@@ -24,6 +24,5 @@ PRODUCT_GMS_CLIENTID_BASE := android-transsion
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="sys_tssi_64_64only_infinix-user 15 AP3A.240905.015.A2 995662 release-keys" \
     BuildFingerprint=Infinix/X6728-OP/Infinix-X6728:15/AP3A.240905.015.A2/260912V2641:user/release-keys \
-    DeviceName=Infinix-X6728 \
     DeviceProduct=X6728-OP \
     SystemName=X6728-OP
