@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+import struct
+
 from extract_utils.fixups_blob import (
     blob_fixup,
     blob_fixups_user_type,
@@ -28,6 +30,61 @@ def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
     return f'{lib}_{partition}' if partition == 'vendor' else None
 
 
+def clear_symbol_versions_by_type(
+    ctx,
+    file,
+    file_path: str,
+    symbols: tuple[str, ...],
+    *args,
+    **kwargs,
+):
+    SHT_DYNSYM = 11
+    SHT_GNU_VERSYM = 0x6FFFFFFF
+    VER_NDX_GLOBAL = 1
+
+    with open(file_path, 'r+b') as f:
+        data = bytearray(f.read())
+        if data[:5] != b'\x7fELF\x02':
+            raise RuntimeError(f'{file_path}: not a 64-bit ELF')
+
+        e_shoff = struct.unpack_from('<Q', data, 40)[0]
+        e_shentsize, e_shnum = struct.unpack_from('<HH', data, 58)
+
+        shdrs = []
+        for i in range(e_shnum):
+            off = e_shoff + i * e_shentsize
+            sh_type = struct.unpack_from('<I', data, off + 4)[0]
+            sh_offset, sh_size = struct.unpack_from('<QQ', data, off + 24)
+            sh_link = struct.unpack_from('<I', data, off + 40)[0]
+            sh_entsize = struct.unpack_from('<Q', data, off + 56)[0]
+            shdrs.append((sh_type, sh_offset, sh_size, sh_link, sh_entsize))
+
+        dynsym = next(s for s in shdrs if s[0] == SHT_DYNSYM)
+        versym = next(s for s in shdrs if s[0] == SHT_GNU_VERSYM)
+        dynstr = shdrs[dynsym[3]]
+
+        sym_off, sym_sz, sym_ent = dynsym[1], dynsym[2], dynsym[4]
+        str_off, str_sz = dynstr[1], dynstr[2]
+        ver_off = versym[1]
+
+        targets = set(symbols)
+        cleared = set()
+        for idx in range(sym_sz // sym_ent):
+            st_name = struct.unpack_from('<I', data, sym_off + idx * sym_ent)[0]
+            name_end = data.find(b'\x00', str_off + st_name, str_off + str_sz)
+            name = data[str_off + st_name : name_end].decode('ascii', 'ignore')
+            if name in targets:
+                struct.pack_into('<H', data, ver_off + idx * 2, VER_NDX_GLOBAL)
+                cleared.add(name)
+
+        missing = targets - cleared
+        if missing:
+            raise RuntimeError(f'{file_path}: symbols not found: {sorted(missing)}')
+
+        f.seek(0)
+        f.write(data)
+
+
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
@@ -47,6 +104,8 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so',
     ): blob_fixup()
         .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
+    'vendor/bin/hw/camerahalserver': blob_fixup()
+        .remove_needed('libudf.so'),
     'vendor/etc/init/tee.rc': blob_fixup()
         .regex_replace(r'(?s)\s*#USD: add \[paytrigger\].*?#USD: add \[paytrigger\][^\n]*\n', '\n')
         .regex_replace(r'(?s)\s*#USD:Create startPara.*?#USD:Create startPara[^\n]*\n', '\n'),
@@ -89,11 +148,17 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
     'vendor/lib64/libtranssion_bodybeauty.so': blob_fixup()
-        .clear_symbol_version('AHardwareBuffer_allocate')
-        .clear_symbol_version('AHardwareBuffer_describe')
-        .clear_symbol_version('AHardwareBuffer_lockPlanes')
-        .clear_symbol_version('AHardwareBuffer_release')
-        .clear_symbol_version('AHardwareBuffer_unlock'),
+        .call(
+            clear_symbol_versions_by_type,
+            (
+                'AHardwareBuffer_allocate',
+                'AHardwareBuffer_describe',
+                'AHardwareBuffer_lockPlanes',
+                'AHardwareBuffer_release',
+                'AHardwareBuffer_unlock',
+            ),
+            need_tmp_dir=False,
+        ),
     'vendor/lib64/libutinterface_custom_md.so': blob_fixup()
         .add_needed('libutinterface_md.so'),
 }  # fmt: skip

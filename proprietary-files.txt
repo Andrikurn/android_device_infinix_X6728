@@ -466,7 +466,6 @@ vendor/lib64/libtflite_native_seginference.so
 vendor/lib64/libtrancamJsonConvertor.so
 vendor/lib64/libtrancam_filelockmgr.so
 vendor/lib64/libtranssion_bodybeauty.so
-vendor/lib64/libudf.so
 vendor/lib64/libwatermark.so
 vendor/lib64/libyuvenhance.so
 vendor/lib64/mtkcam/libmtkcam_streaminfo_plugin-p1stt.so
