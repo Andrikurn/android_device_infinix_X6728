@@ -859,7 +859,6 @@ vendor/etc/libnfc-nci.conf
 vendor/etc/libnfc-nxp.conf
 vendor/etc/libnfc-slm.conf
 vendor/lib64/nfc_nci_nxp_snxxx_v.so
-vendor/lib64/vendor.nxp.nxpese@1.0.so
 vendor/libnfc-nxp_RF.conf
 
 # NVRAM
