@@ -192,6 +192,7 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc-service.nxp \
     android.hardware.se.omapi.uicc.prebuilt.xml \
     com.android.nfc_extras \
     Tag
