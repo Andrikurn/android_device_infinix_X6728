@@ -92,6 +92,8 @@ on charger
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
+    write /sys/class/leds/lcd-backlight/brightness 1000
+    write /sys/class/leds/lcd-backlight/trigger "backlight-drm"
 
     start vendor.light-default
     start vendor.health-mediatek
@@ -940,28 +942,6 @@ on property:persist.vendor.mediatek.fg.log.enable=1
     write /proc/sys/kernel/printk 8
 
 
-# add meta_tst for ATM
-service meta_tst /vendor/bin/meta_tst
-    class core
-    user root
-    group radio gps system wifi audio bluetooth media
-    capabilities NET_RAW NET_ADMIN
-    socket meta-atci stream 660 radio system
-    disabled
-    oneshot
-
-service factory_no_image /vendor/bin/factory
-    user root
-    group radio system wifi media gps audio bluetooth wakelock nfc
-    capabilities BLOCK_SUSPEND NET_RAW NET_ADMIN SYS_ADMIN SYS_BOOT
-    socket factory-atci stream 660 radio system
-    disabled
-    oneshot
-
-# start meta_tst for ATM
-on property:sys.boot_completed=1 && property:ro.boot.atm=enable
-    start meta_tst
-
 # reset mdmode when modem crash happens in ATM
 on property:vendor.mtk.md1.status=reset
     setprop persist.vendor.atm.mdmode normal
@@ -973,11 +953,3 @@ on property:persist.vendor.mediatek.fast_charging.support=*
 # FPSGO FBT Game
 on boot
     insmod /vendor/lib/modules/fpsgo.ko
-
-# VSIM service (vendor OSI)
-service osi /system/bin/osi
-    class main
-    user root
-    disabled
-    oneshot
-    #seclabel u:r:osi:s0
