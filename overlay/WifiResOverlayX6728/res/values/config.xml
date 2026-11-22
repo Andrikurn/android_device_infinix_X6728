@@ -58,7 +58,7 @@
     <!-- List of allowed channels in 2GHz/5GHz/6GHz/60GHz bands for softap. -->
     <string name="config_wifiSoftap2gChannelList" translatable="false">1-13</string>
     <string name="config_wifiSoftap5gChannelList" translatable="false">36,38,40,42,44,46,48,149,153,157,161,165</string>
-    <string name="config_wifiSoftap6gChannelList" translatable="false">5,21,37,53,69,85,101,117,133,149,165,181,197,213,229</string>
+    <string name="config_wifiSoftap6gChannelList" translatable="false" />
     <string name="config_wifiSoftap60gChannelList" translatable="false" />
 
     <!-- Configure wifi tcp buffersizes in the form:
