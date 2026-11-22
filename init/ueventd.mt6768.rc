@@ -205,9 +205,6 @@
 # Resume-on-Reboot
 /dev/access-kregistry     0660   system     system
 
-#v4l2 device
-/dev/video*  0660 media system
-
 #VideoCodec
 /dev/vcu 0660 media system
 
