@@ -726,7 +726,7 @@ vendor/lib64/vendor.mediatek.hardware.videotelephony-V1-ndk.so;MODULE_SUFFIX=_ve
 # IR
 vendor/bin/hw/android.hardware.ir-service.example
 vendor/etc/init/android.hardware.ir-service.example.rc
-vendor/etc/vintf/manifest/android.hardware.ir-service.example.xml
+vendor/etc/vintf/manifest/android.hardware.ir-service.example.xml:vendor/etc/vintf/manifest/android.hardware.ir-service.infinix.xml
 vendor/lib64/hw/consumerir.common.so
 
 # Keymint
