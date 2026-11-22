@@ -121,6 +121,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_VENDOR_DLKMIMAGE := true
 
 -include vendor/lineage/config/BoardConfigReservedSize.mk
 
