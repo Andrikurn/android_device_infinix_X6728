@@ -9,3 +9,6 @@ add_service(trancamserver, hal_trancamserver_service)
 
 binder_call(trancamserver, mtk_hal_camera)
 binder_call(trancamserver, cameraserver)
+
+allow cameraserver hal_trancamserver_service:service_manager find;
+binder_call(cameraserver, trancamserver)
