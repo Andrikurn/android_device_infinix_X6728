@@ -1,0 +1,34 @@
+#
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# X6728 AOSP/LineageOS device-specific init additions.
+# Installed to /vendor/etc/init and imported automatically by init.
+
+on post-fs-data
+    # GED / Mali GPU permissions in parity with stock MTK power init
+    chown system system /sys/kernel/ged/hal/timer_base_dvfs_margin
+    chmod 0664 /sys/kernel/ged/hal/timer_base_dvfs_margin
+    chown system system /sys/kernel/ged/hal/loading_base_dvfs_step
+    chmod 0664 /sys/kernel/ged/hal/loading_base_dvfs_step
+    chown system system /sys/kernel/ged/hal/dvfs_margin_value
+    chmod 0664 /sys/kernel/ged/hal/dvfs_margin_value
+    chown system system /sys/kernel/ged/hal/dvfs_loading_mode
+    chmod 0664 /sys/kernel/ged/hal/dvfs_loading_mode
+    chown system system /sys/kernel/ged/hal/dvfs_workload_mode
+    chmod 0664 /sys/kernel/ged/hal/dvfs_workload_mode
+    chown system system /sys/class/misc/mali0/device/power_policy
+    chmod 0664 /sys/class/misc/mali0/device/power_policy
+    chown system system /sys/class/misc/mali0/device/pm_poweroff
+    chmod 0660 /sys/class/misc/mali0/device/pm_poweroff
+    chown system system /sys/kernel/ged/hal/total_gpu_freq_level_count
+    chmod 0664 /sys/kernel/ged/hal/total_gpu_freq_level_count
+    chown system system /sys/kernel/ged/hal/custom_boost_gpu_freq
+    chmod 0664 /sys/kernel/ged/hal/custom_boost_gpu_freq
+    chown system system /sys/kernel/ged/hal/custom_upbound_gpu_freq
+    chmod 0664 /sys/kernel/ged/hal/custom_upbound_gpu_freq
+
+on property:sys.boot_completed=1
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy6/scaling_governor

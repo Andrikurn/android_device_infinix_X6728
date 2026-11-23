@@ -1,0 +1,82 @@
+import /vendor/etc/init/hw/init.mtkgki.rc
+
+# MTK project .rc configure
+
+on early-init
+    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules trace_mmstat.ko
+
+on init
+    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
+    mkdir /storage/usbotg 0700 root root
+
+on post-fs-data
+    # NFC
+    mkdir /data/vendor/nfc 0775 nfc nfc
+    mkdir /data/vendor/nfc/param 0775 nfc nfc
+    mkdir /data/vendor/nfc/debug 0755 nfc nfc
+    chmod 0660 /dev/pn553
+    chown nfc nfc /dev/pn553
+
+    # Fingerprint
+    mkdir /data/vendor/fingerprint 0771 system system
+    mkdir /data/vendor/fpdump 0771 system system
+    mkdir /data/vendor/tran_fp 0771 system system
+    mkdir /mnt/vendor/persist/fingerprint 0771 system system
+    mkdir /mnt/vendor/persist/fpdata 0771 system system
+
+    # Camera
+    chmod 0660 /dev/MAINAF
+    chown system camera /dev/MAINAF
+
+    chmod 0660 /dev/MAINAF2
+    chown system camera /dev/MAINAF2
+
+    chmod 0660 /dev/SUBAF
+    chown system camera /dev/SUBAF
+
+    chmod 0660 /dev/GAF001AF
+    chown system camera /dev/GAF001AF
+
+    chmod 0660 /dev/DW9714AF
+    chown system camera /dev/DW9714AF
+
+    chmod 0660 /dev/LC898212AF
+    chown system camera /dev/LC898212AF
+
+    chmod 0660 /dev/BU64745GWZAF
+    chown system camera /dev/BU64745GWZAF
+
+    # SMB
+    chown system system /proc/smb/ScreenComm
+    chmod 0660 /proc/smb/ScreenComm
+
+    chmod 0660 /dev/spm
+    chown system system /dev/spm
+
+on boot
+    # Fingerprint
+    chmod 0660 /dev/tran_fp
+    chown system system /dev/tran_fp
+
+    # NFC
+    chmod 0660 /dev/pn553
+    chown nfc nfc /dev/pn553
+
+on property:vendor.all.modules.ready=1
+    chown system system /dev/tppolldrv
+
+# start mmstat
+on property:sys.boot_completed=1
+    mkdir /sys/kernel/tracing/instances/mmstat 711
+    write /sys/kernel/tracing/instances/mmstat/tracing_on 0
+    write /sys/kernel/tracing/instances/mmstat/buffer_size_kb 16
+    write /sys/kernel/tracing/instances/mmstat/events/mmstat/enable 1
+    write /sys/kernel/tracing/instances/mmstat/tracing_on 1
+
+    write /proc/sys/vm/watermark_scale_factor 80
+    write /proc/sys/vm/min_free_kbytes 7646
+    write /proc/sys/vm/dirty_background_ratio 5
+    write /proc/sys/vm/dirty_ratio 10
+    write /sys/kernel/mm/lru_gen/enabled n
+    write /sys/block/${dev.mnt.dev.data}/queue/read_ahead_kb 128
+    write /proc/sys/vm/swappiness 150
