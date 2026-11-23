@@ -23,6 +23,7 @@ vendor/lib64/hw/vendor.mediatek.hardware.audio-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.1-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
 vendor/lib64/libMtkSpeechEnh.so
+vendor/lib64/libMtkSpeechEnh_swb.so
 vendor/lib64/libTransNS.so
 vendor/lib64/libTransNSv2.so
 vendor/lib64/lib_iir.so
@@ -206,6 +207,7 @@ vendor/lib64/libbluetooth_mtk_pure.so
 vendor/lib64/libbt-vendor.so
 
 # Bluetooth (A2DP)
+vendor/etc/le_audio_codec_capabilities.xml
 vendor/etc/vintf/manifest/bluetooth_audio.xml:vendor/etc/vintf/manifest/bluetooth_audio_mtk.xml
 vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so
 vendor/lib64/libbluetooth_audio_session_aidl_mtk.so
@@ -630,6 +632,7 @@ vendor/etc/init/android.hardware.gnss-service.mediatek.rc
 vendor/etc/init/init.gps_drv.rc
 vendor/etc/init/mtk_agpsd_p.rc
 vendor/etc/init/mtk_lbs_service.rc
+vendor/etc/mpe.conf
 vendor/etc/security/cacerts_supl/111e6273.0
 vendor/etc/security/cacerts_supl/3ad48a91.0
 vendor/etc/security/cacerts_supl/7651b327.0
@@ -896,6 +899,8 @@ vendor/bin/ccci_mdinit
 vendor/bin/ccci_rpcd
 vendor/bin/gsm0710muxd
 vendor/bin/muxreport
+vendor/bin/netdagent
+vendor/bin/netdc
 vendor/etc/apdb/APDB_MT6768_S01__W2518
 vendor/etc/apdb/APDB_MT6768_S01__W2518_ENUM
 vendor/etc/init/android.hardware.secure_element@1.2-service-mediatek.rc
@@ -978,6 +983,7 @@ vendor/lib64/libsensor_custom.so
 system/etc/public.libraries-trustonic.txt
 system_ext/lib64/libteeservice_client.trustonic.so
 vendor/bin/hw/vendor.trustonic.tee-service
+vendor/bin/kmsetkey_ca.trustonic
 vendor/bin/mcDriverDaemon
 vendor/bin/mtk_storageproxyd
 vendor/etc/init/mtk_storageproxyd.rc
@@ -985,6 +991,7 @@ vendor/etc/init/tee.rc
 vendor/etc/init/trustonic.rc
 vendor/etc/init/vendor.trustonic.tee-service.rc
 vendor/lib64/libMcClient.so
+vendor/lib64/libkmsetkey.so
 vendor/lib64/libmtk_bsg.so
 vendor/lib64/libtneclient.so
 vendor/lib64/vendor.trustonic.tee-V1-ndk.so
