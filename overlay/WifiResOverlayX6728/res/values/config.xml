@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Boolean indicating whether the WiFi chipset has 5GHz band support. -->
+    <bool name="config_wifi5ghzSupport" translatable="false">true</bool>
+
+    <!-- Boolean indicating whether 802.11r Fast BSS Transition is enabled on this platform. -->
+    <bool name="config_wifi_fast_bss_transition_enabled" translatable="false">true</bool>
+
+    <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism. -->
+    <bool name="config_wifi_background_scan_support" translatable="false">true</bool>
+
+    <!-- Indicates that SAE Hash-to-Element is supported on this device. -->
+    <bool name="config_wifiSaeH2eSupported" translatable="false">true</bool>
+
+    <!-- Boolean indicating whether the Easy Connect (DPP) AKM is supported. -->
+    <bool name="config_wifiDppAkmSupported" translatable="false">true</bool>
+
+    <!-- Wifi driver supports Automatic channel selection (ACS) for softap. -->
+    <bool name="config_wifi_softap_acs_supported" translatable="false">true</bool>
+
+    <!-- Wifi driver supports IEEE80211AC for softap. -->
+    <bool name="config_wifi_softap_ieee80211ac_supported" translatable="false">true</bool>
+
+    <!-- Wifi driver supports WPA3-SAE for softap. -->
+    <bool name="config_wifi_softap_sae_supported" translatable="false">true</bool>
+
+    <!-- Wifi driver supports OWE for softap. -->
+    <bool name="config_wifiSoftapOweSupported" translatable="false">false</bool>
+
+    <!-- Reset max client setting config for softap. -->
+    <bool name="config_wifiSoftapResetMaxClientSettingConfig" translatable="false">false</bool>
+
+    <!-- Indicates that connected MAC randomization is supported on this device. -->
+    <bool name="config_wifi_connected_mac_randomization_supported" translatable="false">true</bool>
+
+    <!-- Indicates that p2p MAC randomization is supported on this device. -->
+    <bool name="config_wifi_p2p_mac_randomization_supported" translatable="false">true</bool>
+
+    <!-- Allow insecure enterprise configurations for Settings and SUW. -->
+    <bool name="config_wifiAllowInsecureEnterpriseConfigurationsForSettingsAndSUW" translatable="false">true</bool>
+
+    <!-- Allow multiple networks on the same Wi-Fi Aware NDI. -->
+    <bool name="config_wifiAllowMultipleNetworksOnSameAwareNdi" translatable="false">true</bool>
+
+    <!-- Enable link layer all radios stats aggregation. -->
+    <bool name="config_wifiLinkLayerAllRadiosStatsAggregationEnabled" translatable="false">true</bool>
+
+    <!-- Enable network-centric QoS policy feature. -->
+    <bool name="config_wifiNetworkCentricQosPolicyFeatureEnabled" translatable="false">true</bool>
+
+    <!-- Show confirmation dialog for third-party apps enabling Wi-Fi. -->
+    <bool name="config_showConfirmationDialogForThirdPartyAppsEnablingWifi" translatable="false">true</bool>
+
+    <!-- List of allowed channels in 2GHz/5GHz/6GHz/60GHz bands for softap. -->
+    <string name="config_wifiSoftap2gChannelList" translatable="false">1-13</string>
+    <string name="config_wifiSoftap5gChannelList" translatable="false">36,38,40,42,44,46,48,149,153,157,161,165</string>
+    <string name="config_wifiSoftap6gChannelList" translatable="false" />
+    <string name="config_wifiSoftap60gChannelList" translatable="false" />
+
+    <!-- Configure wifi tcp buffersizes in the form:
+         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
+    <string name="config_wifi_tcp_buffers" translatable="false">1730560,3461120,6922240,524288,1048576,4525824</string>
+
+    <!-- RSSI level thresholds. -->
+    <integer-array name="config_wifiRssiLevelThresholds" translatable="false">
+        <item>-90</item>
+        <item>-85</item>
+        <item>-75</item>
+        <item>-64</item>
+    </integer-array>
+
+    <!-- Additional disconnect delay (in ms) after IMS onLost() indication is received. -->
+    <integer name="config_wifiDelayDisconnectOnImsLostMs" translatable="false">1000</integer>
+
+    <!-- Verbose logging always-on level. -->
+    <integer name="config_wifiVerboseLoggingAlwaysOnLevel" translatable="false">1</integer>
+</resources>
