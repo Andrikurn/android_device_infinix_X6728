@@ -1,0 +1,27 @@
+# Display & Fingerprint
+genfscon sysfs /kernel/tran_display                                                                                    u:object_r:sysfs_lcm_name:s0
+genfscon sysfs /kernel/tran_fp                                                                                         u:object_r:sysfs_tran_fp:s0
+
+# Battery / Power supply
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-gauge/power_supply                 u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.2.auto/power_supply                          u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.3.auto/power_supply                          u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/mt6370-charger.4.auto/power_supply                          u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-006b/power_supply                                                u:object_r:sysfs_batteryinfo:s0
+
+# Wakeup
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-gauge/power_supply/mtk-gauge/wakeup   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-rtc/rtc/rtc0/alarmtimer.0.auto/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-rtc/wakeup                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt635x-auxadc/wakeup                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10238000.gce/wakeup                                                                   u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11005000.i2c/i2c-8/8-005f/wakeup                                                      u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11007000.i2c/i2c-0/0-0024/tcpc/type_c_port0/wakeup                                    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11007000.i2c/i2c-0/0-0024/wakeup                                                      u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11007000.i2c/i2c-0/0-0060/tcpc/type_c_port0/wakeup                                    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11007000.i2c/i2c-0/0-0060/tcpc/wakeup                                                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11007000.i2c/i2c-0/0-0060/wakeup                                                      u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-0034/wakeup                                                      u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11016000.i2c/i2c-5/5-006b/power_supply/primary_chg/wakeup                             u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/15020000.imgsys_config/wakeup                                                         u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/18002000.consys/wakeup                                                                u:object_r:sysfs_wakeup:s0

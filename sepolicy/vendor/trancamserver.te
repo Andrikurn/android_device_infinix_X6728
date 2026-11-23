@@ -1,0 +1,14 @@
+type trancamserver, domain, halserverdomain;
+type trancamserver_exec, exec_type, file_type, vendor_file_type;
+
+init_daemon_domain(trancamserver)
+
+binder_use(trancamserver)
+vndbinder_use(trancamserver)
+add_service(trancamserver, hal_trancamserver_service)
+
+binder_call(trancamserver, mtk_hal_camera)
+binder_call(trancamserver, cameraserver)
+
+allow cameraserver hal_trancamserver_service:service_manager find;
+binder_call(cameraserver, trancamserver)
