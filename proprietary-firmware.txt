@@ -3,7 +3,7 @@
 gz.img;AB
 lk.img;AB
 logo.bin:logo.img;AB
-modem.img:md1img.img;AB
+modem.img;AB
 scp.img;AB
 spmfw.img;AB
 sspm.img;AB
