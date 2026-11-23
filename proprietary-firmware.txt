@@ -1,0 +1,11 @@
+# Firmware - from Infinix/X6728-OP/Infinix-X6728:15/AP3A.240905.015.A2/260912V2641:user/release-keys
+
+gz.img;AB
+lk.img;AB
+logo.bin:logo.img;AB
+modem.img:md1img.img;AB
+scp.img;AB
+spmfw.img;AB
+sspm.img;AB
+tee.img;AB
+tkv.img;AB
