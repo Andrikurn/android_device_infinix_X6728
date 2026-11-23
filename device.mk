@@ -54,11 +54,22 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio.common-util \
+    android.hardware.audio.common@5.0 \
+    android.hardware.audio.common@6.0 \
+    android.hardware.audio.common@6.0-util \
+    android.hardware.audio.effect@6.0 \
+    android.hardware.audio@6.0 \
     audio.primary.default \
     audio.bluetooth.default \
     audio_policy.stub \
     audio.r_submix.default \
-    audio.usb.default
+    audio.usb.default \
+    libalsautilsv2 \
+    libaudioaidlcommon \
+    libaudioutils \
+    libtinyalsa \
+    libtinyalsav2
 
 PRODUCT_PACKAGES += \
     libaecsw \
@@ -98,13 +109,18 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
-    frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
+    frameworks/native/data/etc/android.hardware.microphone.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.microphone.xml \
+    frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
+    $(LOCAL_PATH)/configs/permissions/com.mediatek.hardware.vow.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.mediatek.hardware.vow.xml
 
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-service.mediatek
+    android.hardware.bluetooth-service.mediatek \
+    android.hardware.bluetooth.audio@2.0 \
+    android.hardware.bluetooth.audio@2.1 \
+    libbluetooth_audio_session_aidl
 
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth_le.prebuilt.xml \
@@ -113,24 +129,71 @@ PRODUCT_PACKAGES += \
 # Boot
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.mediatek \
-    android.hardware.boot-service.mediatek_recovery
+    android.hardware.boot-service.mediatek_recovery \
+    android.hardware.boot-V1-ndk \
+    android.hardware.boot@1.0 \
+    android.hardware.boot@1.1
 
 # Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.common-V1-ndk \
+    android.hardware.camera.common@1.0 \
+    android.hardware.camera.device-V3-ndk \
+    android.hardware.camera.device@1.0 \
+    android.hardware.camera.device@3.2 \
+    android.hardware.camera.device@3.3 \
+    android.hardware.camera.device@3.4 \
+    android.hardware.camera.device@3.5 \
+    android.hardware.camera.device@3.6 \
+    android.hardware.camera.metadata-V3-ndk \
+    android.hardware.camera.provider-V3-ndk \
+    android.hardware.camera.provider@2.4 \
+    android.hardware.camera.provider@2.5 \
+    android.hardware.camera.provider@2.6 \
+    libcamera_metadata
+
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml
+    $(LOCAL_PATH)/configs/permissions/android.hardware.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.xml
 
 # Chipinfo
 PRODUCT_PACKAGES += \
     chipinfo
+
+# Common
+PRODUCT_PACKAGES += \
+    android.hardware.common-V2-ndk \
+    android.hardware.common.fmq-V1-ndk
+
+# Contexthub
+PRODUCT_PACKAGES += \
+    android.hardware.contexthub-service.tinysys \
+    chre_atoms_log \
+    chremetrics-cpp
 
 # Display
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1600
 
 PRODUCT_PACKAGES += \
-    android.hardware.memtrack-service.mediatek
+    android.hardware.graphics.allocator-V2-ndk \
+    android.hardware.graphics.allocator@2.0 \
+    android.hardware.graphics.allocator@3.0 \
+    android.hardware.graphics.allocator@4.0 \
+    android.hardware.graphics.bufferqueue@1.0 \
+    android.hardware.graphics.bufferqueue@2.0 \
+    android.hardware.graphics.common-V7-ndk \
+    android.hardware.graphics.common@1.0 \
+    android.hardware.graphics.common@1.1 \
+    android.hardware.graphics.common@1.2 \
+    android.hardware.graphics.composer3-V3-ndk \
+    android.hardware.graphics.mapper@2.0 \
+    android.hardware.graphics.mapper@2.1 \
+    android.hardware.graphics.mapper@3.0 \
+    android.hardware.graphics.mapper@4.0 \
+    android.hardware.memtrack-V1-ndk \
+    android.hardware.memtrack-service.mediatek \
+    libgralloctypes \
+    libgrallocusage
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml
@@ -144,7 +207,9 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm-service.clearkey
+    android.hardware.drm-service.clearkey \
+    android.hardware.drm-V1-ndk \
+    libdrm
 
 PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
     $(LOCAL_PATH)/configs/linker/linker.config.json
@@ -154,7 +219,104 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 
 PRODUCT_PACKAGES += \
+    android.hardware.fastboot-service.example_recovery \
     fastbootd
+
+# External / Runtime Libraries
+PRODUCT_PACKAGES += \
+    android.frameworks.stats-V1-ndk \
+    android.frameworks.stats-V2-ndk \
+    android.hardware.gatekeeper-V1-ndk \
+    android.hardware.keymaster-V4-ndk \
+    android.hardware.renderscript@1.0 \
+    android.hardware.secure_element-V1-ndk \
+    android.hardware.security.keymint-V1-ndk \
+    android.hardware.security.keymint-V3-ndk \
+    android.hardware.security.rkp-V3-ndk \
+    android.hardware.security.secureclock-V1-ndk \
+    android.hardware.security.sharedsecret-V1-ndk \
+    android.hardware.soundtrigger3-V1-ndk \
+    android.hardware.soundtrigger3-V2-ndk \
+    android.hidl.memory.token@1.0 \
+    android.hidl.memory@1.0 \
+    android.hidl.safe_union@1.0 \
+    android.hidl.token@1.0 \
+    android.hidl.token@1.0-utils \
+    android.media.audio.common.types-V2-ndk \
+    android.media.audio.common.types-V3-ndk \
+    android.media.soundtrigger.types-V1-ndk \
+    android.media.soundtrigger.types-V2-ndk \
+    android.system.keystore2-V1-ndk \
+    android.system.suspend-V1-ndk \
+    dmabuf_dump \
+    features_com.android.virt.xml \
+    libRSCpuRef \
+    libRSDriver \
+    libRS_internal \
+    libaconfig_storage_read_api_cc \
+    libavservices_minijail \
+    libbase \
+    libbcinfo \
+    libbinderdebug \
+    libblas \
+    libcap \
+    libcodec2 \
+    libcodec2_aidl \
+    libcodec2_hal_common \
+    libcodec2_hidl@1.0 \
+    libcodec2_hidl@1.1 \
+    libcodec2_hidl@1.2 \
+    libcodec2_soft_common \
+    libcodec2_vndk \
+    libcompiler_rt \
+    libcrypto \
+    libcurl \
+    libdmabufheap \
+    libdumpstateutil \
+    libexif \
+    libexpat \
+    libflatbuffers-cpp \
+    libfmq \
+    libhardware \
+    libhardware_legacy \
+    libhidlbase \
+    libhidlmemory \
+    libhidltransport \
+    libhwbinder \
+    libion \
+    libjpeg \
+    libjsoncpp \
+    liblzma \
+    libmedia_helper \
+    libmediautils_vendor \
+    libmeminfo \
+    libmemunreachable \
+    libminijail \
+    libnetutils \
+    libnl \
+    libpcap \
+    libpng \
+    libprocessgroup \
+    libprocinfo \
+    libsfplugin_ccodec_utils \
+    libspeexresampler \
+    libsqlite \
+    libssl \
+    libstagefright_aidl_bufferpool2 \
+    libstagefright_bufferpool@2.0.1 \
+    libstagefright_bufferqueue_helper \
+    libstagefright_foundation \
+    libsysutils \
+    libtinyxml2 \
+    libtrusty \
+    libui \
+    libunwindstack \
+    libutils \
+    libutilscallstack \
+    libvibratorutils \
+    libxml2 \
+    libz \
+    server_configurable_flags
 
 # FM Radio
 PRODUCT_PACKAGES += \
@@ -162,18 +324,27 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
+    android.hardware.biometrics.common-V3-ndk \
+    android.hardware.biometrics.common.thread \
+    android.hardware.biometrics.fingerprint-V3-ndk \
     android.hardware.fingerprint.prebuilt.xml
 
 # GNSS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss-V4-ndk \
     android.hardware.location.gps.prebuilt.xml
 
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
-    android.hardware.health-service.mediatek-recovery
+    android.hardware.health-service.mediatek-recovery \
+    android.hardware.health-V1-ndk \
+    android.hardware.health-V3-ndk
 
 # IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir-V1-ndk
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
 
@@ -187,9 +358,21 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light-service.lineage
+    android.hardware.light-service.lineage \
+    android.hardware.light-V1-ndk \
+    android.hardware.light-V2-ndk
 
 # Media
+PRODUCT_PACKAGES += \
+    android.hardware.media.bufferpool2-V2-ndk \
+    android.hardware.media.bufferpool@2.0 \
+    android.hardware.media.c2-V1-ndk \
+    android.hardware.media.c2@1.0 \
+    android.hardware.media.c2@1.1 \
+    android.hardware.media.c2@1.2 \
+    android.hardware.media.omx@1.0 \
+    android.hardware.media@1.0
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
@@ -202,9 +385,12 @@ PRODUCT_PACKAGES += \
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc-service.nxp \
+    android.hardware.nfc-V1-ndk \
     android.hardware.se.omapi.uicc.prebuilt.xml \
     com.android.nfc_extras \
-    Tag
+    Tag \
+    vendor.nxp.nxpese@1.0 \
+    vendor.nxp.nxpnfc_aidl-V1-ndk
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
@@ -247,7 +433,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 PRODUCT_PACKAGES += \
-    vendor.mediatek.hardware.mtkpower@1.0.vendor
+    vendor.mediatek.hardware.mtkpower@1.0.vendor \
+    vendor.mediatek.hardware.mtkpower@1.1 \
+    vendor.mediatek.hardware.mtkpower@1.2
 
 # Properties
 include hardware/mediatek/configs/properties/vendor_logtag.mk
@@ -260,6 +448,23 @@ $(call inherit-product, hardware/lineage/compat/frameworks/compat.mk)
 $(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
 
 PRODUCT_PACKAGES += \
+    android.hardware.radio-V3-ndk \
+    android.hardware.radio.config-V3-ndk \
+    android.hardware.radio.config@1.1 \
+    android.hardware.radio.config@1.2 \
+    android.hardware.radio.config@1.3 \
+    android.hardware.radio.data-V3-ndk \
+    android.hardware.radio.ims-V2-ndk \
+    android.hardware.radio.messaging-V3-ndk \
+    android.hardware.radio.modem-V3-ndk \
+    android.hardware.radio.network-V3-ndk \
+    android.hardware.radio.sap-V1-ndk \
+    android.hardware.radio.sim-V3-ndk \
+    android.hardware.radio.voice-V3-ndk \
+    android.hardware.radio@1.0 \
+    android.hardware.radio@1.1 \
+    android.hardware.radio@1.5 \
+    android.hardware.radio@1.6 \
     mdota_symlink
 
 PRODUCT_PACKAGES += \
@@ -296,21 +501,26 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.frameworks.sensorservice-V1-ndk \
+    android.frameworks.sensorservice@1.0 \
     android.hardware.sensors-service.multihal \
+    android.hardware.sensors-V3-ndk \
+    android.hardware.sensors@1.0 \
+    android.hardware.sensors@2.0 \
+    android.hardware.sensors@2.0-ScopedWakelock \
     android.hardware.sensors@2.0-subhal-impl-1.0 \
+    android.hardware.sensors@2.1 \
     sensors.dynamic_sensor_hal
 
 PRODUCT_PACKAGES += \
     android.hardware.sensor.accelerometer.prebuilt.xml \
+    android.hardware.sensor.compass.prebuilt.xml \
     android.hardware.sensor.dynamic.head_tracker.prebuilt.xml \
+    android.hardware.sensor.gyroscope.prebuilt.xml \
     android.hardware.sensor.light.prebuilt.xml \
     android.hardware.sensor.proximity.prebuilt.xml \
     android.hardware.sensor.stepcounter.prebuilt.xml \
     android.hardware.sensor.stepdetector.prebuilt.xml
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
@@ -358,7 +568,9 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek \
-    android.hardware.usb.gadget-service.mediatek
+    android.hardware.usb-V1-ndk \
+    android.hardware.usb.gadget-service.mediatek \
+    android.hardware.usb.gadget-V1-ndk
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
@@ -372,7 +584,8 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.mediatek
+    android.hardware.vibrator-service.mediatek \
+    android.hardware.vibrator-V2-ndk
 
 # VNDK
 PRODUCT_PACKAGES += \
@@ -384,6 +597,8 @@ $(call soong_config_set_bool,mediatek_wifi_hal,use_pre_baklava_qpr0_struct,true)
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
+    libkeystore-engine-wifi-hidl \
+    libkeystore-wifi-hidl \
     libwifi-hal-wrapper \
     wlan_assistant \
     wpa_supplicant
