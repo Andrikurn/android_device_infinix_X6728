@@ -608,5 +608,10 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi.passpoint.prebuilt.xml \
     android.hardware.wifi.prebuilt.xml
 
+# Temporary bringup debug: enable early ADB without authorization
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.adb.secure=0 \
+    persist.sys.usb.config=mtp,adb
+
 # Inherit the proprietary files
 $(call inherit-product, vendor/infinix/X6728/X6728-vendor.mk)
